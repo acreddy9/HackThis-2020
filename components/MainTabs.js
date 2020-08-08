@@ -4,13 +4,19 @@ import React from 'react';
 import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
 import { NavigationContainer } from "../node_modules/@react-navigation/native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
+import { createStackNavigator } from '../node_modules/@react-navigation/stack'
 import { Ionicons } from "../node_modules/@expo/vector-icons";
+import 'react-native-gesture-handler';
+import { useEffect, useState } from 'react'
 
 // components
 import Profile from "./Profile.js";
 import Preferences from "./Preferences.js";
 import FindClassmates from "./FindClassmates.js";
-
+import { LoginScreen, HomeScreen, RegistrationScreen } from './'
+import {decode, encode} from 'base-64'
+if (!global.btoa) {  global.btoa = encode }
+if (!global.atob) { global.atob = decode }
 
 // styling
 export const styles = StyleSheet.create({
@@ -52,11 +58,27 @@ const FindScreen = (props) => {
     );
 };
 
+const Stack = createStackNavigator();
+
 const Tab = createBottomTabNavigator();
 
 function MainTabs() {
     return (
         <NavigationContainer>
+
+    <Stack.Navigator>
+        { user ? (
+          <Stack.Screen name="Home">
+            {props => <HomeScreen {...props} extraData={user} />}
+          </Stack.Screen>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Registration" component={RegistrationScreen} />
+          </>
+        )}
+      </Stack.Navigator>
+
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
