@@ -6,7 +6,7 @@ const FindClassmates = () => {
     return (
         <View>
             <Header title= "Find Classmates"/>
-            // display of classes
+            <Text>Howdy</Text>
          </View>
     );
 };
