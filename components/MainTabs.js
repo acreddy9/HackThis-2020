@@ -63,7 +63,7 @@ function MainTabs() {
                         let iconName;
                         if (route.name === "Profile") {
                             iconName = focused ? "md-person" : "md-person";
-                        } else if (route.name === "Preferences") {
+                        } else if (route.name === "Chat") {
                             iconName = focused ? "ios-chatbubbles" : "ios-chatbubbles";
                         } else if (route.name === "Find Classmates") {
                             iconName = focused ? "md-search" : "md-search";
@@ -87,7 +87,7 @@ function MainTabs() {
                 }}
           >
                 <Tab.Screen name="Profile" component={ProfileScreen} />
-                <Tab.Screen name="Preferences" component={PrefScreen} />
+                <Tab.Screen name="Chat" component={PrefScreen} />
                 <Tab.Screen name="Find Classmates" component={FindScreen} />
             </Tab.Navigator>
          </NavigationContainer> 
