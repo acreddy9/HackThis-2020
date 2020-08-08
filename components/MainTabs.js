@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
       paddingTop: 25,
       height: 60,
       marginBottom: 0,
-      backgroundColor: '#8baab5'
+      backgroundColor: '#8baab5',
     },
   });
 
@@ -61,7 +61,6 @@ function MainTabs() {
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
-
                         if (route.name === "Profile") {
                             iconName = focused ? "md-person" : "md-person";
                         } else if (route.name === "Preferences") {
@@ -72,12 +71,19 @@ function MainTabs() {
 
                         return <Ionicons name={iconName} size={size} color={color} />;
                      },
+                     
+                     tabBarLabel: route.name
+                     
                 })}
 
                 // Icon change when clicking the tab
                 tabBarOptions={{
                     activeTintColor: "#E9C46A",
                     inactiveTintColor: "#264653",
+                    adaptive: true,
+                    tabStyle: {
+                        padding: 0, margin: 10,   //Padding 0 here
+                    },
                 }}
           >
                 <Tab.Screen name="Profile" component={ProfileScreen} />
