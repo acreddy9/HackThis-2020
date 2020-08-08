@@ -82,7 +82,7 @@ function MainTabs() {
                     inactiveTintColor: "#264653",
                     adaptive: true,
                     tabStyle: {
-                        padding: 0, margin: 10,   //Padding 0 here
+                        padding: 0, margin: 10,   
                     },
                 }}
           >
