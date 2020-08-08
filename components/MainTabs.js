@@ -100,14 +100,14 @@ function MainTabs() {
 
 function MainStacks() {
     return (
-  <NavigationContainer>
-    <Stack.Navigator>
-        <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Registration" component={Registration} />
-    </Stack.Navigator>
-  </NavigationContainer>
-);
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="MainTabs" component={MainTabs} />
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Registration" component={Registration} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
 
 export default MainStacks;
