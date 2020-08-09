@@ -23,11 +23,13 @@ function MainTabs() {
                         let iconName;
                         if (route.name === "Profile") {
                             iconName = focused ? "md-person" : "md-person";
+                        } else if (route.name === "Settings") {
+                            iconName = focused ? "md-settings" : "md-settings";
+                        } else if (route.name === "Match") {
+                            iconName = focused ? "md-heart" : "md-heart";
                         } else if (route.name === "Chat") {
                             iconName = focused ? "ios-chatbubbles" : "ios-chatbubbles";
-                        } else if (route.name === "Find Classmates") {
-                            iconName = focused ? "md-search" : "md-search";
-                        } 
+                        }
 
                         return <Ionicons name={iconName} size={size} color={color} />;
                      },
@@ -47,8 +49,9 @@ function MainTabs() {
                 }}
           >
                 <Tab.Screen name="Profile" component={ProfileScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+                <Tab.Screen name="Match" component={MatchScreen} />
                 <Tab.Screen name="Chat" component={ChatScreen} />
-                <Tab.Screen name="Find Classmates" component={MatchScreen} />
             </Tab.Navigator>
         // </NavigationContainer> 
     );
