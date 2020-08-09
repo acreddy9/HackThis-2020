@@ -4,13 +4,20 @@ import React from "react";
 import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
 import { NavigationContainer } from "../node_modules/@react-navigation/native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
+import { createStackNavigator } from '../node_modules/@react-navigation/stack'
 import { Ionicons } from "../node_modules/@expo/vector-icons";
+
 
 // components
 import Profile from "./Profile.js";
+
 import Settings from "./Settings.js";
 import Match from "./Match.js";
 import Chat from "./Chat.js";
+
+import Login from './Login.js'
+import Registration from "./Registration.js";
+
 
 
 // styling
@@ -62,11 +69,11 @@ const ChatScreen = (props) => {
     );
 };
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MainTabs() {
     return (
-        <NavigationContainer>
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -103,8 +110,20 @@ function MainTabs() {
                 <Tab.Screen name="Match" component={MatchScreen} />
                 <Tab.Screen name="Chat" component={ChatScreen} />
             </Tab.Navigator>
-         </NavigationContainer> 
+         
     );
 }
 
-export default MainTabs;
+function MainStacks() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="MainTabs" component={MainTabs} />
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Registration" component={Registration} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
+export default MainStacks;
