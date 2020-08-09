@@ -12,9 +12,9 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Navigator initialRouteName="RegistrationScreen" headerMode="none">
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} headerShown={false}/>
             <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>
     </NavigationContainer>

@@ -13,8 +13,8 @@ export default StyleSheet.create({
         alignSelf: "center",
         color: "#3956d4",
         fontSize: 40,
-        fontWeight: "bold",
-        fontFamily: "TrebuchetMS-Bold"
+        fontFamily: "TrebuchetMS-Bold",
+        paddingTop: 50
     },
     subtitle: {
         alignSelf: "center",
@@ -74,7 +74,8 @@ export default StyleSheet.create({
         margin:5,
         marginRight:50,
         borderBottomColor: '#e6e3e3',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        fontFamily: "TrebuchetMS"
     },
     button: {
         backgroundColor: '#3956d4',
@@ -91,7 +92,7 @@ export default StyleSheet.create({
     buttonTitle: {
         color: 'white',
         fontSize: 16,
-        fontWeight: "bold"
+        fontFamily: "TrebuchetMS-Bold"
     },
     footerView: {
         flex: 1,
@@ -100,11 +101,13 @@ export default StyleSheet.create({
     },
     footerText: {
         fontSize: 16,
-        color: '#aaaaaa'
+        color: '#aaaaaa',
+        fontFamily: "TrebuchetMS"
     },
     footerLink: {
         color: "#3956d4",
         fontWeight: "bold",
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: "TrebuchetMS"
     }
 })

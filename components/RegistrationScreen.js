@@ -79,7 +79,7 @@ export default function RegistrationScreen({navigation}) {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => onRegisterPress()}>
-                    <Text style={styles.buttonTitle}>SIGN UP</Text>
+                    <Text style={styles.buttonTitle}>sign up</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
                     <Text style={styles.footerText}>already have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>log in</Text></Text>

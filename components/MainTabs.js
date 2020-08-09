@@ -34,7 +34,7 @@ function MainTabs() {
                         return <Ionicons name={iconName} size={size} color={color} />;
                      },
                      
-                     tabBarLabel: route.name
+                     tabBarLabel: () => {return null}
                      
                 })}
 
