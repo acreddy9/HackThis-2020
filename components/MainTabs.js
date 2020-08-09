@@ -1,62 +1,22 @@
-import React from 'react';
-
+import React from "react";
 // navigation
 import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
-import { NavigationContainer } from "../node_modules/@react-navigation/native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
+import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from "../node_modules/@expo/vector-icons";
-
 // components
-import Profile from "./Profile.js";
-import Preferences from "./Preferences.js";
-import FindClassmates from "./FindClassmates.js";
-
-
+import ProfileScreen from "./ProfileScreen.js";
+import SettingsScreen from "./SettingsScreen.js";
+import MatchScreen from "./MatchScreen.js";
+import ChatScreen from "./ChatScreen.js";
 // styling
-export const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 25,
-      height: 60,
-      marginBottom: 0,
-      backgroundColor: '#8baab5',
-    },
-  });
-
-// elements ----------------------------------------------------------------------
-
-// profile screen
-const ProfileScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <Profile />
-        </View>
-    );
-};
-
-// preferences screen
-const PrefScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <Preferences />
-        </View>
-    );
-};
-
-// find classmates screen
-const FindScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <FindClassmates />
-        </View>
-    );
-};
+import styles from "./styles.js";
 
 const Tab = createBottomTabNavigator();
 
 function MainTabs() {
     return (
-        <NavigationContainer>
+       // <NavigationContainer>
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -87,10 +47,10 @@ function MainTabs() {
                 }}
           >
                 <Tab.Screen name="Profile" component={ProfileScreen} />
-                <Tab.Screen name="Chat" component={PrefScreen} />
-                <Tab.Screen name="Find Classmates" component={FindScreen} />
+                <Tab.Screen name="Chat" component={ChatScreen} />
+                <Tab.Screen name="Find Classmates" component={MatchScreen} />
             </Tab.Navigator>
-         </NavigationContainer> 
+        // </NavigationContainer> 
     );
 }
 
