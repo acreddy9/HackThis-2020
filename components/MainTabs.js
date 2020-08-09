@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // navigation
 import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
@@ -10,10 +10,14 @@ import { Ionicons } from "../node_modules/@expo/vector-icons";
 
 // components
 import Profile from "./Profile.js";
-import Preferences from "./Preferences.js";
-import FindClassmates from "./FindClassmates.js";
+
+import Settings from "./Settings.js";
+import Match from "./Match.js";
+import Chat from "./Chat.js";
+
 import Login from './Login.js'
 import Registration from "./Registration.js";
+
 
 
 // styling
@@ -38,20 +42,29 @@ const ProfileScreen = (props) => {
     );
 };
 
-// preferences screen
-const PrefScreen = (props) => {
+// settings screen
+const SettingsScreen = (props) => {
     return (
         <View style={styles.container}>
-            <Preferences />
+            <Settings />
         </View>
     );
 };
 
-// find classmates screen
-const FindScreen = (props) => {
+// match with classmates screen
+const MatchScreen = (props) => {
     return (
         <View style={styles.container}>
-            <FindClassmates />
+            <Match />
+        </View>
+    );
+};
+
+// chat screen
+const ChatScreen = (props) => {
+    return (
+        <View style={styles.container}>
+            <Chat />
         </View>
     );
 };
@@ -67,11 +80,13 @@ function MainTabs() {
                         let iconName;
                         if (route.name === "Profile") {
                             iconName = focused ? "md-person" : "md-person";
-                        } else if (route.name === "Preferences") {
-                            iconName = focused ? "ios-chatbubbles" : "ios-chatbubbles";
-                        } else if (route.name === "Find Classmates") {
+                        } else if (route.name === "Settings") {
+                            iconName = focused ? "md-settings" : "md-settings";
+                        } else if (route.name === "Match") {
                             iconName = focused ? "md-search" : "md-search";
-                        } 
+                        } else if (route.name === "Chat") {
+                            iconName = focused ? "ios-chatbubbles" : "ios-chatbubbles";
+                        }
 
                         return <Ionicons name={iconName} size={size} color={color} />;
                      },
@@ -91,8 +106,9 @@ function MainTabs() {
                 }}
           >
                 <Tab.Screen name="Profile" component={ProfileScreen} />
-                <Tab.Screen name="Preferences" component={PrefScreen} />
-                <Tab.Screen name="Find Classmates" component={FindScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+                <Tab.Screen name="Match" component={MatchScreen} />
+                <Tab.Screen name="Chat" component={ChatScreen} />
             </Tab.Navigator>
          
     );

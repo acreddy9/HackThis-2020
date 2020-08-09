@@ -2,13 +2,14 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import  Header  from './Header.js';
 
-const Preferences = () => {
+const Match = () => {
     return (
         <View>
-            <Header title= "Preferences"/>
-            <Text>Who are you looking for?</Text>
+            <Header title="Match"/>
+            <Text>Match with classmates</Text>
+            {/* display classes */}
         </View>
     );
 };
 
-export default Preferences;
+export default Match;
