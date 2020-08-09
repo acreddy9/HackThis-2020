@@ -4,10 +4,10 @@ import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
 import { Ionicons } from "../node_modules/@expo/vector-icons";
 // components
-import Profile from "./Profile.js";
-import Settings from "./Settings.js";
-import Match from "./Match.js";
-import Chat from "./Chat.js";
+import ProfileScreen from "./ProfileScreen.js";
+import SettingsScreen from "./SettingsScreen.js";
+import MatchScreen from "./MatchScreen.js";
+import ChatScreen from "./ChatScreen.js";
 // styling
 import styles from "./styles.js";
 
@@ -46,10 +46,10 @@ function MainTabs() {
                 },
             }}
         >
-            <Tab.Screen name="Profile" component={Profile} />
-            <Tab.Screen name="Settings" component={Settings} />
-            <Tab.Screen name="Match" component={Match} />
-            <Tab.Screen name="Chat" component={Chat} />
+            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="Match" component={MatchScreen} />
+            <Tab.Screen name="Chat" component={ChatScreen} />
         </Tab.Navigator>
     );
 }

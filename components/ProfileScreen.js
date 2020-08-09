@@ -4,7 +4,7 @@ import  Header  from './Header.js';
 // import profileIcon from '../assets/profile-icon.png';
 // import ImagePicker from 'expo-image-picker'
 
-const Profile = () => {
+const ProfileScreen = () => {
     return (
         <View>
             <Header title="Profile"/>
@@ -13,4 +13,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default ProfileScreen;

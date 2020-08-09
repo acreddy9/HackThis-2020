@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import  Header  from './Header.js';
 
-const Chat = () => {
+const ChatScreen = () => {
     return (
         <View>
             <Header title="Chat"/>
@@ -11,4 +11,4 @@ const Chat = () => {
     );
 };
 
-export default Chat;
+export default ChatScreen;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainTabs from './components/MainTabs.js';
-import Login from './components/Login.js'
-import Registration from "./components/Registration.js";
+import Login from './components/LoginScreen.js'
+import Registration from "./components/RegistrationScreen.js";
 import { NavigationContainer } from "./node_modules/@react-navigation/native";
 import { createStackNavigator } from './node_modules/@react-navigation/stack';
 

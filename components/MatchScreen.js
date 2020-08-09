@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import  Header  from './Header.js';
 
-const Match = () => {
+const MatchScreen = () => {
     return (
         <View>
             <Header title="Match"/>
@@ -12,4 +12,4 @@ const Match = () => {
     );
 };
 
-export default Match;
+export default MatchScreen;
