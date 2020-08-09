@@ -30,6 +30,7 @@ export default function App() {
             setLoading(false)
           });
       } else {
+        setUser(null)
         setLoading(false)
       }
     });
@@ -44,12 +45,16 @@ export default function App() {
   return (
     <NavigationContainer>
         <Stack.Navigator>
+          {user ? (
+            <Stack.Screen name="MainTabs" >
+            {props => <MainTabs {...props} extraData={user} />}
+            </Stack.Screen>
+          ) : (
+            <>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
-            <Stack.Screen name="MainTabs" >
-                {props => <MainTabs {...props} extraData={user} />}
-            </Stack.Screen>
-            
+            </>
+          )}
         </Stack.Navigator>
         
     </NavigationContainer>

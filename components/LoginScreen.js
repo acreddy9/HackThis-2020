@@ -23,7 +23,7 @@ export default function LoginScreen({navigation}) {
         <View style={styles.container}>
             <Text style={styles.appName}>lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
-            
+
             <Image
                 style={styles.logo}
                 //source={require('../../../assets/icon.png')}
@@ -73,8 +73,7 @@ export default function LoginScreen({navigation}) {
                 else {
                   console.log("Login success");
                   const user = doc.data()
-                  
-                  navigation.replace('MainTabs', {user});
+                  navigation.replace('MainTabs', props.extraData=user);
                 }
               }, () => { alert('Some other error occurred')})
               .catch((e) => console.log(e))
