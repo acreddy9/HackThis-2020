@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="RegistrationScreen" headerMode="none">
           {user ? (
             <Stack.Screen name="MainTabs" >
             {props => <MainTabs {...props} extraData={user} />}

@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import {firebase} from '../server/config'
 
 
 
 export default function LoginScreen({navigation}) {
-    /* TODO: school */
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -26,7 +24,7 @@ export default function LoginScreen({navigation}) {
 
             <Image
                 style={styles.logo}
-                //source={require('../../../assets/icon.png')}
+                source={require('../assets/books.png')} // TODO: replace with actual illustration
             />
             <TextInput
                 style={styles.input}

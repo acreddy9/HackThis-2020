@@ -22,17 +22,31 @@ export default StyleSheet.create({
         fontSize: 20,
         fontFamily: "TrebuchetMS"
     },
+    logo: {
+        flex: 1,
+        height: 120,
+        width: 90,
+        alignSelf: "center",
+        margin: 30
+    },
+    illustration: { // TODO: enlargen once temporary button is removed
+        padding: 50,
+        margin: 30,
+        height: 100,
+        width: 100
+    },
     dropdownContainer: {
         padding: 5,
-        width: 280
+        width: 280,
     },
     dropdownItem: {
         padding: 10,
         marginTop: 2,
-        backgroundColor: '#ddd',
-        borderColor: '#bbb',
+        backgroundColor: '#eee',
+        borderColor: '#eee',
         borderWidth: 1,
         borderRadius: 5,
+        fontFamily: "TrebuchetMS",
     },
     dropdownItemText: {
         color: "#222"
@@ -44,20 +58,11 @@ export default StyleSheet.create({
         padding: 12,
         borderWidth: 1,
         borderColor: '#ccc',
-        borderRadius: 5
+        borderRadius: 5,
+        fontFamily: "TrebuchetMS"
     },
     title: {
 
-    },
-    logo: {
-        flex: 1,
-        height: 120,
-        width: 90,
-        alignSelf: "center",
-        margin: 30
-    },
-    illustration: {
-        padding: 20
     },
     input: {
         height: 48,
@@ -83,7 +88,7 @@ export default StyleSheet.create({
         marginRight: 100,
         marginTop: 20,
         height: 48,
-        width: 270,
+        width: 150,
         paddingHorizontal: 20,
         borderRadius: 20,
         alignItems: "center",
