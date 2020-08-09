@@ -4,6 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './styles';
 
 export default function Login({navigation}) {
+    /* TODO: school */
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
