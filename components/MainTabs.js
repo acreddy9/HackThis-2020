@@ -1,80 +1,21 @@
 import React from "react";
-
 // navigation
 import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
-import { NavigationContainer } from "../node_modules/@react-navigation/native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
-import { createStackNavigator } from '../node_modules/@react-navigation/stack'
 import { Ionicons } from "../node_modules/@expo/vector-icons";
-
-
 // components
 import Profile from "./Profile.js";
-
 import Settings from "./Settings.js";
 import Match from "./Match.js";
 import Chat from "./Chat.js";
-
-import Login from './Login.js'
-import Registration from "./Registration.js";
-
-
-
 // styling
-export const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 25,
-      height: 60,
-      marginBottom: 0,
-      backgroundColor: '#8baab5',
-    },
-  });
+import styles from "./styles.js";
 
-// elements ----------------------------------------------------------------------
-
-// profile screen
-const ProfileScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <Profile />
-        </View>
-    );
-};
-
-// settings screen
-const SettingsScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <Settings />
-        </View>
-    );
-};
-
-// match with classmates screen
-const MatchScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <Match />
-        </View>
-    );
-};
-
-// chat screen
-const ChatScreen = (props) => {
-    return (
-        <View style={styles.container}>
-            <Chat />
-        </View>
-    );
-};
-
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MainTabs() {
     return (
-        <NavigationContainer /* need to get rid of this NavigationContainer piece when using MainStacks */> 
+        /*<NavigationContainer>  need to get rid of this NavigationContainer piece when using MainStacks */ 
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -90,40 +31,28 @@ function MainTabs() {
                         }
 
                         return <Ionicons name={iconName} size={size} color={color} />;
-                     },
-                     
-                     tabBarLabel: route.name
-                     
+                    },
+                        
+                    /* tabBarLabel: route.name */
+                        
                 })}
 
                 // Icon change when clicking the tab
                 tabBarOptions={{
-                    activeTintColor: "#E9C46A",
+                    activeTintColor: "#41B8E8",
                     inactiveTintColor: "#264653",
                     adaptive: true,
                     tabStyle: {
                         padding: 0, margin: 10,   
                     },
                 }}
-          >
-                <Tab.Screen name="Profile" component={ProfileScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
-                <Tab.Screen name="Match" component={MatchScreen} />
-                <Tab.Screen name="Chat" component={ChatScreen} />
+            >
+                <Tab.Screen name="Profile" component={Profile} />
+                <Tab.Screen name="Settings" component={Settings} />
+                <Tab.Screen name="Match" component={Match} />
+                <Tab.Screen name="Chat" component={Chat} />
             </Tab.Navigator>
-        </NavigationContainer>
-    );
-}
-
-function MainStacks() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="MainTabs" component={MainTabs} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Registration" component={Registration} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        /*</NavigationContainer>*/
     );
 }
 
