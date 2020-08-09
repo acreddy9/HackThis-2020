@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainTabs from './components/MainTabs.js';
-import Login from './components/LoginScreen.js'
-import Registration from "./components/RegistrationScreen.js";
+import LoginScreen from './components/LoginScreen.js'
+import RegistrationScreen from "./components/RegistrationScreen.js";
 import { NavigationContainer } from "./node_modules/@react-navigation/native";
 import { createStackNavigator } from './node_modules/@react-navigation/stack';
 import { app } from 'firebase';
@@ -13,8 +13,8 @@ export default function App() {
   return (
     <NavigationContainer>
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Registration" component={Registration} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
             <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>
     </NavigationContainer>
