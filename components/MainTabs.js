@@ -74,6 +74,7 @@ const Tab = createBottomTabNavigator();
 
 function MainTabs() {
     return (
+        <NavigationContainer /* need to get rid of this NavigationContainer piece when using MainStacks */> 
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -110,7 +111,7 @@ function MainTabs() {
                 <Tab.Screen name="Match" component={MatchScreen} />
                 <Tab.Screen name="Chat" component={ChatScreen} />
             </Tab.Navigator>
-         
+        </NavigationContainer>
     );
 }
 
@@ -126,4 +127,4 @@ function MainStacks() {
     );
 }
 
-export default MainStacks;
+export default MainTabs;
