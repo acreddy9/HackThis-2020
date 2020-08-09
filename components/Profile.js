@@ -7,7 +7,7 @@ import  Header  from './Header.js';
 const Profile = () => {
     return (
         <View>
-            <Header title= "Profile"/>
+            <Header title="Profile"/>
             <Text>Who are you?</Text>
         </View>
     );
