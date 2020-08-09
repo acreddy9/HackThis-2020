@@ -24,7 +24,7 @@ loginExistingUser = (email, password) => {
     })
 }
 
-createNewUser = (email, password) => {
+createNewUser = (userInfo, email, password) => {
 
   //Do email / password validation check first
 
@@ -37,6 +37,10 @@ createNewUser = (email, password) => {
       const data = {
         id: uid,
         email: response.user.email,
+        //additional user info (userInfo can be passed in as an object)
+        // major
+        // First and Last name
+        // empty profile pic buffer for now
       }
       const usersRef = firebase.firestore().collection('users')
       usersRef
