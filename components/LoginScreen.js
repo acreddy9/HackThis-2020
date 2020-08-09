@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
+import {firebase} from '../server/config'
+
+
 
 export default function LoginScreen({navigation}) {
     /* TODO: school */
@@ -13,10 +16,11 @@ export default function LoginScreen({navigation}) {
     }
 
     const onLoginPress = () => {
+        loginExistingUser(email, password)
     }
 
     const onAccessAccount = () => { /* remove once verification page works */
-        navigation.navigate('MainTabs')
+        navigation.replace('MainTabs')
     }
 
     return (
@@ -65,4 +69,30 @@ export default function LoginScreen({navigation}) {
             </KeyboardAwareScrollView>
         </View>
     )
+
+    function loginExistingUser(email, password) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((res) => {
+            const uid = res.user.uid
+            const userRef = firebase.firestore().collection('users')
+            userRef
+              .doc(uid)
+              .get()
+              .then((doc) => {
+                if(!doc.exists) {
+                  alert('User does not exist anymore')
+                }
+                else {
+                  console.log("Login success");
+                  navigation.replace('MainTabs');
+                }
+              }, () => { alert('Some other error occurred')})
+              .catch((e) => console.log(e))
+          })
+          .catch((e) => {
+            console.log(e.message)
+          })
+      }
 }
