@@ -8,7 +8,7 @@ const onDeleteAccount = () => {
     alert("Are you sure you want to delete your account?")
 }
 
-function SettingsScreen ({navigation}) {
+function SettingsScreen ({route, navigation}) {
     const [isEnabled, setIsEnabled] = useState(true);
     const toggleSwitch = () => {
         setIsEnabled(previousState => !previousState);
@@ -32,13 +32,26 @@ function SettingsScreen ({navigation}) {
                     firebase
                         .auth()
                         .signOut()
-                        .then(() => {() => {navigation.replace('LoginScreen')},() => {alert("Something went wrong!")}})
+                        .then(() => {
+                            navigation.replace('LoginScreen')
+                        },
+                        () => {
+                            console.log("Signing out didn't work")
+                            alert("Something went wrong!")}
+                        )
                 }} >
                 <Text style={styles.buttonTitle}>Log Out</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => onDeleteAccount()} >
+                onPress={() => {
+                    var user = firebase.auth().currentUser;
+                    user.delete().then(function() {
+                        navigation.replace('LoginScreen')
+                      }).catch(function(error) {
+                        alert("Something went wrong!")
+                      });
+                }} >
                 <Text style={styles.buttonTitle}>Delete Account</Text>
             </TouchableOpacity>
         </View>

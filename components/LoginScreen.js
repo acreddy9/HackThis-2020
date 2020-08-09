@@ -19,21 +19,11 @@ export default function LoginScreen({navigation}) {
         loginExistingUser(email, password)
     }
 
-    const onAccessAccount = () => { /* remove once verification page works */
-        navigation.replace('MainTabs')
-    }
-
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => onAccessAccount()} >
-                    <Text style={styles.buttonTitle}>Access Account (remove later)</Text>
-                </TouchableOpacity>
 
                 <Image
                     style={styles.logo}
@@ -86,7 +76,9 @@ export default function LoginScreen({navigation}) {
                 }
                 else {
                   console.log("Login success");
-                  navigation.replace('MainTabs');
+                  const user = doc.data()
+                  
+                  navigation.replace('MainTabs', {user});
                 }
               }, () => { alert('Some other error occurred')})
               .catch((e) => console.log(e))
