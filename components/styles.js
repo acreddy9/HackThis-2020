@@ -11,35 +11,34 @@ export default StyleSheet.create({
     },
     appName: {
         alignSelf: "center",
-        color: "#6c63ff",
+        color: "#3956d4",
         fontSize: 40,
         fontWeight: "bold",
-        fontFamily: "TrebuchetMS",
-        paddingTop: 20
+        fontFamily: "Ubuntu-Light",
+        paddingTop: 30
     },
     subtitle: {
         alignSelf: "center",
         color: "#3d3d3d",
         fontSize: 20,
-        fontFamily: "TrebuchetMS",
-        paddingBottom: 10
+        fontFamily: "Ubuntu-Light"
     },
     logo: {
         flex: 1,
         height: 120,
         width: 90,
         alignSelf: "center",
-        margin: 20
+        margin: 30
     },
     illustration: {
         padding: 50,
-        margin: 10,
-        flex: 3,
-        resizeMode: "contain"
+        margin: 30,
+        height: 200,
+        width: 200
     },
     dropdownContainer: {
         padding: 5,
-        width: 300,
+        width: 280,
     },
     dropdownItem: {
         padding: 10,
@@ -48,7 +47,7 @@ export default StyleSheet.create({
         borderColor: '#eee',
         borderWidth: 1,
         borderRadius: 5,
-        fontFamily: "TrebuchetMS",
+        fontFamily: "Ubuntu-Light",
     },
     dropdownItemText: {
         color: "#222"
@@ -61,25 +60,28 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     title: {
 
     },
     input: {
         height: 48,
-        width: 300,
         borderRadius: 5,
         overflow: 'hidden',
         marginTop: 10,
         marginBottom: 10,
-        marginLeft: 50,
-        marginRight: 50,
+        marginLeft: 30,
+        marginRight: 30,
         paddingLeft: 16,
-        alignSelf: 'center',
+        alignSelf: 'stretch',
+        padding: 10,
+        marginLeft: 50,
+        margin:5,
+        marginRight:50,
         borderBottomColor: '#e6e3e3',
         borderBottomWidth: 1,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     button: {
         backgroundColor: '#6c63ff',
@@ -97,7 +99,7 @@ export default StyleSheet.create({
         color: 'white',
         fontSize: 16,
         fontWeight: "bold",
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Medium"
     },
     footerView: {
         flex: 1,
@@ -107,13 +109,13 @@ export default StyleSheet.create({
     footerText: {
         fontSize: 16,
         color: '#aaaaaa',
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     footerLink: {
         color: "#3956d4",
         fontWeight: "bold",
         fontSize: 16,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     profilePic: {
         width: 300,
