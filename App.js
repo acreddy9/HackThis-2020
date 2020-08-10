@@ -11,14 +11,16 @@ import * as Font from 'expo-font';
 
 const Stack = createStackNavigator();
 
+/*
 const fetchFonts= () => Font.loadAsync({
   'Ubuntu-Light': require('./assets/fonts/Ubuntu-L.ttf'),
   'Ubuntu-Medium': require('./assets/fonts/Ubuntu-M.ttf')
 });
+*/
 
 export default function App() {
+  /*
   const [fontsLoaded, setFontsLoaded] = useState(false);
-
   if (!fontsLoaded) {
     return (
       <AppLoading 
@@ -28,6 +30,7 @@ export default function App() {
       />
     );
   }
+  */
   
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)

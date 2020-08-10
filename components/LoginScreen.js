@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from './styles';
-import {firebase} from '../server/config'
-
-
+import { firebase } from '../server/config'
 
 export default function LoginScreen({navigation}) {
     const [email, setEmail] = useState('')
@@ -19,16 +17,16 @@ export default function LoginScreen({navigation}) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.appName}>lorem</Text>
+            <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
             <Image
                 style={styles.illustration}
-                source={require('../assets/books.png')} // TODO: replace with actual illustration
+                source={require('../assets/Login.png')}
             />
             <TextInput
                 style={styles.input}
-                placeholder='school e-mail'
+                placeholder='School e-mail'
                 placeholderTextColor="#aaaaaa"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
@@ -38,7 +36,7 @@ export default function LoginScreen({navigation}) {
                 style={styles.input}
                 placeholderTextColor="#aaaaaa"
                 secureTextEntry
-                placeholder='password'
+                placeholder='Password'
                 onChangeText={(text) => setPassword(text)}
                 value={password}
                 autoCapitalize="none"
@@ -46,10 +44,10 @@ export default function LoginScreen({navigation}) {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onLoginPress()}>
-                <Text style={styles.buttonTitle}>log in</Text>
+                <Text style={styles.buttonTitle}>LOG IN</Text>
             </TouchableOpacity>
             <View style={styles.footerView}>
-                <Text style={styles.footerText}>don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>sign up</Text></Text>
+                <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
             </View>
         </View>
     )
