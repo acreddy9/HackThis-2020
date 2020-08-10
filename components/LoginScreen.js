@@ -23,7 +23,7 @@ export default function LoginScreen({navigation}) {
             <Text style={styles.subtitle}>welcome back :)</Text>
 
             <Image
-                style={styles.logo}
+                style={styles.illustration}
                 source={require('../assets/books.png')} // TODO: replace with actual illustration
             />
             <TextInput

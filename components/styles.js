@@ -14,7 +14,7 @@ export default StyleSheet.create({
         color: "#3956d4",
         fontSize: 40,
         fontFamily: "TrebuchetMS-Bold",
-        paddingTop: 50
+        paddingTop: 30
     },
     subtitle: {
         alignSelf: "center",
@@ -29,11 +29,11 @@ export default StyleSheet.create({
         alignSelf: "center",
         margin: 30
     },
-    illustration: { // TODO: enlargen once temporary button is removed
+    illustration: {
         padding: 50,
         margin: 30,
-        height: 100,
-        width: 100
+        height: 200,
+        width: 200
     },
     dropdownContainer: {
         padding: 5,
@@ -114,5 +114,10 @@ export default StyleSheet.create({
         fontWeight: "bold",
         fontSize: 16,
         fontFamily: "TrebuchetMS"
+    },
+    profilePic: {
+        width: 300,
+        height: 300,
+        resizeMode: "contain"
     }
 })
