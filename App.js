@@ -6,10 +6,28 @@ import RegistrationScreen from "./components/RegistrationScreen.js";
 import { NavigationContainer } from "./node_modules/@react-navigation/native";
 import { createStackNavigator } from './node_modules/@react-navigation/stack';
 import { firebase } from './server/config';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
 const Stack = createStackNavigator();
 
+const fetchFonts= () => Font.loadAsync({
+  'Ubuntu-Light': require('./assets/fonts/Ubuntu-L.ttf'),
+  'Ubuntu-Medium': require('./assets/fonts/Ubuntu-M.ttf')
+});
+
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  if (!fontsLoaded) {
+    return (
+      <AppLoading 
+        startAsync={fetchFonts}
+        onError={() => console.log("FONT ERROR")}
+        onFinish={() => setFontLoaded(true)}
+      />
+    );
+  }
   
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)

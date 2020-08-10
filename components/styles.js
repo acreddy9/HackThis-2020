@@ -13,14 +13,15 @@ export default StyleSheet.create({
         alignSelf: "center",
         color: "#3956d4",
         fontSize: 40,
-        fontFamily: "TrebuchetMS-Bold",
+        fontWeight: "bold",
+        fontFamily: "Ubuntu-Light",
         paddingTop: 30
     },
     subtitle: {
         alignSelf: "center",
         color: "#3d3d3d",
         fontSize: 20,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     logo: {
         flex: 1,
@@ -46,7 +47,7 @@ export default StyleSheet.create({
         borderColor: '#eee',
         borderWidth: 1,
         borderRadius: 5,
-        fontFamily: "TrebuchetMS",
+        fontFamily: "Ubuntu-Light",
     },
     dropdownItemText: {
         color: "#222"
@@ -59,7 +60,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 5,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     title: {
 
@@ -80,10 +81,10 @@ export default StyleSheet.create({
         marginRight:50,
         borderBottomColor: '#e6e3e3',
         borderBottomWidth: 1,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     button: {
-        backgroundColor: '#3956d4',
+        backgroundColor: '#6c63ff',
         marginLeft: 100,
         marginRight: 100,
         marginTop: 20,
@@ -97,7 +98,8 @@ export default StyleSheet.create({
     buttonTitle: {
         color: 'white',
         fontSize: 16,
-        fontFamily: "TrebuchetMS-Bold"
+        fontWeight: "bold",
+        fontFamily: "Ubuntu-Medium"
     },
     footerView: {
         flex: 1,
@@ -107,13 +109,13 @@ export default StyleSheet.create({
     footerText: {
         fontSize: 16,
         color: '#aaaaaa',
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     footerLink: {
         color: "#3956d4",
         fontWeight: "bold",
         fontSize: 16,
-        fontFamily: "TrebuchetMS"
+        fontFamily: "Ubuntu-Light"
     },
     profilePic: {
         width: 300,
