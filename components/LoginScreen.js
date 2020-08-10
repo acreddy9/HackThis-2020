@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from './styles';
-import { firebase } from '../server/config'
+import { firebase } from '../server/config';
+import LoginIllustration from "../assets/login-illustration.svg";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function LoginScreen({navigation}) {
     const [email, setEmail] = useState('')
@@ -16,14 +18,15 @@ export default function LoginScreen({navigation}) {
     }
 
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
+          <KeyboardAwareScrollView
+                style={{ flex: 1, width: '100%' }}
+                keyboardShouldPersistTaps="always">
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-            <Image
-                style={styles.illustration}
-                source={require('../assets/Login.png')}
-            />
+            <LoginIllustration width={"150%"} height={"70%"} margin={20} alignSelf={"center"}/>
+
             <TextInput
                 style={styles.input}
                 placeholder='School e-mail'
@@ -49,7 +52,8 @@ export default function LoginScreen({navigation}) {
             <View style={styles.footerView}>
                 <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
             </View>
-        </View>
+          </KeyboardAwareScrollView>
+      </View>
     )
 
     function loginExistingUser(email, password) {
