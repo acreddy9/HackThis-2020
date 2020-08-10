@@ -11,24 +11,16 @@ import * as Font from 'expo-font';
 
 const Stack = createStackNavigator();
 
-const fetchFonts= () => Font.loadAsync({
-  'Ubuntu-Light': require('./assets/fonts/Ubuntu-L.ttf'),
-  'Ubuntu-Medium': require('./assets/fonts/Ubuntu-M.ttf')
-});
+
+async function fetchFonts() { 
+  await Font.loadAsync({
+      'Ubuntu-Light': require('./assets/fonts/Ubuntu-L.ttf'),
+      'Ubuntu-Medium': require('./assets/fonts/Ubuntu-M.ttf')
+    })
+}
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  if (!fontsLoaded) {
-    return (
-      <AppLoading 
-        startAsync={fetchFonts}
-        onError={() => console.log("FONT ERROR")}
-        onFinish={() => setFontLoaded(true)}
-      />
-    );
-  }
-  
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
 
@@ -60,10 +52,21 @@ export default function App() {
     )
   }
 
+  if (!fontsLoaded) {
+    return (
+      <AppLoading 
+        startAsync={fetchFonts}
+        onError={() => {console.log("FONT ERROR")}}
+        onFinish={() => {setFontsLoaded(true)}}
+      />
+    );
+  }
+  else {
+  
   return (
     <NavigationContainer>
         <Stack.Navigator initialRouteName="RegistrationScreen" headerMode="none">
-          {user ? (
+          { user ? (
             <Stack.Screen name="MainTabs" >
             {props => <MainTabs {...props} extraData={user} />}
             </Stack.Screen>
@@ -71,13 +74,11 @@ export default function App() {
             <>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
-            </>
-          )}
+            </>)}
         </Stack.Navigator>
-        
     </NavigationContainer>
   );
-
+  }
 
   
 }
