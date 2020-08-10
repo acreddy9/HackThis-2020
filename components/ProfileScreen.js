@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import  Header  from './Header.js';
-// import ImagePicker from '../expo-image-picker'
+import styles from './styles';
+import ImagePicker from 'expo-image-picker';
 
 function ProfileScreen ({ route }) {
-    const userID = route.params.data.id
-    /*
-    const [selectedImage, setSelectedImage] = React.useState(null);
+    const userID = route.params.data.id;
+
+    const [selectedImage, setSelectedImage] = useState(null);
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -25,6 +26,7 @@ function ProfileScreen ({ route }) {
         setSelectedImage({ localUri: pickerResult.uri });
     };
 
+
     if (selectedImage !== null) {
         return (
             <View style={styles.container}>
@@ -35,12 +37,16 @@ function ProfileScreen ({ route }) {
             </View>
         );
     }
-*/
+  
+
     return (
         <View>
             <Header title="Profile"/>
             <Text>Hi, {userID}.</Text>
-        </View>
+            <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+                <Text style={styles.buttonText}>pick a photo</Text>
+            </TouchableOpacity>
+      </View>
     );
 };
 

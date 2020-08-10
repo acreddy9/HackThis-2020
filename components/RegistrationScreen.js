@@ -30,7 +30,7 @@ export default function RegistrationScreen({navigation}, props) {
 
     return (
         <View style={styles.container}>            
-            <Text style={styles.appName}>lorem</Text>
+            <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>connect with classmates</Text>
             <Image
                 style={styles.logo}
@@ -55,7 +55,7 @@ export default function RegistrationScreen({navigation}, props) {
             <FontAwesome name="caret-down" size={24} color="#3d3d3d" />
             <TextInput
                 style={styles.input}
-                placeholder='school e-mail'
+                placeholder='School e-mail'
                 placeholderTextColor="#aaaaaa"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
@@ -65,7 +65,7 @@ export default function RegistrationScreen({navigation}, props) {
                 style={styles.input}
                 placeholderTextColor="#aaaaaa"
                 secureTextEntry
-                placeholder='password'
+                placeholder='Password'
                 onChangeText={(text) => setPassword(text)}
                 value={password}
                 autoCapitalize="none"
@@ -74,7 +74,7 @@ export default function RegistrationScreen({navigation}, props) {
                     style={styles.input}
                     placeholderTextColor="#aaaaaa"
                     secureTextEntry
-                    placeholder='confirm password'
+                    placeholder='Confirm password'
                     onChangeText={(text) => setConfirmPassword(text)}
                     value={confirmPassword}
                     autoCapitalize="none"
@@ -82,10 +82,10 @@ export default function RegistrationScreen({navigation}, props) {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onRegisterPress()}>
-                <Text style={styles.buttonTitle}>sign up</Text>
+                <Text style={styles.buttonTitle}>SIGN UP</Text>
             </TouchableOpacity>
             <View style={styles.footerView}>
-                <Text style={styles.footerText}>already have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>log in</Text></Text>
+                <Text style={styles.footerText}>Already have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
             </View>
         </View>
     )
