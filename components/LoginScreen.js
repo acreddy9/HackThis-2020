@@ -21,11 +21,11 @@ export default function LoginScreen({navigation}) {
       <View style={styles.container}>
           <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
-                keyboardShouldPersistTaps="always">
+                keyboardShouldPersistTaps="always" >
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-            <LoginIllustration width={"150%"} height={"70%"} margin={20} alignSelf={"center"}/>
+            <LoginIllustration width={"150"} height={"150"} margin={20} alignSelf={"center"}/>
 
             <TextInput
                 style={styles.input}

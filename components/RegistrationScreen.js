@@ -26,23 +26,26 @@ export default function RegistrationScreen({navigation}, props) {
     }
 
     return (
-        <View style={styles.container}>
+         <View style={styles.container}> 
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
-                keyboardShouldPersistTaps="always">
+                keyboardShouldPersistTaps="always" nestedScrollEnabled={true} 
+                /* this messes things up idk why: contentContainerStyle={styles.container} */ >
         
                 <Text style={styles.appName}>Lorem</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
-
-                <RegistrationIllustration width={"100%"} height={"50%"} margin={20} alignSelf={"center"}/>
+                
+                <RegistrationIllustration width={150} height={150} margin={20} alignSelf={"center"}/>
+                
                 <SearchableDropdown
                     onItemSelect={(item) => setSchool(item)}
-                    containerStyle={styles.dropdownContainer}
+                    //containerStyle={styles.dropdownContainer} this messes things up idk why
                     itemStyles={styles.dropdownItem}
                     itemTextStyle={styles.dropdownItem}
                     itemsContainerStyle={styles.dropdownItemContainer}
                     items={schools}
                     resetValue={false}
+                    nestedScrollEnabled={true}
                     setSort={(item, searchedText)=> item.name.toLowerCase().startsWith(searchedText.toLowerCase())}
                     textInputProps={{
                             placeholder: "Select your school",
@@ -50,9 +53,8 @@ export default function RegistrationScreen({navigation}, props) {
                             underlineColorAndroid: "transparent",
                             style: styles.dropdownInputProps,
                     }}
-                    listProps={{nestedScrollEnabled: true}}
                 />
-                <FontAwesome name="caret-down" size={24} color="#3d3d3d"/>
+                <FontAwesome name="caret-down" size={24} color="#3d3d3d" style={{alignSelf: "center"}}/> 
                 <TextInput
                     style={styles.input}
                     placeholder='School e-mail'
@@ -79,6 +81,6 @@ export default function RegistrationScreen({navigation}, props) {
                     <Text style={styles.footerText}>Already have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
-        </View>
+          </View> 
     )
 }
