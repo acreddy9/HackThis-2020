@@ -29,7 +29,7 @@ function loginExistingUser(email, password) {
     
 }
 
-function createNewUser(userInfo, email, password) {
+function createNewUser({school}, email, password) {
 
   //Do email / password validation check first
 
@@ -43,6 +43,7 @@ function createNewUser(userInfo, email, password) {
       const data = {
         id: uid,
         email: response.user.email,
+        school: school.name
         //additional user info (userInfo can be passed in as an object)
         // major
         // First and Last name
@@ -62,33 +63,30 @@ function createNewUser(userInfo, email, password) {
     return false;
 }
 
-function resetPassword(email) {
+async function resetPassword(email) {
   //Check is the email exists in the database
-  const usersRef = db.collection('users')
-  if(!usersRef.exists) {
+  const usersRef = firebase.firestore().collection('users')
+  if(!usersRef) {
     console.log("there are no users")
+    return
   }
 
-  usersRef.where("email", "==", email)
-    .get()
-    .then((doc) => {
-      if(!doc.exists) {
-        console.log("No user found with that email")
-        return
-      }
-    })
-    .catch((error) => console.log("error getting documents: ", error))
-
+  const snapshot = await usersRef.where("email", "==", email).get()
+  if(snapshot.empty) {
+    alert("No user found with that email!")
+    return
+  }
+      
   //If there is a user with that email, send a reset link
   firebase
-    .auth()
-    .sendPasswordResetEmail(email)
-    .then(() => {
-      console.log('password reset email sent')
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+  .auth()
+  .sendPasswordResetEmail(email)
+  .then(() => {
+    alert('password reset email sent!')
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 export default {
