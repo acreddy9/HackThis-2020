@@ -50,9 +50,6 @@ export default StyleSheet.create({
         borderRadius: 5,
         fontFamily: "Ubuntu-Light"
     },
-    title: {
-
-    },
     input: {
         height: 40,
         borderRadius: 5,
@@ -105,8 +102,49 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Medium"
     },
     profilePic: {
-        width: 300,
-        height: 300,
-        resizeMode: "contain"
+        alignSelf: "center",
+        width: 100,
+        height: 100,
+        borderRadius: 400,
+        marginTop: 30,
+        borderWidth: 3,
+        borderColor: "#6c63ff"
+    },
+    profileSectionHeader: {
+        marginTop: 30,
+        marginLeft: 30,
+        color: '#3d3d3d',
+        fontFamily: "Ubuntu-Medium"
+    },
+    profileSectionText: {
+        marginTop: 5,
+        marginLeft: 30,
+        color: '#3d3d3d',
+        fontSize: 13,
+        fontFamily: "Ubuntu-Light"
+    },
+    profileNameInput: {
+        position: "absolute",
+        left: 100,
+        top: 150,
+        right: 0,
+        width: 240,
+        height: 40,
+        overflow: 'hidden',
+        borderBottomColor: '#aaa',
+        borderBottomWidth: 1,
+        fontFamily: "Ubuntu-Light"
+    },
+    profileBioInput: {
+        position: "absolute",
+        left: 100,
+        top: 195,
+        right: 0,
+        width: 240,
+        height: 40,
+        overflow: 'hidden',
+        borderBottomColor: '#aaa',
+        borderBottomWidth: 1,
+        fontFamily: "Ubuntu-Light"
     }
 })
