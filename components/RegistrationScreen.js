@@ -35,7 +35,7 @@ export default function RegistrationScreen({navigation}, props) {
                 <Text style={styles.appName}>Lorem</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
                 
-                <RegistrationIllustration width={150} height={150} margin={20} alignSelf={"center"}/> 
+                <RegistrationIllustration width={100} height={100} marginBottom={20} alignSelf={"center"}/> 
                 
                 <SearchableDropdown
                     onItemSelect={(item) => setSchool(item)}
@@ -78,7 +78,7 @@ export default function RegistrationScreen({navigation}, props) {
                     <Text style={styles.buttonTitle}>SIGN UP</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
-                    <Text style={styles.footerText}>Already have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
+                    <Text style={styles.footerText}>Already have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}> Log in</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
           </View> 

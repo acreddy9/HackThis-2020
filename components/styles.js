@@ -18,6 +18,8 @@ export default StyleSheet.create({
     },
     subtitle: {
         alignSelf: "center",
+        textAlign: "center",
+        padding: 25,
         color: "#3d3d3d",
         fontSize: 20,
         fontFamily: "Ubuntu-Light"
@@ -156,4 +158,9 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         fontFamily: "Ubuntu-Light"
     },
+    backButton: {
+        position: "absolute",
+        top: 40,
+        left: 30
+    }
 })

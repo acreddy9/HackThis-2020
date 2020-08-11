@@ -29,7 +29,7 @@ export default function LoginScreen({navigation}) {
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-            <LoginIllustration width={"150"} height={"150"} margin={20} alignSelf={"center"}/>
+            <LoginIllustration width={100} height={100} margin={20} alignSelf={"center"}/>
 
             <TextInput
                 style={styles.input}
@@ -54,7 +54,7 @@ export default function LoginScreen({navigation}) {
                 <Text style={styles.buttonTitle}>LOG IN</Text>
             </TouchableOpacity>
             <View style={styles.footerView}>
-                <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
+                <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}> Sign up</Text></Text>
                 <Text onPress={onForgotPassword} style={styles.footerLink}>Forgot your password?</Text>
             </View>
           </KeyboardAwareScrollView>

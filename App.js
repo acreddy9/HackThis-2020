@@ -77,6 +77,7 @@ export default function App() {
             <>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
+            <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
             </>)}
         </Stack.Navigator>
     </NavigationContainer>
