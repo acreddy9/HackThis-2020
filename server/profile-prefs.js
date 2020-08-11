@@ -2,7 +2,7 @@ import {firebase} from '../config'
 
 const db = firebase.firestore();
 const user = firebase.auth().currentUser;
-const userPref = db.collection('users').doc(user.uid).doc('preferences');
+const userPref = db.collection('users').doc(user.uid).collection('preferences');
 const arrayUnion = firebase.firestore.FieldValue.arrayUnion
 
 const setName = (name) => {
