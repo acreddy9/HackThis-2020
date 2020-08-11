@@ -1,20 +1,19 @@
 import React from "react";
 // navigation
-import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
-import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from "../node_modules/@expo/vector-icons";
 // components
 import ProfileScreen from "./ProfileScreen.js";
 import SettingsScreen from "./SettingsScreen.js";
 import MatchScreen from "./MatchScreen.js";
 import ChatScreen from "./ChatScreen.js";
-// styling
-import styles from "./styles.js";
 
 const Tab = createBottomTabNavigator();
 
-function MainTabs() {
+function MainTabs(props) {
+
+    const user = props.extraData
+    
     return (
        // <NavigationContainer>
             <Tab.Navigator
@@ -34,7 +33,7 @@ function MainTabs() {
                         return <Ionicons name={iconName} size={size} color={color} />;
                      },
                      
-                     tabBarLabel: route.name
+                     tabBarLabel: () => {return null}
                      
                 })}
 
@@ -48,10 +47,10 @@ function MainTabs() {
                     },
                 }}
           >
-                <Tab.Screen name="Profile" component={ProfileScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
-                <Tab.Screen name="Match" component={MatchScreen} />
-                <Tab.Screen name="Chat" component={ChatScreen} />
+                <Tab.Screen name="Profile" component={ProfileScreen} initialParams={{ data: user }}/>
+                <Tab.Screen name="Settings" component={SettingsScreen} initialParams={{ data: user }}/>
+                <Tab.Screen name="Match" component={MatchScreen} initialParams={{ data: user }}/>
+                <Tab.Screen name="Chat" component={ChatScreen} initialParams={{ data: user }}/>
             </Tab.Navigator>
         // </NavigationContainer> 
     );
