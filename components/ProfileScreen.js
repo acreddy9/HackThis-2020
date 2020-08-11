@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import  Header  from './Header.js';
+import { Text, TextInput, View, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from './styles';
-import ImagePicker from 'expo-image-picker';
+import * as ImagePicker from 'expo-image-picker';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 function ProfileScreen ({ route }) {
     const userID = route.params.data.id;
 
     const [selectedImage, setSelectedImage] = useState(null);
+    const [name, setName] = useState('')
+    const [bio, setBio] = useState('')
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -26,26 +28,63 @@ function ProfileScreen ({ route }) {
         setSelectedImage({ localUri: pickerResult.uri });
     };
 
-
-    if (selectedImage !== null) {
-        return (
-            <View style={styles.container}>
-                <Image
-                source={{ uri: selectedImage.localUri }}
-                style={styles.thumbnail}
-                />
-            </View>
-        );
-    }
-  
+    const imageSelected = selectedImage !== null;
 
     return (
-        <View>
-            <Header title="Profile"/>
-            <Text>Hi, {userID}.</Text>
-            <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-                <Text style={styles.buttonText}>pick a photo</Text>
-            </TouchableOpacity>
+        <View style={styles.container}>
+            <KeyboardAwareScrollView
+                style={{ flex: 1, width: '100%' }}
+                keyboardShouldPersistTaps="always">
+                {/* <Text>Hi, {userID}.</Text> */}
+                <TouchableOpacity onPress={openImagePickerAsync}>
+                    {imageSelected 
+                    ? <Image 
+                        source={{ uri: selectedImage.localUri }}
+                        style={styles.profilePic}
+                    /> : <Image
+                        source={require('../assets/default-profile-pic.jpg')}
+                        style={styles.profilePic}
+                    />
+                    }
+                </TouchableOpacity>
+
+                <Text style={styles.profileSectionHeader}>Name</Text>
+                <TextInput
+                    style={styles.profileNameInput}
+                    onChangeText={(text) => setName(text)}
+                    value={name}
+                    autoCapitalize="none"
+                />
+
+                <Text style={styles.profileSectionHeader}>Bio</Text>
+                <TextInput
+                    style={styles.profileBioInput}
+                    onChangeText={(text) => setBio(text)}
+                    value={bio}
+                    autoCapitalize="none"
+                />
+
+                <Text style={styles.profileSectionHeader}>Major</Text> 
+                    {/* TODO: dropdown */}
+                
+                <Text style={styles.profileSectionHeader}>Courses</Text> 
+                    {/* TODO: dropdowns */}
+                
+                <Text style={styles.profileSectionHeader}>Mode of Communication</Text> 
+                <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
+                    {/* TODO: dropdowns */}
+                
+                <Text style={styles.profileSectionHeader}>Availability</Text> 
+                    {/* TODO: checkboxes */}
+
+                <Text style={styles.profileSectionHeader}>Learning Styles</Text> 
+                <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
+                    {/* TODO: dropdowns */}
+
+                <Text style={styles.profileSectionHeader}>Interests</Text> 
+                    {/* TODO: checkboxes */}
+                
+            </KeyboardAwareScrollView>
       </View>
     );
 };
