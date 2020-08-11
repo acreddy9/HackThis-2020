@@ -59,11 +59,12 @@ export default StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         paddingLeft: 16,
-        alignSelf: 'stretch',
+        alignSelf: 'center', // 'stretch'
         padding: 10,
-        marginLeft: 50,
-        margin:5,
-        marginRight:50,
+        width: 300,
+        //marginLeft: 50,
+        //margin:5,
+        //marginRight: 50,
         borderBottomColor: '#e6e3e3',
         borderBottomWidth: 1,
         fontFamily: "Ubuntu-Light"
@@ -74,9 +75,10 @@ export default StyleSheet.create({
         marginRight: 100,
         marginTop: 20,
         height: 48,
-        width: 150,
+        width: 250,
         paddingHorizontal: 20,
         borderRadius: 20,
+        alignSelf: "center",
         alignItems: "center",
         justifyContent: 'center'
     },
@@ -92,6 +94,9 @@ export default StyleSheet.create({
         marginTop: 20
     },
     footerText: {
+        marginBottom: 5,
+        marginLeft: 20,
+        marginRight: 20,
         fontSize: 16,
         color: '#aaaaaa',
         fontFamily: "Ubuntu-Light"
@@ -146,5 +151,5 @@ export default StyleSheet.create({
         borderBottomColor: '#aaa',
         borderBottomWidth: 1,
         fontFamily: "Ubuntu-Light"
-    }
+    },
 })

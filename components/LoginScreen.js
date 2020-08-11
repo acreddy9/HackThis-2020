@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 import { firebase } from '../server/config';
 import LoginIllustration from "../assets/login-illustration.svg";
@@ -9,12 +9,16 @@ export default function LoginScreen({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const onLoginPress = () => {
+      loginExistingUser(email, password)
+    }
+
     const onFooterLinkPress = () => {
         navigation.navigate('RegistrationScreen')
     }
 
-    const onLoginPress = () => {
-        loginExistingUser(email, password)
+    const onForgotPassword = () => {
+        navigation.navigate('ForgotPasswordScreen')
     }
 
     return (
@@ -25,7 +29,7 @@ export default function LoginScreen({navigation}) {
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-            <LoginIllustration width={"150%"} height={"70%"} margin={20} alignSelf={"center"}/>
+            <LoginIllustration width={"150%"} height={"65%"} margin={20} alignSelf={"center"}/>
 
             <TextInput
                 style={styles.input}
@@ -51,6 +55,7 @@ export default function LoginScreen({navigation}) {
             </TouchableOpacity>
             <View style={styles.footerView}>
                 <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
+                <Text onPress={onForgotPassword} style={styles.footerLink}>Forgot your password?</Text>
             </View>
           </KeyboardAwareScrollView>
       </View>
