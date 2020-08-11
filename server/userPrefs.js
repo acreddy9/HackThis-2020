@@ -2,6 +2,7 @@ import {firebase} from '../config'
 
 const db = firebase.firestore()
 const user = firebase.auth().currentUser
+const userPref = db.collection('users').doc(user.uid).collection('preferences');
 const arrayUnion = firebase.firestore.FieldValue.arrayUnion
 
 const setName = (name) => {
@@ -52,6 +53,33 @@ const setUserInterests = (interests) => {
   }, {merge: true})
 }
 
+const setRelationPref = (relation) => {
+    userPref.set({
+        relation
+    }, {merge: true});
+}
+
+/* update whether user logged in or not */
+const setLoggedState = (loggedState) => {
+  userPref.set({
+    loggedState
+  }, {merge: true})
+}
+
+/* update whether user wants to receive notifications */
+const setNotifPref = (notifPref) => {
+  userPref.set({
+    notifPref
+  }, {merge: true})
+}
+
+/* update whether account has been deleted or not */
+const setAccountState = (accountState) => {
+  userPref.set({
+    accountState
+  }, {merge: true})
+}
+
 export {
   setName,
   setBio,
@@ -61,4 +89,8 @@ export {
   setLearningStyle,
   setAvailableTimes,
   setUserInterests,
+  setRelationPref,
+  setLoggedState,
+  setNotifPref,
+  setAccountState
 }
