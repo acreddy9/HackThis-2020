@@ -62,8 +62,37 @@ function createNewUser(userInfo, email, password) {
     return false;
 }
 
-export default {
-  createNewUser,
-  loginExistingUser
+function resetPassword(email) {
+  //Check is the email exists in the database
+  const usersRef = db.collection('users')
+  if(!usersRef.exists) {
+    console.log("there are no users")
+  }
+
+  usersRef.where("email", "==", email)
+    .get()
+    .then((doc) => {
+      if(!doc.exists) {
+        console.log("No user found with that email")
+        return
+      }
+    })
+    .catch((error) => console.log("error getting documents: ", error))
+
+  //If there is a user with that email, send a reset link
+  firebase
+    .auth()
+    .sendPasswordResetEmail(email)
+    .then(() => {
+      console.log('password reset email sent')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 
+export default {
+  createNewUser,
+  loginExistingUser,
+  resetPassword
+}
