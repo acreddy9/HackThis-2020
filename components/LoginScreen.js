@@ -1,29 +1,36 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
-import { firebase } from '../server/config'
+import { firebase } from '../server/config';
+import LoginIllustration from "../assets/login-illustration.svg";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function LoginScreen({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const onLoginPress = () => {
+      loginExistingUser(email, password)
+    }
+
     const onFooterLinkPress = () => {
         navigation.navigate('RegistrationScreen')
     }
 
-    const onLoginPress = () => {
-        loginExistingUser(email, password)
+    const onForgotPassword = () => {
+        navigation.navigate('ForgotPasswordScreen')
     }
 
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
+          <KeyboardAwareScrollView
+                style={{ flex: 1, width: '100%' }}
+                keyboardShouldPersistTaps="always" >
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-            <Image
-                style={styles.illustration}
-                source={require('../assets/Login.png')}
-            />
+            <LoginIllustration width={100} height={100} margin={20} alignSelf={"center"}/>
+
             <TextInput
                 style={styles.input}
                 placeholder='School e-mail'
@@ -47,9 +54,11 @@ export default function LoginScreen({navigation}) {
                 <Text style={styles.buttonTitle}>LOG IN</Text>
             </TouchableOpacity>
             <View style={styles.footerView}>
-                <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
+                <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}> Sign up</Text></Text>
+                <Text onPress={onForgotPassword} style={styles.footerLink}>Forgot your password?</Text>
             </View>
-        </View>
+          </KeyboardAwareScrollView>
+      </View>
     )
 
     function loginExistingUser(email, password) {

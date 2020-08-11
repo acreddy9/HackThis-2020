@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import MainTabs from './components/MainTabs.js';
 import LoginScreen from './components/LoginScreen.js'
 import RegistrationScreen from "./components/RegistrationScreen.js";
+import ForgotPasswordScreen from './components/ForgotPasswordScreen.js'
+
 import { NavigationContainer } from "./node_modules/@react-navigation/native";
 import { createStackNavigator } from './node_modules/@react-navigation/stack';
 import { firebase } from './server/config';
@@ -20,6 +22,7 @@ async function fetchFonts() {
 }
 
 export default function App() {
+
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
@@ -74,13 +77,13 @@ export default function App() {
             <>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
+            <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
             </>)}
         </Stack.Navigator>
     </NavigationContainer>
   );
   }
 
-  
 }
 
 const styles = StyleSheet.create({

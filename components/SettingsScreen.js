@@ -33,7 +33,7 @@ function SettingsScreen ({route, navigation}) {
                         .auth()
                         .signOut()
                         .then(() => {
-                            navigation.replace('LoginScreen')
+                            alert("signed out")
                         },
                         () => {
                             console.log("Signing out didn't work")
@@ -47,7 +47,7 @@ function SettingsScreen ({route, navigation}) {
                 onPress={() => {
                     var user = firebase.auth().currentUser;
                     user.delete().then(function() {
-                        navigation.replace('LoginScreen')
+                        alert("signed out")
                       }).catch(function(error) {
                         alert("Something went wrong!")
                       });

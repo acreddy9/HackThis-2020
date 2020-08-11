@@ -11,34 +11,23 @@ export default StyleSheet.create({
     },
     appName: {
         alignSelf: "center",
-        color: "#3956d4",
+        color: "#6c63ff",
         fontSize: 40,
-        fontWeight: "bold",
-        fontFamily: "Ubuntu-Light",
-        paddingTop: 30
+        fontFamily: "Ubuntu-Medium",
+        paddingTop: 10
     },
     subtitle: {
         alignSelf: "center",
+        textAlign: "center",
+        padding: 25,
         color: "#3d3d3d",
         fontSize: 20,
         fontFamily: "Ubuntu-Light"
     },
-    logo: {
-        flex: 1,
-        height: 120,
-        width: 90,
-        alignSelf: "center",
-        margin: 30
-    },
-    illustration: {
-        padding: 50,
-        margin: 30,
-        height: 200,
-        width: 200
-    },
     dropdownContainer: {
-        padding: 5,
-        width: 280,
+        width: 300,
+        alignSelf: "center",
+        backgroundColor: '#ffffff',
     },
     dropdownItem: {
         padding: 10,
@@ -53,7 +42,9 @@ export default StyleSheet.create({
         color: "#222"
     },
     dropdownItemContainer: {
-        maxHeight: 140
+        maxHeight: 140,
+        alignSelf: "stretch",
+        marginLeft: 0
     },
     dropdownInputProps: {
         padding: 12,
@@ -66,7 +57,7 @@ export default StyleSheet.create({
 
     },
     input: {
-        height: 48,
+        height: 40,
         borderRadius: 5,
         overflow: 'hidden',
         marginTop: 10,
@@ -74,11 +65,12 @@ export default StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         paddingLeft: 16,
-        alignSelf: 'stretch',
+        alignSelf: 'center', // 'stretch'
         padding: 10,
+        width: 300,
         marginLeft: 50,
         margin:5,
-        marginRight:50,
+        marginRight: 50,
         borderBottomColor: '#e6e3e3',
         borderBottomWidth: 1,
         fontFamily: "Ubuntu-Light"
@@ -89,9 +81,10 @@ export default StyleSheet.create({
         marginRight: 100,
         marginTop: 20,
         height: 48,
-        width: 150,
+        width: 250,
         paddingHorizontal: 20,
         borderRadius: 20,
+        alignSelf: "center",
         alignItems: "center",
         justifyContent: 'center'
     },
@@ -107,19 +100,67 @@ export default StyleSheet.create({
         marginTop: 20
     },
     footerText: {
+        marginBottom: 5,
+        marginLeft: 20,
+        marginRight: 20,
         fontSize: 16,
         color: '#aaaaaa',
         fontFamily: "Ubuntu-Light"
     },
     footerLink: {
-        color: "#3956d4",
-        fontWeight: "bold",
+        color: "#6c63ff",
         fontSize: 16,
-        fontFamily: "Ubuntu-Light"
+        fontFamily: "Ubuntu-Medium"
     },
     profilePic: {
-        width: 300,
-        height: 300,
-        resizeMode: "contain"
+        alignSelf: "center",
+        width: 100,
+        height: 100,
+        borderRadius: 400,
+        marginTop: 30,
+        borderWidth: 3,
+        borderColor: "#6c63ff"
+    },
+    profileSectionHeader: {
+        marginTop: 30,
+        marginLeft: 30,
+        color: '#3d3d3d',
+        fontFamily: "Ubuntu-Medium"
+    },
+    profileSectionText: {
+        marginTop: 5,
+        marginLeft: 30,
+        color: '#3d3d3d',
+        fontSize: 13,
+        fontFamily: "Ubuntu-Light"
+    },
+    profileNameInput: {
+        position: "absolute",
+        left: 100,
+        top: 150,
+        right: 0,
+        width: 240,
+        height: 40,
+        overflow: 'hidden',
+        borderBottomColor: '#aaa',
+        borderBottomWidth: 1,
+        fontFamily: "Ubuntu-Light"
+    },
+    profileBioInput: {
+        position: "absolute",
+        left: 100,
+        top: 195,
+        right: 0,
+        width: 240,
+        height: 40,
+        overflow: 'hidden',
+        borderBottomColor: '#aaa',
+        borderBottomWidth: 1,
+        fontFamily: "Ubuntu-Light"
+    },
+    backButton: {
+        position: "absolute",
+        top: 40,
+        left: 30
     }
 })

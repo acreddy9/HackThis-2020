@@ -1,16 +1,12 @@
 import React from "react";
 // navigation
-import { StyleSheet, View, FlatList, TextInput, Button } from "react-native";
 import { createBottomTabNavigator } from "../node_modules/@react-navigation/bottom-tabs";
-import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from "../node_modules/@expo/vector-icons";
 // components
 import ProfileScreen from "./ProfileScreen.js";
 import SettingsScreen from "./SettingsScreen.js";
 import MatchScreen from "./MatchScreen.js";
 import ChatScreen from "./ChatScreen.js";
-// styling
-import styles from "./styles.js";
 
 const Tab = createBottomTabNavigator();
 
