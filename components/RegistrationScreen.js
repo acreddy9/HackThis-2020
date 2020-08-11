@@ -35,11 +35,11 @@ export default function RegistrationScreen({navigation}, props) {
                 <Text style={styles.appName}>Lorem</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
                 
-                <RegistrationIllustration width={150} height={150} margin={20} alignSelf={"center"}/>
+                <RegistrationIllustration width={150} height={150} margin={20} alignSelf={"center"}/> 
                 
                 <SearchableDropdown
                     onItemSelect={(item) => setSchool(item)}
-                    //containerStyle={styles.dropdownContainer} this messes things up idk why
+                    containerStyle={styles.dropdownContainer} this messes things up idk why
                     itemStyles={styles.dropdownItem}
                     itemTextStyle={styles.dropdownItem}
                     itemsContainerStyle={styles.dropdownItemContainer}

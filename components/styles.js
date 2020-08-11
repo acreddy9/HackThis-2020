@@ -23,8 +23,9 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Light"
     },
     dropdownContainer: {
-        width: 280,
-        height: 40
+        width: 300,
+        alignSelf: "center",
+        backgroundColor: '#ffffff',
     },
     dropdownItem: {
         padding: 10,
@@ -41,7 +42,7 @@ export default StyleSheet.create({
     dropdownItemContainer: {
         maxHeight: 140,
         alignSelf: "stretch",
-        marginLeft: 20
+        marginLeft: 0
     },
     dropdownInputProps: {
         padding: 12,
@@ -56,7 +57,7 @@ export default StyleSheet.create({
     input: {
         height: 40,
         borderRadius: 5,
-        //overflow: 'hidden',
+        overflow: 'hidden',
         marginTop: 10,
         marginBottom: 10,
         marginLeft: 30,
@@ -65,9 +66,9 @@ export default StyleSheet.create({
         alignSelf: 'center', // 'stretch'
         padding: 10,
         width: 300,
-        //marginLeft: 50,
-        //margin:5,
-        //marginRight: 50,
+        marginLeft: 50,
+        margin:5,
+        marginRight: 50,
         borderBottomColor: '#e6e3e3',
         borderBottomWidth: 1,
         fontFamily: "Ubuntu-Light"
