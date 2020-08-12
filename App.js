@@ -81,7 +81,7 @@ export default function App() {
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
             <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
             <Stack.Screen name="CoursesScreen" component={CoursesScreen} />
-            <Stack.Screen name="MatchScreen" component={CoursesScreen} />
+            <Stack.Screen name="MatchScreen" component={MatchScreen} />
             </>)}
         </Stack.Navigator>
     </NavigationContainer>

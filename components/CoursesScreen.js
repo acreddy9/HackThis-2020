@@ -38,7 +38,7 @@ export default function CoursesScreen({ navigation }) {
     }
 
     const onPreferencesHyperlink = () => {
-        navigation.navigate('PreferencesScreen')
+        navigation.navigate('Preferences')
     }
 
     if (matchFeatureOn) {
