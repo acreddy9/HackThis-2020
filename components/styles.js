@@ -221,6 +221,97 @@ export default StyleSheet.create({
         bottom: 60
 
 
-    }
+    },
+    courses_text: {
+        position: "relative",
+        bottom: 45  
+    },
+    SearchableDroppie_course1: {
+        width: 175,
+        height: 50,
+        position: "relative",
+        marginLeft: 25,
+        bottom: 30
+
+
+
+
+    },
+    SearchableDroppie_course2: {
+        width: 175,
+        height: 50,
+        position: "relative",
+        marginLeft: 205,
+        bottom: 80,
+      
+    },
+    SearchableDroppie_course3: {
+        width: 175,
+        height: 50,
+        position: "relative",
+        marginLeft: 25,
+        bottom: 80,
+
+
+    },
+    SearchableDroppie_course4: {
+        width: 175,
+        height: 50,
+        position: "relative",
+        marginLeft: 205,
+        bottom: 130,
+
+
+    },
+    addacourse_text: {
+
+        fontFamily:"Ubuntu-Medium",
+        color:'#6C63FF',
+        marginLeft: 288,
+        position:'relative',
+        bottom: 20,
+        marginBottom: -30
+
+    },
+    learnstyle_text: {
+
+        position: "relative",
+        bottom: 110,
+
+    },
+    SearchableDroppie_learn1: {
+        width: 160,
+        height: 50,
+        position: "relative",
+        marginLeft: 220,
+        bottom: 160,
+
+
+    },
+    SearchableDroppie_learn2: {
+        width: 160,
+        height: 50,
+        position: "relative",
+        marginLeft: 220,
+        bottom: 160,
+
+
+    },
+    SearchableDroppie_learn3: {
+        width: 160,
+        height: 50,
+        position: "relative",
+        marginLeft: 220,
+        bottom: 160,
+
+
+    },
+    comm_text: {
+
+        position: "relative",
+        bottom: 110,
+
+    },
+
 
 })
