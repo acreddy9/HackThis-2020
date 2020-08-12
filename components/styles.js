@@ -200,7 +200,7 @@ export default StyleSheet.create({
         width: 271,
         height: 50,
         position: "relative",
-        left: 135,
+        left: 110,
         bottom: 30
 
 
@@ -217,7 +217,7 @@ export default StyleSheet.create({
         width: 271,
         height: 50,
         position: "relative",
-        left: 135,
+        left: 110,
         bottom: 60
 
 
