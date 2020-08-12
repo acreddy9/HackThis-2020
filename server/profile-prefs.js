@@ -62,7 +62,7 @@ const setUserInterests = (interests) => {
 
 /* update whether user logged in or not */
 const setLoggedState = (loggedState) => {
-  userPref.set({
+  db.collection('users').doc(user.uid).set({
     loggedState
   }, {merge: true})
 }
@@ -76,7 +76,7 @@ const setNotifPref = (notifPref) => {
 
 /* update whether account has been deleted or not */
 const setAccountState = (accountState) => {
-  userPref.set({
+  db.collection('users').doc(user.uid).set({
     accountState
   }, {merge: true})
 }
