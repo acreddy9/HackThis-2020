@@ -1,35 +1,35 @@
-import {firebase} from '../config'
+import {firebase} from './config'
 
 const db = firebase.firestore()
 const user = firebase.auth().currentUser
 const userPref = db.collection('users').doc(user.uid).collection('preferences');
 const arrayUnion = firebase.firestore.FieldValue.arrayUnion
 
-const setName = (name) => {
+const setUserName = (name) => {
   db.collection('users').doc(user.uid).set({
     name
   }, {merge: true})
 }
 
-const setBio = (bio) => {
+const setUserBio = (bio) => {
   db.collection('users').doc(user.uid).set({
     bio
   }, {merge: true})
 }
 
-const setMajor = (major) => {
+const setUserMajor = (major) => {
   db.collection('users').doc(user.uid).set({
     major
   }, {merge: true})
 }
 
-const setYear = (year) => {
+const setUserYear = (year) => {
   db.collection('users').doc(user.uid).set({
     year
   }, {merge: true})
 }
 
-const setCourses = (course) => {
+const setUserCourses = (course) => {
   db.collection('users').doc(user.uid).set({
     courses: arrayUnion(course)
   }, {merge: true})
@@ -87,10 +87,11 @@ const setAccountState = (accountState) => {
 }
 
 export {
-  setName,
-  setBio,
-  setMajor,
-  setCourses,
+  setUserName,
+  setUserBio,
+  setUserMajor,
+  setUserYear,
+  setUserCourses,
   setPreferredCommunication,
   setLearningStyle,
   setAvailableTimes,

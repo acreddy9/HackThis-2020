@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import GreyHorizontalLine from './GreyHorizontalLine.js';
 import Checkbox from 'react-native-custom-checkbox';
 import SearchableDropdown from 'react-native-searchable-dropdown';
+import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
 
 var Years = [
     //name key is must.It is to show the text in front
@@ -36,6 +37,8 @@ function ProfileScreen ({ route }) {
     const [name, setName] = useState('');
     const [pronouns, setPronouns] = useState('');
     const [bio, setBio] = useState('');
+    const [major, setMajor] = useState('');
+    const [year, setYear] = useState('');
 
    
     let openImagePickerAsync = async () => {
@@ -54,6 +57,13 @@ function ProfileScreen ({ route }) {
 
         setSelectedImage({ localUri: pickerResult.uri });
     };
+
+    const saveChanges = () => {
+        setUserName(name)
+        setUserBio(bio)
+        setUserMajor(major)
+        setUserYear(year)
+    }
 
     const imageSelected = selectedImage !== null;
 
@@ -109,7 +119,7 @@ function ProfileScreen ({ route }) {
                     
                     onTextChange={text => console.log(text)}
                     //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
+                    onItemSelect={item => setYear(item.name)}
                     //onItemSelect called after the selection from the dropdown
                     containerStyle={{ padding: 5 }}
                     //suggestion container style
@@ -144,7 +154,7 @@ function ProfileScreen ({ route }) {
                     }}
                     items={Years}
                     //mapping of item array
-                    defaultIndex={2}
+                    //defaultIndex={0}
                     //default selected item index
                     placeholder="Your academic year"
                     //place holder for the search input
@@ -168,7 +178,7 @@ function ProfileScreen ({ route }) {
                     <SearchableDropdown
                     onTextChange={text => console.log(text)}
                     //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
+                    onItemSelect={item => setMajor(item.name)}
                     //onItemSelect called after the selection from the dropdown
                     containerStyle={{ padding: 5 }}
                     //suggestion container style
@@ -203,7 +213,7 @@ function ProfileScreen ({ route }) {
                     }}
                     items={Majors}
                     //mapping of item array
-                    defaultIndex={2}
+                    //defaultIndex={2}
                     //default selected item index
                     placeholder="Your major"
                     //place holder for the search input
@@ -242,7 +252,11 @@ function ProfileScreen ({ route }) {
                 style={{backgroundColor: '#FFF', color:'#6C63FF', borderColor: '#707070', borderWidth: 1, margin: 10, borderRadius: 5}}
                 />
 
-                
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => saveChanges()}>
+                  <Text style={styles.buttonTitle}>Save Changes</Text>
+                </TouchableOpacity>
 
             
                 
