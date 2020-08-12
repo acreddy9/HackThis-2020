@@ -100,12 +100,13 @@ function ProfileScreen ({ route }) {
                     autoCapitalize="none"
                 />
                 <GreyHorizontalLine />
-                
+                <View style = {styles.year_text}>
                 <Text style={styles.profileSectionHeader}>Year</Text> 
+                </View>
                     
+                    <View style = {styles.SearchableDroppie_year}>
+                    <SearchableDropdown 
                     
-                    {/* YEAR dropdown */
-                    <SearchableDropdown
                     onTextChange={text => console.log(text)}
                     //On text change listner on the searchable input
                     onItemSelect={item => alert(JSON.stringify(item))}
@@ -152,14 +153,18 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
+                  </View>
         
-                    }
+                    
 
 
    
-
+                  <View style = {styles.major_text}>
                 <Text style={styles.profileSectionHeader}>Major</Text> 
-                    {/* MAJORS dropdown */
+                </View>
+
+                    
+                    <View style={styles.SearchableDroppie_major}>
                     <SearchableDropdown
                     onTextChange={text => console.log(text)}
                     //On text change listner on the searchable input
@@ -208,7 +213,7 @@ function ProfileScreen ({ route }) {
                     //To remove the underline from the android input
                   />
         
-                    }
+                    </View>
                 
                 <Text style={styles.profileSectionHeader}>Courses</Text> 
                     {/* TODO: dropdowns */}
