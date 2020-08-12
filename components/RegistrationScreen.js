@@ -23,7 +23,7 @@ export default function RegistrationScreen({navigation}, props) {
     }
 
     const onRegisterPress = () => {
-        auth.createNewUser(email, password);
+        auth.createNewUser({school}, email, password);
     }
 
     return (

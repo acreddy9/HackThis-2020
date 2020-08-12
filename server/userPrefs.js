@@ -23,9 +23,15 @@ const setMajor = (major) => {
   }, {merge: true})
 }
 
-const setCourses = (courses) => {
+const setYear = (year) => {
   db.collection('users').doc(user.uid).set({
-    courses: arrayUnion(courses)
+    year
+  }, {merge: true})
+}
+
+const setCourses = (course) => {
+  db.collection('users').doc(user.uid).set({
+    courses: arrayUnion(course)
   }, {merge: true})
 }
 
@@ -47,9 +53,9 @@ const setAvailableTimes = (availableTimes) => {
   }, {merge: true})
 }
 
-const setUserInterests = (interests) => {
+const setUserInterests = (interest) => {
   db.collection('users').doc(user.uid).set({
-    interests
+    interests: arrayUnion(interest)
   }, {merge: true})
 }
 

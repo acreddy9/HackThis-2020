@@ -8,7 +8,7 @@ const onDeleteAccount = () => {
     alert("Are you sure you want to delete your account?")
 }
 
-function SettingsScreen ({route, navigation}) {
+export default function PreferencesScreen ({route, navigation}) {
     const [isEnabled, setIsEnabled] = useState(true);
     const toggleSwitch = () => {
         setIsEnabled(previousState => !previousState);
@@ -16,7 +16,7 @@ function SettingsScreen ({route, navigation}) {
 
     return (
         <View>
-            <Header title="Settings"/>
+            <Header title="Preferences"/>
             <Text>Preferences</Text> 
                 {/* drop down button */}
             <Text>Notifications</Text> 
@@ -33,7 +33,7 @@ function SettingsScreen ({route, navigation}) {
                         .auth()
                         .signOut()
                         .then(() => {
-                            alert("signed out")
+                            //alert("signed out")
                         },
                         () => {
                             console.log("Signing out didn't work")
@@ -57,5 +57,3 @@ function SettingsScreen ({route, navigation}) {
         </View>
     );
 };
-
-export default SettingsScreen;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
+import auth from '../server/auth'
 import { Ionicons } from "../node_modules/@expo/vector-icons";
 
 export default function ForgotPasswordScreen({navigation}) {
@@ -11,6 +12,7 @@ export default function ForgotPasswordScreen({navigation}) {
     }
 
     const onResetPress = () => {
+        auth.resetPassword(email)
         return (
             <View style={styles.container}>
                 <Text style={styles.subtitle}>Request to reset password has been sent to your email.</Text>

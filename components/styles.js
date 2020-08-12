@@ -103,6 +103,7 @@ export default StyleSheet.create({
         marginBottom: 5,
         marginLeft: 20,
         marginRight: 20,
+        textAlign: "center",
         fontSize: 16,
         color: '#aaaaaa',
         fontFamily: "Ubuntu-Light"
@@ -117,13 +118,14 @@ export default StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 400,
-        marginTop: 30,
+        margin: 20,
         borderWidth: 3,
         borderColor: "#6c63ff"
     },
     profileSectionHeader: {
-        marginTop: 30,
         marginLeft: 30,
+        marginTop: 10,
+        marginBottom: 10,
         color: '#3d3d3d',
         fontFamily: "Ubuntu-Medium"
     },
@@ -137,30 +139,36 @@ export default StyleSheet.create({
     profileNameInput: {
         position: "absolute",
         left: 100,
-        top: 150,
-        right: 0,
-        width: 240,
+        top: 140,
+        width: 400,
         height: 40,
         overflow: 'hidden',
-        borderBottomColor: '#aaa',
-        borderBottomWidth: 1,
+        fontFamily: "Ubuntu-Light"
+    },
+    profilePronounsInput: {
+        position: "absolute",
+        left: 123,
+        top: 176.5,
+        width: 400,
+        height: 40,
+        overflow: 'hidden',
         fontFamily: "Ubuntu-Light"
     },
     profileBioInput: {
         position: "absolute",
-        left: 100,
-        top: 195,
-        right: 0,
-        width: 240,
+        left: 80,
+        top: 214.5,
+        width: 400,
         height: 40,
         overflow: 'hidden',
-        borderBottomColor: '#aaa',
-        borderBottomWidth: 1,
         fontFamily: "Ubuntu-Light"
     },
     backButton: {
         position: "absolute",
         top: 40,
         left: 30
+    },
+    courseTile: {
+        backgroundColor: "#F4F4FF"
     }
 })
