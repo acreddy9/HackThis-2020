@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity } from 'react-native';
 import  Header  from './Header.js';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import styles from './styles';
 
 const matches = [ // TODO: add profile pic as a prop for each match
     { matchName: "Charlie Logan", bio: "Gamma theta pi !!! Fav artist: Kanye", percentage: "95%" },
@@ -18,14 +18,11 @@ const onMatchMe = () => {
 export default function MatchScreen({ route }) {
     const { selectedCourse } = route.params;
     return (
-        <View>
+        <View style={styles.container}>
             <Header title={selectedCourse}/> 
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => onMatchMe()}>
+            <TouchableOpacity style={styles.button} onPress={() => onMatchMe()}>
                 <Text style={styles.buttonTitle}>MATCH ME</Text>
             </TouchableOpacity>
-
         </View>
     );
 };
