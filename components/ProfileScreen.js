@@ -3,13 +3,15 @@ import { Text, TextInput, View, TouchableOpacity, Image, FlatList } from 'react-
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import GreyHorizontalLine from './GreyHorizontalLine.js';
 
-function ProfileScreen ({ route }) {
+export default function ProfileScreen ({ route }) {
     const userID = route.params.data.id;
 
     const [selectedImage, setSelectedImage] = useState(null);
-    const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
+    const [name, setName] = useState('');
+    const [pronouns, setPronouns] = useState('');
+    const [bio, setBio] = useState('');
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -48,6 +50,7 @@ function ProfileScreen ({ route }) {
                     }
                 </TouchableOpacity>
 
+                <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Name</Text>
                 <TextInput
                     style={styles.profileNameInput}
@@ -55,7 +58,15 @@ function ProfileScreen ({ route }) {
                     value={name}
                     autoCapitalize="none"
                 />
-
+                <GreyHorizontalLine />
+                <Text style={styles.profileSectionHeader}>Pronouns</Text>
+                <TextInput
+                    style={styles.profilePronounsInput}
+                    onChangeText={(text) => setPronouns(text)}
+                    value={pronouns}
+                    autoCapitalize="none"
+                />
+                <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Bio</Text>
                 <TextInput
                     style={styles.profileBioInput}
@@ -63,6 +74,10 @@ function ProfileScreen ({ route }) {
                     value={bio}
                     autoCapitalize="none"
                 />
+                <GreyHorizontalLine />
+                
+                <Text style={styles.profileSectionHeader}>Year</Text> 
+                    {/* TODO: dropdown */}
 
                 <Text style={styles.profileSectionHeader}>Major</Text> 
                     {/* TODO: dropdown */}
@@ -88,5 +103,3 @@ function ProfileScreen ({ route }) {
       </View>
     );
 };
-
-export default ProfileScreen;

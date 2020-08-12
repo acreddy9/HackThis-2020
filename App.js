@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainTabs from './components/MainTabs.js';
-import LoginScreen from './components/LoginScreen.js'
+import LoginScreen from './components/LoginScreen.js';
 import RegistrationScreen from "./components/RegistrationScreen.js";
-import ForgotPasswordScreen from './components/ForgotPasswordScreen.js'
+import ForgotPasswordScreen from './components/ForgotPasswordScreen.js';
+import CoursesScreen from './components/CoursesScreen.js'
+
 
 import { NavigationContainer } from "./node_modules/@react-navigation/native";
 import { createStackNavigator } from './node_modules/@react-navigation/stack';
@@ -78,6 +80,7 @@ export default function App() {
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
             <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+            <Stack.Screen name="CoursesScreen" component={CoursesScreen} />
             </>)}
         </Stack.Navigator>
     </NavigationContainer>
