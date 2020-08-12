@@ -23,6 +23,12 @@ const setMajor = (major) => {
   }, {merge: true})
 }
 
+const setYear = (year) => {
+  db.collection('users').doc(user.uid).set({
+    year
+  }, {merge: true})
+}
+
 const setCourses = (courses) => {
   db.collection('users').doc(user.uid).set({
     courses: arrayUnion(courses)
@@ -84,6 +90,7 @@ export {
   setName,
   setBio,
   setMajor,
+  setYear,
   setCourses,
   setPreferredCommunication,
   setLearningStyle,
