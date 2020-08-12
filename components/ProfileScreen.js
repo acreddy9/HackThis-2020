@@ -4,6 +4,7 @@ import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+
 function ProfileScreen ({ route }) {
     const userID = route.params.data.id;
 
@@ -11,6 +12,7 @@ function ProfileScreen ({ route }) {
     const [name, setName] = useState('')
     const [bio, setBio] = useState('')
 
+   
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -81,8 +83,9 @@ function ProfileScreen ({ route }) {
                 <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
                     {/* TODO: dropdowns */}
 
-                <Text style={styles.profileSectionHeader}>Interests</Text> 
-                    {/* TODO: checkboxes */}
+                <Text style={styles.profileSectionHeader}>Interests</Text>
+
+            
                 
             </KeyboardAwareScrollView>
       </View>

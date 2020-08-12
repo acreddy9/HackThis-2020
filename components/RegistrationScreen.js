@@ -8,6 +8,7 @@ import { FontAwesome } from '../node_modules/@expo/vector-icons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import RegistrationIllustration from "../assets/registration-illustration.svg";
 
+
 export default function RegistrationScreen({navigation}, props) {
     var schools = [
         { id: 1, name: 'Purdue University'},
@@ -35,7 +36,7 @@ export default function RegistrationScreen({navigation}, props) {
                 <Text style={styles.appName}>Lorem</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
                 
-                <RegistrationIllustration width={100} height={100} marginBottom={20} alignSelf={"center"}/> 
+                <RegistrationIllustration width={383} height={304} marginBottom={20} alignSelf={"center"}/> 
                 
                 <SearchableDropdown
                     onItemSelect={(item) => setSchool(item)}
