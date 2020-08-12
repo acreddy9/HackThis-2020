@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import SearchableDropDown from 'react-native-searchable-dropdown';
 
 export default StyleSheet.create({
     container: {
@@ -194,5 +195,32 @@ export default StyleSheet.create({
         color: '#3d3d3d',
         fontSize: 16,
         fontFamily: "Ubuntu-Light"
+    },
+    SearchableDroppie_year: {
+        width: 271,
+        height: 50,
+        position: "relative",
+        left: 110,
+        bottom: 30
+
+
+    },
+    year_text: {
+        position: "relative",
+        top: 10  
+    },
+    major_text: {
+        position: "relative",
+        bottom: 20  
+    },
+    SearchableDroppie_major: {
+        width: 271,
+        height: 50,
+        position: "relative",
+        left: 110,
+        bottom: 60
+
+
     }
+
 })
