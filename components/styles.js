@@ -54,9 +54,6 @@ export default StyleSheet.create({
         borderRadius: 5,
         fontFamily: "Ubuntu-Light"
     },
-    title: {
-
-    },
     input: {
         height: 40,
         borderRadius: 5,
@@ -114,6 +111,42 @@ export default StyleSheet.create({
         fontSize: 16,
         fontFamily: "Ubuntu-Medium"
     },
+    backButton: {
+        position: "absolute",
+        top: 40,
+        left: 30
+    },
+
+    // Courses -------------------------------------------------------------------------
+    courseTile: {
+        backgroundColor: '#f2f2ff',
+        height: 80,
+        width: 350,
+        margin: 5,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        alignSelf: "center",
+        textAlign: "left",
+        justifyContent: "center",
+        shadowColor: "#000", // IOS
+        shadowOffset: { height: 3, width: 3 }, // IOS
+        shadowOpacity: 0.1, // IOS
+        shadowRadius: 1, //IOS
+        //backgroundColor: '#fff',
+        elevation: 2, // Android
+    },
+    courseName: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Medium"
+    },
+    professor: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Light"
+    },
+
+    // Profile -------------------------------------------------------------------------
     profilePic: {
         alignSelf: "center",
         width: 100,
@@ -164,46 +197,12 @@ export default StyleSheet.create({
         overflow: 'hidden',
         fontFamily: "Ubuntu-Light"
     },
-    backButton: {
-        position: "absolute",
-        top: 40,
-        left: 30
-    },
-    courseTile: {
-        backgroundColor: '#f2f2ff',
-        height: 80,
-        width: 350,
-        margin: 5,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        alignSelf: "center",
-        textAlign: "left",
-        justifyContent: "center",
-        shadowColor: "#000", // IOS
-        shadowOffset: { height: 3, width: 3 }, // IOS
-        shadowOpacity: 0.1, // IOS
-        shadowRadius: 1, //IOS
-        //backgroundColor: '#fff',
-        elevation: 2, // Android
-    },
-    courseName: {
-        color: '#3d3d3d',
-        fontSize: 16,
-        fontFamily: "Ubuntu-Medium"
-    },
-    professor: {
-        color: '#3d3d3d',
-        fontSize: 16,
-        fontFamily: "Ubuntu-Light"
-    },
     SearchableDroppie_year: {
         width: 271,
         height: 50,
         position: "relative",
         left: 110,
         bottom: 30
-
-
     },
     year_text: {
         position: "relative",
@@ -219,8 +218,6 @@ export default StyleSheet.create({
         position: "relative",
         left: 110,
         bottom: 60
-
-
     },
     courses_text: {
         position: "relative",
@@ -232,18 +229,13 @@ export default StyleSheet.create({
         position: "relative",
         marginLeft: 25,
         bottom: 30
-
-
-
-
     },
     SearchableDroppie_course2: {
         width: 175,
         height: 50,
         position: "relative",
         marginLeft: 205,
-        bottom: 80,
-      
+        bottom: 80
     },
     SearchableDroppie_course3: {
         width: 175,
@@ -251,8 +243,6 @@ export default StyleSheet.create({
         position: "relative",
         marginLeft: 25,
         bottom: 80,
-
-
     },
     SearchableDroppie_course4: {
         width: 175,
@@ -260,24 +250,18 @@ export default StyleSheet.create({
         position: "relative",
         marginLeft: 205,
         bottom: 130,
-
-
     },
     addacourse_text: {
-
         fontFamily:"Ubuntu-Medium",
         color:'#6C63FF',
         marginLeft: 288,
         position:'relative',
         bottom: 20,
         marginBottom: -30
-
     },
     learnstyle_text: {
-
         position: "relative",
         bottom: 110,
-
     },
     SearchableDroppie_learn1: {
         width: 160,
@@ -285,8 +269,6 @@ export default StyleSheet.create({
         position: "relative",
         marginLeft: 220,
         bottom: 160,
-
-
     },
     SearchableDroppie_learn2: {
         width: 160,
@@ -294,8 +276,6 @@ export default StyleSheet.create({
         position: "relative",
         marginLeft: 220,
         bottom: 160,
-
-
     },
     SearchableDroppie_learn3: {
         width: 160,
@@ -303,15 +283,64 @@ export default StyleSheet.create({
         position: "relative",
         marginLeft: 220,
         bottom: 160,
-
-
     },
     comm_text: {
-
         position: "relative",
         bottom: 110,
-
     },
 
-
+    // Preferences -------------------------------------------------------------------------
+    matchSwitchContainer: {
+        backgroundColor: "#E6E6E6",
+        marginLeft: 100,
+        marginRight: 100,
+        marginTop: 20,
+        height: 48,
+        width: 250,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    switchTrackColor: {
+        false: "#979797",
+        true: "#6c63ff"
+    },
+    prefSectionHeader: {
+        alignSelf: "center",
+        marginLeft: 30,
+        marginTop: 10,
+        marginBottom: 10,
+        color: "#3d3d3d",
+        fontFamily: "Ubuntu-Medium"
+    },
+    prefSwitchText: {
+        marginBottom: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        textAlign: "center",
+        fontSize: 16,
+        color: "#aaa",
+        fontFamily: "Ubuntu-Light"
+    },
+    prefButtonContainer: {
+        backgroundColor: "#E6E6E6",
+        width: 500,
+        height: 500,
+        borderRadius: 30
+    },
+    deleteAccountButton: {
+        backgroundColor: "#E36674",
+        marginLeft: 100,
+        marginRight: 100,
+        marginTop: 20,
+        height: 48,
+        width: 250,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center"
+    },
 })
