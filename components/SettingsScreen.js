@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { Text, View, Switch, TouchableOpacity } from 'react-native';
 import  Header  from './Header.js';
 import styles from './styles';
-
-const onLogOut = () => {
-}
+import {firebase} from '../server/config'
 
 const onDeleteAccount = () => {
     alert("Are you sure you want to delete your account?")
 }
 
-const SettingsScreen = () => {
+function SettingsScreen ({route, navigation}) {
     const [isEnabled, setIsEnabled] = useState(true);
     const toggleSwitch = () => {
         setIsEnabled(previousState => !previousState);
@@ -30,12 +28,30 @@ const SettingsScreen = () => {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => onLogOut()} >
+                onPress={() => {
+                    firebase
+                        .auth()
+                        .signOut()
+                        .then(() => {
+                            alert("signed out")
+                        },
+                        () => {
+                            console.log("Signing out didn't work")
+                            alert("Something went wrong!")}
+                        )
+                }} >
                 <Text style={styles.buttonTitle}>Log Out</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => onDeleteAccount()} >
+                onPress={() => {
+                    var user = firebase.auth().currentUser;
+                    user.delete().then(function() {
+                        alert("signed out")
+                      }).catch(function(error) {
+                        alert("Something went wrong!")
+                      });
+                }} >
                 <Text style={styles.buttonTitle}>Delete Account</Text>
             </TouchableOpacity>
         </View>

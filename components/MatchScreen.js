@@ -5,7 +5,7 @@ import  Header  from './Header.js';
 const MatchScreen = () => {
     return (
         <View>
-            <Header title="Match"/>
+            <Header title={"Match"}/>
             <Text>Match with classmates</Text>
             {/* display classes */}
         </View>

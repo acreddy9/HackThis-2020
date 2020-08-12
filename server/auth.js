@@ -1,12 +1,13 @@
-import {firebase} from '../config'
+import {firebase} from './config'
+import { useNavigation } from '@react-navigation/native'
 
-loginExistingUser = (email, password) => {
-
+function loginExistingUser(email, password) {
+  const navigation = useNavigation();
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((res) => {
-      const uid = res.uid
+      const uid = res.user.uid
       const userRef = firebase.firestore().collection('users')
       userRef
         .doc(uid)
@@ -14,17 +15,21 @@ loginExistingUser = (email, password) => {
         .then((doc) => {
           if(!doc.exists) {
             alert('User does not exist anymore')
-            return
           }
-        })
+          else {
+            console.log("Login success");
+            navigation.navigate('MainTabs');
+          }
+        }, () => { alert('Some other error occurred')})
         .catch((e) => console.log(e))
     })
     .catch((e) => {
       console.log(e.message)
     })
+    
 }
 
-createNewUser = (userInfo, email, password) => {
+function createNewUser(userInfo, email, password) {
 
   //Do email / password validation check first
 
@@ -34,6 +39,7 @@ createNewUser = (userInfo, email, password) => {
     .createUserWithEmailAndPassword(email, password)
     .then((response) => {
       const uid = response.user.uid
+      console.log(uid)
       const data = {
         id: uid,
         email: response.user.email,
@@ -48,13 +54,15 @@ createNewUser = (userInfo, email, password) => {
         .set(data)
         .then(() => console.log('Document successfully written'))
         .catch(error => console.log(error))
+        return true;
     })
     .catch((error) => {
       console.log(error)
     })
+    return false;
 }
 
-resetPassword = (email) => {
+function resetPassword(email) {
   //Check is the email exists in the database
   const usersRef = db.collection('users')
   if(!usersRef.exists) {
@@ -83,9 +91,8 @@ resetPassword = (email) => {
     })
 }
 
-export {
+export default {
   createNewUser,
   loginExistingUser,
   resetPassword
 }
-
