@@ -4,13 +4,32 @@ import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import GreyHorizontalLine from './GreyHorizontalLine.js';
+import Checkbox from 'react-native-custom-checkbox';
+import SearchableDropdown from 'react-native-searchable-dropdown';
 
-<<<<<<< HEAD
+var Years = [
+    //name key is must.It is to show the text in front
+    { id: 1, name: 'Freshman' },
+    { id: 2, name: 'Sophomore' },
+    { id: 3, name: 'Junior' },
+    { id: 4, name: 'Senior' },
+    
+  ];
+
+  var Majors = [
+    //name key is must.It is to show the text in front
+    { id: 1, name: 'Computer Science' },
+    { id: 2, name: 'Economics' },
+    { id: 3, name: 'Mathematics' },
+    { id: 4, name: 'Nursing' },
+    { id: 4, name: 'Business' },
+    { id: 4, name: 'Music' },
+    { id: 4, name: 'Computer Engineering' },
+    
+  ];
+  
 
 function ProfileScreen ({ route }) {
-=======
-export default function ProfileScreen ({ route }) {
->>>>>>> 58aeaacb3ecefff18576655795610a08e2e65039
     const userID = route.params.data.id;
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -83,10 +102,113 @@ export default function ProfileScreen ({ route }) {
                 <GreyHorizontalLine />
                 
                 <Text style={styles.profileSectionHeader}>Year</Text> 
-                    {/* TODO: dropdown */}
+                    
+                    
+                    {/* YEAR dropdown */
+                    <SearchableDropdown
+                    onTextChange={text => console.log(text)}
+                    //On text change listner on the searchable input
+                    onItemSelect={item => alert(JSON.stringify(item))}
+                    //onItemSelect called after the selection from the dropdown
+                    containerStyle={{ padding: 5 }}
+                    //suggestion container style
+                    textInputStyle={{
+                      //inserted text style
+                      padding: 7,
+                      borderWidth: 1,
+                      borderColor: '#626262',
+                      backgroundColor: '#FFF',
+                      borderRadius: 7
+                    }}
+                    itemStyle={{
+                      //single dropdown item style
+                      padding: 7,
+                      marginTop: 0,
+                      backgroundColor: '#FFF',
+                      borderColor: '#626262',
+                      
+                      
+                      
+                    }}
+                    itemTextStyle={{
+                      //single dropdown item's text style
+                      color: '#222',
+                    }}
+                    itemsContainerStyle={{
+                      //items container style you can pass maxHeight
+                      //to restrict the items dropdown hieght
+                      maxHeight: '80%',
+                      borderWidth: 0.2,
+                      borderRadius: 7
+                    }}
+                    items={Years}
+                    //mapping of item array
+                    defaultIndex={2}
+                    //default selected item index
+                    placeholder="Your academic year"
+                    //place holder for the search input
+                    resetValue={false}
+                    //reset textInput Value with true and false state
+                    underlineColorAndroid="transparent"
+                    //To remove the underline from the android input
+                  />
+        
+                    }
+
+
+   
 
                 <Text style={styles.profileSectionHeader}>Major</Text> 
-                    {/* TODO: dropdown */}
+                    {/* MAJORS dropdown */
+                    <SearchableDropdown
+                    onTextChange={text => console.log(text)}
+                    //On text change listner on the searchable input
+                    onItemSelect={item => alert(JSON.stringify(item))}
+                    //onItemSelect called after the selection from the dropdown
+                    containerStyle={{ padding: 5 }}
+                    //suggestion container style
+                    textInputStyle={{
+                      //inserted text style
+                      padding: 7,
+                      borderWidth: 1,
+                      borderColor: '#626262',
+                      backgroundColor: '#FFF',
+                      borderRadius: 7
+                    }}
+                    itemStyle={{
+                      //single dropdown item style
+                      padding: 7,
+                      marginTop: 0,
+                      backgroundColor: '#FFF',
+                      borderColor: '#626262',
+                      
+                      
+                      
+                    }}
+                    itemTextStyle={{
+                      //single dropdown item's text style
+                      color: '#222',
+                    }}
+                    itemsContainerStyle={{
+                      //items container style you can pass maxHeight
+                      //to restrict the items dropdown hieght
+                      maxHeight: '80%',
+                      borderWidth: 0.2,
+                      borderRadius: 7
+                    }}
+                    items={Majors}
+                    //mapping of item array
+                    defaultIndex={2}
+                    //default selected item index
+                    placeholder="Your major"
+                    //place holder for the search input
+                    resetValue={false}
+                    //reset textInput Value with true and false state
+                    underlineColorAndroid="transparent"
+                    //To remove the underline from the android input
+                  />
+        
+                    }
                 
                 <Text style={styles.profileSectionHeader}>Courses</Text> 
                     {/* TODO: dropdowns */}
@@ -96,7 +218,13 @@ export default function ProfileScreen ({ route }) {
                     {/* TODO: dropdowns */}
                 
                 <Text style={styles.profileSectionHeader}>Availability</Text> 
-                    {/* TODO: checkboxes */}
+                    {/* TODO: checkboxes */
+                    <Checkbox
+                    checked={true}
+                    style={{backgroundColor: '#FFF', color:'#6C63FF', borderColor: '#707070', borderWidth: 1, margin: 10, borderRadius: 5}}
+                    />
+                    
+                    }
 
                 <Text style={styles.profileSectionHeader}>Learning Styles</Text> 
                 <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
@@ -104,9 +232,17 @@ export default function ProfileScreen ({ route }) {
 
                 <Text style={styles.profileSectionHeader}>Interests</Text>
 
+                <Checkbox
+                checked={true}
+                style={{backgroundColor: '#FFF', color:'#6C63FF', borderColor: '#707070', borderWidth: 1, margin: 10, borderRadius: 5}}
+                />
+
+                
+
             
                 
             </KeyboardAwareScrollView>
       </View>
     );
 };
+export default ProfileScreen;
