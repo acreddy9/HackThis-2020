@@ -25,6 +25,9 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
+                trackColor={{ false: "#3d3d3d", true: "#6c63ff"}}
+                thumbColor={"#fff"}
+                ios_backgroundColor="#3d3d3d"
             />
             <TouchableOpacity
                 style={styles.button}

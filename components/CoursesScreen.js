@@ -8,8 +8,8 @@ const matchFeatureOn = true; // set to true to test course tile display
 const courses = [
     { courseName: "CS 200", professor: "Mark Renault" },
     { courseName: "PSYCH 225", professor: "Allyson Bennett" },
-    { courseName: "MATCH 233", professor: "Diane Tucker" },
-    { courseName: "STATS 515", professor: "Sara Dunn" }
+    { courseName: "MATH 233", professor: "Diane Tucker" },
+    { courseName: "STAT 515", professor: "Sara Dunn" }
 ]
 
 const Item = ({ item, onPress, style }) => (
@@ -25,16 +25,13 @@ export default function CoursesScreen({ navigation }) {
 
     const renderItem = ({item}) => {
         return (
-            <Item
-                item={item}
-                onPress={() => onCourseSelection(item.courseName)}
-            />
+            <Item item={item} onPress={() => onCourseSelection(item.courseName)} />
         );
     }
 
     const onCourseSelection = (courseName) => {
-        setSelectedCourse(courseName)
-        navigation.navigate('MatchScreen', {selectedCourse})
+        setSelectedCourse(courseName);
+        navigation.navigate('MatchScreen', {selectedCourse: courseName})
     }
 
     const onPreferencesHyperlink = () => {

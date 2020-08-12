@@ -6,6 +6,7 @@ import { Ionicons } from "../node_modules/@expo/vector-icons";
 import ProfileScreen from "./ProfileScreen.js";
 import PreferencesScreen from "./PreferencesScreen.js";
 import CoursesScreen from "./CoursesScreen.js";
+import Match from "./Match.js";
 import ChatScreen from "./ChatScreen.js";
 
 const Tab = createBottomTabNavigator();
@@ -52,7 +53,7 @@ function MainTabs(props) {
         >
             <Tab.Screen name="Profile" component={ProfileScreen} initialParams={{ data: user }}/>
             <Tab.Screen name="Preferences" component={PreferencesScreen} initialParams={{ data: user }}/>
-            <Tab.Screen name="Courses" component={CoursesScreen} initialParams={{ data: user }}/>
+            <Tab.Screen name="Match" component={Match} initialParams={{ data: user }}/>
             <Tab.Screen name="Chat" component={ChatScreen} initialParams={{ data: user }}/>
         </Tab.Navigator>
     );
