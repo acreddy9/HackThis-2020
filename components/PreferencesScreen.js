@@ -79,7 +79,7 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                trackColor={styles.switchTrackColor}
+                trackColor={{ false: "#979797", true: "#6c63ff" }}
                 ios_backgroundColor="#3d3d3d"
             />
 
@@ -87,7 +87,7 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                trackColor={styles.switchTrackColor}
+                trackColor={{ false: "#979797", true: "#6c63ff" }}
                 ios_backgroundColor="#3d3d3d"
             />
 
@@ -95,7 +95,7 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                trackColor={styles.switchTrackColor}
+                trackColor={{ false: "#979797", true: "#6c63ff" }}
                 ios_backgroundColor="#3d3d3d"
             />
 
@@ -103,7 +103,7 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                trackColor={styles.switchTrackColor}
+                trackColor={{ false: "#979797", true: "#6c63ff" }}
                 ios_backgroundColor="#3d3d3d"
             />
 
@@ -111,7 +111,7 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                trackColor={styles.switchTrackColor}
+                trackColor={{ false: "#979797", true: "#6c63ff" }}
                 ios_backgroundColor="#3d3d3d"
             />
 
@@ -119,7 +119,7 @@ export default function PreferencesScreen ({route, navigation}) {
             <Switch
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                trackColor={styles.switchTrackColor}
+                trackColor={{ false: "#979797", true: "#6c63ff" }}
                 ios_backgroundColor="#3d3d3d"
             />
 

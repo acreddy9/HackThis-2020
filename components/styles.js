@@ -303,10 +303,6 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     },
-    switchTrackColor: {
-        false: "#979797",
-        true: "#6c63ff"
-    },
     prefSectionHeader: {
         alignSelf: "center",
         marginLeft: 30,

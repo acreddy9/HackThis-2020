@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from './node_modules/@react-navigation/stack';
+import { createStackNavigator } from '../node_modules/@react-navigation/stack';
 import CoursesScreen from "./CoursesScreen.js";
 import MatchScreen from "./MatchScreen.js";
 
