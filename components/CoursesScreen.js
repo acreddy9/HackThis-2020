@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, FlatList } from 'react-native';
 import styles from './styles';
 import  Header  from './Header.js';
 import CoursesIllustration from "../assets/courses-illustration.svg";
-import { Ionicons } from "../node_modules/@expo/vector-icons";
 
-const matchFeatureOn = false; // set to true to test course tile display
+const matchFeatureOn = true; // set to true to test course tile display
 const courses = [
     { courseName: "CS 200", professor: "Mark Renault" },
     { courseName: "PSYCH 225", professor: "Allyson Bennett" },
@@ -13,13 +12,29 @@ const courses = [
     { courseName: "STATS 515", professor: "Sara Dunn" }
 ]
 
-export default function CoursesScreen({ route, navigation }) {
+const Item = ({ item, onPress, style }) => (
+    <TouchableOpacity onPress={onPress} style={[styles.courseTile, style]}>
+      <Text style={styles.courseName}>{item.courseName}</Text>
+      <Text style={styles.professor}>{item.professor}</Text>
+    </TouchableOpacity>
+);
 
-    const [courseSelected, setCourseSelected] = useState('');
+export default function CoursesScreen({ navigation }) {
 
-    const onCourseSelection = () => {
-        // TODO: pass in courseSelected
-        navigation.navigate('MatchScreen')
+    const [selectedCourse, setSelectedCourse] = useState('');
+
+    const renderItem = ({item}) => {
+        return (
+            <Item
+                item={item}
+                onPress={() => onCourseSelection(item.courseName)}
+            />
+        );
+    }
+
+    const onCourseSelection = (courseName) => {
+        setSelectedCourse(courseName)
+        navigation.navigate('MatchScreen', {selectedCourse})
     }
 
     const onPreferencesHyperlink = () => {
@@ -27,19 +42,18 @@ export default function CoursesScreen({ route, navigation }) {
     }
 
     if (matchFeatureOn) {
-        var i;
-        for (var i = 0; i < courses.length; i++) {
-            return (
-                <View>
-                    <Header title={"My Courses"}/>
-                    <TouchableOpacity styles={styles.courseTile} onPress={onCourseSelection}>
-                        <Text>{courses[i].courseName}</Text>
-                        <Text>{courses[i].courseName}</Text>
-                    <Ionicons name="ios-arrow-back" size={25}/>
-                    </TouchableOpacity>
-                </View>
-            )
-        }       
+        return (
+            <View style={styles.container}>
+                <Header title={"My Courses"}/>
+                <FlatList
+                    data={courses}
+                    renderItem={renderItem}
+                    //keyExtractor={(course) => course.id}
+                    extraData={selectedCourse}
+                    //ListEmptyComponent=
+                />
+            </View>
+        )
     } else {
         return (
             <View style={styles.container}>

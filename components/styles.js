@@ -169,6 +169,30 @@ export default StyleSheet.create({
         left: 30
     },
     courseTile: {
-        backgroundColor: "#F4F4FF"
+        backgroundColor: '#f2f2ff',
+        height: 80,
+        width: 350,
+        margin: 5,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        alignSelf: "center",
+        textAlign: "left",
+        justifyContent: "center",
+        shadowColor: "#000", // IOS
+        shadowOffset: { height: 3, width: 3 }, // IOS
+        shadowOpacity: 0.1, // IOS
+        shadowRadius: 1, //IOS
+        //backgroundColor: '#fff',
+        elevation: 2, // Android
+    },
+    courseName: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Medium"
+    },
+    professor: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Light"
     }
 })
