@@ -76,7 +76,7 @@ function ProfileScreen ({ route }) {
     
 
     return (
-        <View style={styles.wholeScreen}>
+        
         <View style={styles.container}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
@@ -1111,7 +1111,7 @@ function ProfileScreen ({ route }) {
                 
             </KeyboardAwareScrollView>
       </View>
-      </View>
+      
     );
 };
 export default ProfileScreen;

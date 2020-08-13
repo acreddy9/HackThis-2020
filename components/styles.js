@@ -480,7 +480,5 @@ export default StyleSheet.create({
     whiteSpace: {
         paddingTop: 0
     },
-    wholeScreen: {
-        
-    },
+    
 })
