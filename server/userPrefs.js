@@ -2,12 +2,17 @@ import {firebase} from '../config'
 
 const db = firebase.firestore()
 const user = firebase.auth().currentUser
-const userPref = db.collection('users').doc(user.uid).collection('preferences');
 const arrayUnion = firebase.firestore.FieldValue.arrayUnion
 
 const setName = (name) => {
   db.collection('users').doc(user.uid).set({
     name
+  }, {merge: true})
+}
+
+const setPrevMatch = (prevMatch) => {
+  db.collection('users').doc(user.uid).set({
+    prevMatch: prevMatch
   }, {merge: true})
 }
 
@@ -35,6 +40,12 @@ const setCourses = (courses) => {
   }, {merge: true})
 }
 
+const setProfessors = (professors) => {
+  db.collection('users').doc(user.uid).set({
+    professors: arrayUnion(professors)
+  }, {merge: true})
+}
+
 const setLearningStyle = (learningStyle) => {
   db.collection('users').doc(user.uid).set({
     learningStyle
@@ -49,39 +60,39 @@ const setPreferredCommunication = (preferredCommunication) => {
 
 const setAvailableTimes = (availableTimes) => {
   db.collection('users').doc(user.uid).set({
-    availableTimes
+    availableTimes: arrayUnion(availableTimes)
   }, {merge: true})
 }
 
 const setUserInterests = (interests) => {
   db.collection('users').doc(user.uid).set({
-    interests
+    interests: arrayUnion(interests)
   }, {merge: true})
 }
 
 const setRelationPref = (relation) => {
-    userPref.set({
+  db.collection('users').doc(user.uid).set({
         relation
     }, {merge: true});
 }
 
 /* update whether user logged in or not */
 const setLoggedState = (loggedState) => {
-  userPref.set({
+  db.collection('users').doc(user.uid).set({
     loggedState
   }, {merge: true})
 }
 
 /* update whether user wants to receive notifications */
 const setNotifPref = (notifPref) => {
-  userPref.set({
+  db.collection('users').doc(user.uid).set({
     notifPref
   }, {merge: true})
 }
 
 /* update whether account has been deleted or not */
 const setAccountState = (accountState) => {
-  userPref.set({
+  db.collection('users').doc(user.uid).set({
     accountState
   }, {merge: true})
 }
@@ -99,5 +110,7 @@ export {
   setRelationPref,
   setLoggedState,
   setNotifPref,
-  setAccountState
+  setAccountState,
+  setProfessors,
+  setPrevMatch
 }
