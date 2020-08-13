@@ -270,7 +270,135 @@ export default StyleSheet.create({
         bottom: 160,
     },
     comm_text: {
-        bottom: 110,
+        position: 'relative',
+        bottom: 140,
+    },
+    SearchableDroppie_comm1: {
+        width: 112,
+        height: 50,
+        marginLeft: 270,
+        bottom: 190,
+    },
+    SearchableDroppie_comm2: {
+        width: 112,
+        height: 50,
+        marginLeft: 270,
+        bottom: 190,
+    },
+    SearchableDroppie_comm3: {
+        width: 112,
+        height: 50,
+        marginLeft: 270,
+        bottom: 190,
+    },
+    av_text: {
+        position: 'relative',
+        bottom: 210,
+
+
+    },
+    avBottomText1: {
+        position: 'relative',
+        bottom: 170,
+        marginBottom: 30,
+
+
+    },
+    avBottomText2: {
+        position: 'relative',
+        bottom: 170,
+        marginBottom: 30,
+
+
+    },
+    avBottomText3: {
+        position: 'relative',
+        bottom: 170,
+        marginBottom: 30,
+
+
+    },
+    dayText: {
+        color: '#3d3d3d',
+        fontSize: 13,
+        fontFamily: "Ubuntu-Light",
+        marginRight: 30,
+        
+        
+
+        
+    },
+    days: {
+        bottom: 150,
+        marginLeft: 130,
+        flex:1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+
+    checkboxGrid1: {
+        flex:1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        bottom: 330,
+        marginLeft: 120,
+        
+        
+
+    },
+    checkboxGrid2: {
+        flex:1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        bottom: 300,
+        marginLeft: 120,
+    
+        
+        
+    },
+    checkboxGrid3: {
+        flex:1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        bottom: 270,
+        marginLeft: 120,
+    
+        
+        
+    },
+
+    interests1: {
+        position: "relative",
+        bottom: 210,
+        marginLeft: 70,
+
+    },
+    intText: {
+        fontFamily: "Ubuntu-Light",
+        marginBottom: 30,
+    },
+    intCheckboxGrid1:{
+        marginLeft: 30,
+        bottom: 483
+
+    },
+
+    interests2: {
+        position: "relative",
+        bottom: 743,
+        marginLeft: 290,
+
+    },
+
+    intCheckboxGrid2:{
+        marginLeft: 250,
+        bottom: 1015
+
+    },
+    scButton: {
+        position: "relative",
+        bottom: 990,
+
     },
 
     // Preferences -------------------------------------------------------------------------
@@ -358,5 +486,8 @@ export default StyleSheet.create({
     },
     whiteSpace: {
         paddingTop: 0
+    },
+    wholeScreen: {
+        
     },
 })
