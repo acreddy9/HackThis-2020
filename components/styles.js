@@ -113,7 +113,7 @@ export default StyleSheet.create({
     },
     backButton: {
         position: "absolute",
-        top: 40,
+        top: 35,
         left: 30
     },
 
@@ -352,4 +352,11 @@ export default StyleSheet.create({
     whiteSpace: {
         paddingTop: 0
     },
+
+    // Matches -------------------------------------------------------------------------
+    chatButton: {
+        position: "absolute",
+        top: 30,
+        right: 20
+    }
 })

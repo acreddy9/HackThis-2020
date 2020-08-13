@@ -19,23 +19,23 @@ var secondMatches = [
 
 const Item = ({ item, onPress, style }) => (
     <TouchableOpacity onPress={onPress} style={[styles.courseTile, styles.matchTile]}>
-    <Image style={{ 
-            width: 65, 
-            height: 65,
-            borderRadius: 87, 
-            position:'absolute', 
-            top: 15, 
-            left: 15 
-        }} source={item.pic} />
-      <Text style={[styles.courseName, {marginLeft: 75}]}>{item.matchName}</Text>
-      <Text numberOfLines={1} style={[styles.professor, {marginLeft: 75, width: 180}]}>{item.bio}</Text>
-      <Text style={item.percentage>=70 ? styles.percent : (item.percentage>=30 ? [styles.percent, {color: "#F2CB60"}] : [styles.percent, {color: "#E36674"}])}> 
-          {item.percentage}%
+        <Image style={{ 
+                width: 65, 
+                height: 65,
+                borderRadius: 87, 
+                position:'absolute', 
+                top: 15, 
+                left: 15 
+            }} source={item.pic} />
+        <Text style={[styles.courseName, {marginLeft: 75}]}>{item.matchName}</Text>
+        <Text numberOfLines={1} style={[styles.professor, {marginLeft: 75, width: 180}]}>{item.bio}</Text>
+        <Text style={item.percentage>=70 ? styles.percent : (item.percentage>=30 ? [styles.percent, {color: "#F2CB60"}] : [styles.percent, {color: "#E36674"}])}> 
+            {item.percentage}%
         </Text>
     </TouchableOpacity>
 );
 
-export default function MatchScreen({ route }) {
+export default function MatchScreen({ route, navigation }) {
     const { selectedCourse } = route.params;
     const [matches, setMatches] = useState(firstMatches);
     const [selectedMatch, setSelectedMatch] = useState('');
@@ -56,6 +56,7 @@ export default function MatchScreen({ route }) {
     
     const onMatchSelection = (matchName) => {
         setSelectedMatch(matchName);
+        navigation.navigate('MatchProfileScreen', { selectedMatch: matchName })
     }
 
     return (

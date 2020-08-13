@@ -31,7 +31,7 @@ export default function CoursesScreen({ navigation }) {
 
     const onCourseSelection = (courseName) => {
         setSelectedCourse(courseName);
-        navigation.navigate('MatchScreen', {selectedCourse: courseName})
+        navigation.navigate('MatchScreen', { selectedCourse: courseName })
     }
 
     const onPreferencesHyperlink = () => {
