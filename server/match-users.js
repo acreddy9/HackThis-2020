@@ -8,6 +8,8 @@ const user = firebase.auth().currentUser;
 /* 
 Search through users collection for document with the name parameter field. 
 Returns uid of that doc
+
+Currently not being used..
 */
 const nameToUid = (name) => {
 
@@ -188,10 +190,26 @@ const matchUsers = (currUser) => {
         });
     });
 
-    firstName = nameToUid(firstMatch[0]);
-    secondName = nameToUid(secondMatch[0]);
-    thirdName = nameToUid(thirdMatch[0]);
-    fourthName = nameToUid(fourthMatch[0]);
+    /* retrieve name fields from the doc of these 4 matching UIDs */
+    const firstName;
+    db.collection("users").doc(firstMatch[0]).get().then(documentSnapshot => {
+        firstName = documentSnapshot.get("name");
+    });
+
+    const secondName;
+    db.collection("users").doc(secondMatch[0]).get().then(documentSnapshot => {
+        secondName = documentSnapshot.get("name");
+    });
+
+    const thirdName;
+    db.collection("users").doc(thirdMatch[0]).get().then(documentSnapshot => {
+        thirdName = documentSnapshot.get("name");
+    });
+
+    const fourthName;
+    db.collection("users").doc(fourthMatch[0]).get().then(documentSnapshot => {
+        fourthName = documentSnapshot.get("name");
+    });
 
     /* add these 4 uids to prev matched list */
     setPrevMatch(firstMatch[0]);
