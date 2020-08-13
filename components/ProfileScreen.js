@@ -9,13 +9,12 @@ import Checkbox from 'react-native-custom-checkbox';
 import { State } from 'react-native-gesture-handler';
 //import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
 
-var Years = [
+const Years = [
     //name key is must.It is to show the text in front
     { id: 1, name: 'Freshman' },
     { id: 2, name: 'Sophomore' },
     { id: 3, name: 'Junior' },
-    { id: 4, name: 'Senior' },
-    
+    { id: 4, name: 'Senior' }
   ];
 
   var Majors = [
@@ -27,15 +26,13 @@ var Years = [
     { id: 4, name: 'Business' },
     { id: 4, name: 'Music' },
     { id: 4, name: 'Computer Engineering' },
-    
   ];
   
-  
+  const onAddCourse = () => {
+    // TODO
+  }
 
-function ProfileScreen ({ route }) {
-
-  
-
+export default function ProfileScreen ({ route }) {
 
     const userID = route.params.data.id;
 
@@ -76,12 +73,12 @@ function ProfileScreen ({ route }) {
     
 
     return (
-        
-        <View style={styles.container}>
+        <View style={[styles.container, {marginBottom: -950}]}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                {/* <Text>Hi, {userID}.</Text> */}
+
+                {/* Press profile picture to edit */}
                 <TouchableOpacity onPress={openImagePickerAsync}>
                     {imageSelected 
                     ? <Image 
@@ -94,6 +91,7 @@ function ProfileScreen ({ route }) {
                     }
                 </TouchableOpacity>
 
+                {/* Tap to enter name, pronouns, bio next to their section headers  */}
                 <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Name</Text>
                 <TextInput
@@ -119,72 +117,77 @@ function ProfileScreen ({ route }) {
                     autoCapitalize="none"
                 />
                 <GreyHorizontalLine />
-                <View style = {styles.year_text}>
-                <Text style={styles.profileSectionHeader}>Year</Text> 
-                </View>
-                    
-                    <View style = {styles.SearchableDroppie_year}>
+
+
+                {/* Select academic year from dropdown */}
+                <Text style={[styles.profileSectionHeader, {top: 30}]}>Year</Text> 
+                <View style = {styles.SearchableDroppie_year}>
                     <SearchableDropdown 
-                    
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => setYear(item.name)}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Years}
-                    //mapping of item array
-                    //defaultIndex={0}
-                    //default selected item index
-                    placeholder="Your academic year"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
+                        /*
+                        onItemSelect={(item) => setSchool(item)}
+                        containerStyle={{maxHeight: "70%"}}
+                        itemStyles={[styles.dropdownItem, {
+                          padding: 7,
+                          marginTop: 0,
+                          backgroundColor: '#FFF',
+                          borderColor: '#626262',}]}
+                        itemTextStyle={styles.dropdownItemText}
+                        itemsContainerStyle={[styles.dropdownItemContainer, {borderRadius: 7}]}
+                        items={Years}
+                        resetValue={false}
+                        nestedScrollEnabled={true}
+                        setSort={(item, searchedText)=> item.name.toLowerCase().startsWith(searchedText.toLowerCase())}
+                        textInputProps={{
+                            placeholder: "Select your academic year",
+                            placeholderTextColor: "#aaaaaa",
+                            underlineColorAndroid: "transparent",
+                            style: styles.dropdownInputProps,
+                        }}
+                        */
+                        
+                        onTextChange={text => console.log(text)}
+                        onItemSelect={item => setYear(item.name)}
+                        containerStyle={[styles.dropdownContainer, {width: 200, maxHeight: 20}]}
+                        textInputStyle={{ //inserted text style
+                          padding: 7,
+                          borderColor: '#626262',
+                          backgroundColor: '#FFF',
+                          borderWidth: 1,
+                          borderRadius: 7
+                        }}
+                        itemStyle={{ // single dropdown item style
+                          padding: 7,
+                          //marginTop: 0,
+                          backgroundColor: '#FFF',
+                          borderColor: '#626262',
+                        }}
+                        itemTextStyle={{ // single dropdown item's text style
+                          color: '#222',
+                        }}
+                        itemsContainerStyle={{ // items container style you can pass maxHeight to restrict the items dropdown hieght
+                          //maxHeight: '80%',
+                          maxHeight: 400,
+                          borderWidth: 0.2,
+                          borderRadius: 7
+                        }}
+                        items={Years}
+                        textInputProps={{
+                          placeholder: "Select your academic year",
+                          placeholderTextColor: "#aaaaaa",
+                          underlineColorAndroid: "transparent",
+                          //style: styles.dropdownInputProps,
+                        }}
+                      />
                   </View>
         
                     
 
 
    
-                  <View style = {styles.major_text}>
-                <Text style={styles.profileSectionHeader}>Major</Text> 
-                
-                </View>
+                <Text style={[styles.profileSectionHeader, {bottom: 10}]}>Major</Text> 
 
                     
-                    <View style={styles.SearchableDroppie_major}>
+                    <View style={[styles.SearchableDroppie_year, {bottom: 48}]}>
                     <SearchableDropdown
                     onTextChange={text => console.log(text)}
                     //On text change listner on the searchable input
@@ -235,12 +238,10 @@ function ProfileScreen ({ route }) {
         
                     </View>
                 
-                <View style={styles.courses_text}>
-                <Text style={styles.profileSectionHeader}>Courses</Text> 
-                <TouchableOpacity>
+                <Text style={[styles.profileSectionHeader, {bottom: 40}]}>Courses</Text> 
+                <TouchableOpacity onPress={onAddCourse}>
                   <Text style={styles.addacourse_text}>+ Add a course</Text>
                 </TouchableOpacity>
-                </View>
 
 
                 <View style={styles.SearchableDroppie_course1}>
@@ -1114,4 +1115,3 @@ function ProfileScreen ({ route }) {
       
     );
 };
-export default ProfileScreen;

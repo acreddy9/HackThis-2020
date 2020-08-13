@@ -29,8 +29,8 @@ export default function LoginScreen({navigation}) {
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-{/*             <LoginIllustration width={383} height={304} margin={20} alignSelf={"center"}/> 
- */}
+            <LoginIllustration width={350} height={270} marginTop={20} alignSelf={"center"}/> 
+
             <TextInput
                 style={styles.input}
                 placeholder='School e-mail'
@@ -49,7 +49,7 @@ export default function LoginScreen({navigation}) {
                 autoCapitalize="none"
             />
             <TouchableOpacity
-                style={styles.button}
+                style={[styles.button, {marginTop: 20}]}
                 onPress={() => onLoginPress()}>
                 <Text style={styles.buttonTitle}>LOG IN</Text>
             </TouchableOpacity>

@@ -20,7 +20,6 @@ export default StyleSheet.create({
     subtitle: {
         alignSelf: "center",
         textAlign: "center",
-        padding: 25,
         color: "#3d3d3d",
         fontSize: 20,
         fontFamily: "Ubuntu-Light"
@@ -40,12 +39,13 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Light",
     },
     dropdownItemText: {
-        color: "#222"
+        color: "#222",
+        marginLeft: 10,
+        margin: 10
     },
     dropdownItemContainer: {
         maxHeight: 140,
-        alignSelf: "stretch",
-        marginLeft: 0
+        color: "#aaa",
     },
     dropdownInputProps: {
         padding: 12,
@@ -67,7 +67,7 @@ export default StyleSheet.create({
         padding: 10,
         width: 300,
         marginLeft: 50,
-        margin:5,
+        margin: 5,
         marginRight: 50,
         borderBottomColor: '#e6e3e3',
         borderBottomWidth: 1,
@@ -95,7 +95,7 @@ export default StyleSheet.create({
     footerView: {
         flex: 1,
         alignItems: "center",
-        marginTop: 20
+        marginTop: 10
     },
     footerText: {
         marginBottom: 5,
@@ -156,7 +156,7 @@ export default StyleSheet.create({
         borderColor: "#6c63ff"
     },
     profileSectionHeader: {
-        marginLeft: 30,
+        marginLeft: 20,
         marginTop: 10,
         marginBottom: 10,
         color: '#3d3d3d',
@@ -197,25 +197,10 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Light"
     },
     SearchableDroppie_year: {
-        width: 271,
+        width: 262,
         height: 50,
-        left: 110,
-        bottom: 30
-    },
-    year_text: {
-        top: 10  
-    },
-    major_text: {
-        bottom: 20  
-    },
-    SearchableDroppie_major: {
-        width: 271,
-        height: 50,
-        left: 110,
-        bottom: 60
-    },
-    courses_text: {
-        bottom: 45  
+        left: 90,
+        bottom: 5
     },
     SearchableDroppie_course1: {
         width: 175,
@@ -244,8 +229,8 @@ export default StyleSheet.create({
     addacourse_text: {
         fontFamily:"Ubuntu-Medium",
         color:'#6C63FF',
-        marginLeft: 288,
-        bottom: 20,
+        marginLeft: 260,
+        bottom: 65,
         marginBottom: -30
     },
     learnstyle_text: {

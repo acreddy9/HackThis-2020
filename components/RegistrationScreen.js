@@ -36,26 +36,26 @@ export default function RegistrationScreen({navigation}, props) {
                 <Text style={styles.appName}>Lorem</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
                 
-{/*                <RegistrationIllustration width={383} height={304} marginBottom={20} alignSelf={"center"}/> 
- */}                
+                <RegistrationIllustration width={325} height={230} margin={20} alignSelf={"center"}/>                 
+                
                 <SearchableDropdown
                     onItemSelect={(item) => setSchool(item)}
-                    containerStyle={styles.dropdownContainer} this messes things up idk why
+                    containerStyle={styles.dropdownContainer}
                     itemStyles={styles.dropdownItem}
-                    itemTextStyle={styles.dropdownItem}
+                    itemTextStyle={styles.dropdownItemText}
                     itemsContainerStyle={styles.dropdownItemContainer}
                     items={schools}
                     resetValue={false}
                     nestedScrollEnabled={true}
                     setSort={(item, searchedText)=> item.name.toLowerCase().startsWith(searchedText.toLowerCase())}
                     textInputProps={{
-                            placeholder: "Select your school",
-                            placeholderTextColor: "#aaaaaa",
-                            underlineColorAndroid: "transparent",
-                            style: styles.dropdownInputProps,
+                        placeholder: "Select your school",
+                        placeholderTextColor: "#aaaaaa",
+                        underlineColorAndroid: "transparent",
+                        style: styles.dropdownInputProps,
                     }}
                 />
-                <FontAwesome name="caret-down" size={24} color="#3d3d3d" style={{alignSelf: "center"}}/> 
+                <FontAwesome name="caret-down" size={24}  color="#6c63ff" style={{position: "absolute", top: 360, left: 300}}/>
                 <TextInput
                     style={styles.input}
                     placeholder='School e-mail'
@@ -74,7 +74,7 @@ export default function RegistrationScreen({navigation}, props) {
                     autoCapitalize="none"
                 />
                 <TouchableOpacity
-                    style={styles.button}
+                    style={[styles.button, {marginTop: 20}]}
                     onPress={() => onRegisterPress()}>
                     <Text style={styles.buttonTitle}>SIGN UP</Text>
                 </TouchableOpacity>
