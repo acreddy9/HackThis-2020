@@ -47,7 +47,7 @@ export default function PreferencesScreen ({route, navigation}) {
                         onValueChange={toggleSwitch}
                         value={isEnabled}
                         trackColor={{ false: "#979797", true: "#6c63ff" }}
-                        ios_backgroundColor="#3d3d3d"
+                        ios_backgroundColor="#aaa"
                     />
                 </View>
                     
@@ -103,56 +103,62 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <Text style={[styles.footerText, styles.prefSwitchText]}>Same year</Text>
                 <Switch
-                    style={{position: "absolute", top: 175, left: 275}}
+                    style={{position: "absolute", top: 188, left: 275}}
                     onValueChange={() => setYearSwitch(previousState => !previousState)}
                     value={yearSwitch}
+                    disabled={!isEnabled}
                     trackColor={{ false: "#aaa", true: "#6c63ff" }}
-                    ios_backgroundColor={isEnabled ? "#aaa" : "#3d3d3d"}
+                    ios_backgroundColor={"#aaa"}
                 />
 
                 <Text style={styles.prefSwitchText}>Same major</Text>
                 <Switch
-                    style={{position: "absolute", top: 224, left: 275}}
+                    style={{position: "absolute", top: 237, left: 275}}
                     onValueChange={() => setMajorSwitch(previousState => !previousState)}
                     value={majorSwitch}
+                    disabled={!isEnabled}
                     trackColor={{ false: "#aaa", true: "#6c63ff" }}
-                    ios_backgroundColor={isEnabled ? "#aaa" : "#3d3d3d"}
+                    ios_backgroundColor={"#aaa"}
                 />
 
                 <Text style={styles.prefSwitchText}>Same learning style</Text>
                 <Switch
-                    style={{position: "absolute", top: 273, left: 275}}
+                    style={{position: "absolute", top: 286, left: 275}}
                     onValueChange={() => setLearnSwitch(previousState => !previousState)}
                     value={learnSwitch}
+                    disabled={!isEnabled}
                     trackColor={{ false: "#aaa", true: "#6c63ff" }}
-                    ios_backgroundColor={isEnabled ? "#aaa" : "#3d3d3d"}
+                    ios_backgroundColor={"#aaa"}
                 />
 
                 <Text style={styles.prefSwitchText}>Same communication style</Text>
                 <Switch
-                    style={{position: "absolute", top: 322, left: 275}}
+                    style={{position: "absolute", top: 335, left: 275}}
                     onValueChange={() => setCommSwitch(previousState => !previousState)}
                     value={commSwitch}
+                    disabled={!isEnabled}
                     trackColor={{ false: "#aaa", true: "#6c63ff" }}
-                    ios_backgroundColor={isEnabled ? "#aaa" : "#3d3d3d"}
+                    ios_backgroundColor={"#aaa"}
                 />
 
     <           Text style={styles.prefSwitchText}>Similar availability</Text>
                 <Switch
-                    style={{position: "absolute", top: 371, left: 275}}
+                    style={{position: "absolute", top: 384, left: 275}}
                     onValueChange={() => setAvailabilitySwitch(previousState => !previousState)}
                     value={availabilitySwitch}
+                    disabled={!isEnabled}
                     trackColor={{ false: "#aaa", true: "#6c63ff" }}
-                    ios_backgroundColor={isEnabled ? "#aaa" : "#3d3d3d"}
+                    ios_backgroundColor={"#aaa"}
                 />
 
                 <Text style={styles.prefSwitchText}>Similar interests</Text>
                 <Switch
-                    style={{position: "absolute", top: 420, left: 275}}
+                    style={{position: "absolute", top: 433, left: 275}}
                     onValueChange={() => setInterestSwitch(previousState => !previousState)}
                     value={interestSwitch}
+                    disabled={!isEnabled}
                     trackColor={{ false: "#aaa", true: "#6c63ff" }}
-                    ios_backgroundColor={isEnabled ? "#aaa" : "#3d3d3d"}
+                    ios_backgroundColor={"#aaa"}
                 />
 
                 <View style={styles.prefButtonContainer}>

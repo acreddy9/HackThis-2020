@@ -23,12 +23,11 @@ Header.defaultProps = {
 
 const styles = StyleSheet.create({
   header: {
-    height: 62,
-    padding: 10,
+    padding: 5,
   },
   text: {
     color: '#6c63ff',
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'center',
     fontFamily: "Ubuntu-Medium"
   },

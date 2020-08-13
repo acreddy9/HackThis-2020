@@ -278,7 +278,7 @@ export default StyleSheet.create({
         backgroundColor: "#E6E6E6",
         marginLeft: 100,
         marginRight: 100,
-        marginTop: 5,
+        marginTop: 20,
         height: 48,
         width: 300,
         paddingHorizontal: 20,
@@ -341,19 +341,12 @@ export default StyleSheet.create({
         maxHeight: 1,
         fontFamily: "Ubuntu-Light"
     },
-    percentGreen: {
+    percent: {
+        position: "absolute",
+        top: 35,
+        left: 290,
         color: '#8DD8AA',
-        fontSize: 25,
-        fontFamily: "Ubuntu-Medium"
-    },
-    percentYellow: {
-        color: '#F2CB60',
-        fontSize: 25,
-        fontFamily: "Ubuntu-Medium"
-    },
-    percentRed: {
-        color: '#E36674',
-        fontSize: 25,
+        fontSize: 20,
         fontFamily: "Ubuntu-Medium"
     },
     whiteSpace: {
