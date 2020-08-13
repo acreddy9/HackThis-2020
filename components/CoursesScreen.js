@@ -42,13 +42,15 @@ export default function CoursesScreen({ navigation }) {
         return (
             <View style={styles.container}>
                 <Header title={"My Courses"}/>
-                <FlatList
-                    data={courses}
-                    renderItem={renderItem}
-                    //keyExtractor={(course) => course.id}
-                    extraData={selectedCourse}
-                    //ListEmptyComponent=
-                />
+                <View style={{paddingTop: 18}}>
+                    <FlatList
+                        data={courses}
+                        renderItem={renderItem}
+                        //keyExtractor={(course) => course.id}
+                        extraData={selectedCourse}
+                        //ListEmptyComponent=
+                    />
+                </View>
             </View>
         )
     } else {

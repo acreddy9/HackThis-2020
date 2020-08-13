@@ -36,8 +36,8 @@ export default function RegistrationScreen({navigation}, props) {
                 <Text style={styles.appName}>Lorem</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
                 
-               <RegistrationIllustration width={383} height={304} marginBottom={20} alignSelf={"center"}/> 
-                
+{/*                <RegistrationIllustration width={383} height={304} marginBottom={20} alignSelf={"center"}/> 
+ */}                
                 <SearchableDropdown
                     onItemSelect={(item) => setSchool(item)}
                     containerStyle={styles.dropdownContainer} this messes things up idk why

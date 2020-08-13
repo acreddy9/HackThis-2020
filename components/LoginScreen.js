@@ -29,8 +29,8 @@ export default function LoginScreen({navigation}) {
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
-            <LoginIllustration width={383} height={304} margin={20} alignSelf={"center"}/> 
-
+{/*             <LoginIllustration width={383} height={304} margin={20} alignSelf={"center"}/> 
+ */}
             <TextInput
                 style={styles.input}
                 placeholder='School e-mail'

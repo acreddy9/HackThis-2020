@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import GreyHorizontalLine from './GreyHorizontalLine.js';
 import Checkbox from 'react-native-custom-checkbox';
 import SearchableDropdown from 'react-native-searchable-dropdown';
-import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
+//import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
 
 var Years = [
     //name key is must.It is to show the text in front

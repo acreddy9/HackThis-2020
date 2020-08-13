@@ -19,7 +19,8 @@ export default function MatchScreen({ route }) {
     const { selectedCourse } = route.params;
     return (
         <View style={styles.container}>
-            <Header title={selectedCourse}/> 
+            <Header title={selectedCourse}/>
+             
             <TouchableOpacity style={styles.button} onPress={() => onMatchMe()}>
                 <Text style={styles.buttonTitle}>MATCH ME</Text>
             </TouchableOpacity>
