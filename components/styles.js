@@ -456,8 +456,7 @@ export default StyleSheet.create({
     },
     percent: {
         position: "absolute",
-        top: 35,
-        left: 290,
+        left: 295,
         color: '#8DD8AA',
         fontSize: 20,
         fontFamily: "Ubuntu-Medium"

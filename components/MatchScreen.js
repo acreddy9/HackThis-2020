@@ -28,6 +28,7 @@ const Item = ({ item, onPress, style }) => (
                 left: 15 
             }} source={item.pic} />
         <Text style={[styles.courseName, {marginLeft: 75}]}>{item.matchName}</Text>
+        <Text style={{fontSize: 40, color: "#aaa", position: "absolute", left: 280}}>|</Text>
         <Text numberOfLines={1} style={[styles.professor, {marginLeft: 75, width: 180}]}>{item.bio}</Text>
         <Text style={item.percentage>=70 ? styles.percent : (item.percentage>=30 ? [styles.percent, {color: "#F2CB60"}] : [styles.percent, {color: "#E36674"}])}> 
             {item.percentage}%
