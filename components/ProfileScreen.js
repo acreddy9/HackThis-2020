@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Text, TextInput, View, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -6,7 +6,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import GreyHorizontalLine from './GreyHorizontalLine.js';
 import Checkbox from 'react-native-custom-checkbox';
 import SearchableDropdown from 'react-native-searchable-dropdown';
-//import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
+import {setUserProperties, setUserCourses} from '../server/userPrefs'
+import { firebase } from '../server/config';
 
 var Years = [
     //name key is must.It is to show the text in front
@@ -14,7 +15,7 @@ var Years = [
     { id: 2, name: 'Sophomore' },
     { id: 3, name: 'Junior' },
     { id: 4, name: 'Senior' },
-    
+
   ];
 
   var Majors = [
@@ -26,9 +27,9 @@ var Years = [
     { id: 4, name: 'Business' },
     { id: 4, name: 'Music' },
     { id: 4, name: 'Computer Engineering' },
-    
+
   ];
-  
+
 
 function ProfileScreen ({ route }) {
     const userID = route.params.data.id;
@@ -40,7 +41,22 @@ function ProfileScreen ({ route }) {
     const [major, setMajor] = useState('');
     const [year, setYear] = useState('');
 
-   
+    useEffect(() => {
+      const usersRef = firebase.firestore().collection('users');
+      usersRef.doc(userID).get().then((document) => {
+        const userData = document.data()
+        if(userData.name){
+          setName(userData.name)
+        }
+        if(userData.bio) {
+          setBio(userData.bio)
+        }
+        if(userData.pronouns){
+          setPronouns(userData.pronouns)
+        }
+      })
+    });
+
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -58,11 +74,17 @@ function ProfileScreen ({ route }) {
         setSelectedImage({ localUri: pickerResult.uri });
     };
 
+
+
     const saveChanges = () => {
-        setUserName(name)
-        setUserBio(bio)
-        setUserMajor(major)
-        setUserYear(year)
+        const user = {
+          name,
+          pronouns,
+          major,
+          bio,
+          year
+        }
+        setUserProperties(userID, user)
     }
 
     const imageSelected = selectedImage !== null;
@@ -74,8 +96,8 @@ function ProfileScreen ({ route }) {
                 keyboardShouldPersistTaps="always">
                 {/* <Text>Hi, {userID}.</Text> */}
                 <TouchableOpacity onPress={openImagePickerAsync}>
-                    {imageSelected 
-                    ? <Image 
+                    {imageSelected
+                    ? <Image
                         source={{ uri: selectedImage.localUri }}
                         style={styles.profilePic}
                     /> : <Image
@@ -111,12 +133,12 @@ function ProfileScreen ({ route }) {
                 />
                 <GreyHorizontalLine />
                 <View style = {styles.year_text}>
-                <Text style={styles.profileSectionHeader}>Year</Text> 
+                <Text style={styles.profileSectionHeader}>Year</Text>
                 </View>
-                    
+
                     <View style = {styles.SearchableDroppie_year}>
-                    <SearchableDropdown 
-                    
+                    <SearchableDropdown
+
                     onTextChange={text => console.log(text)}
                     //On text change listner on the searchable input
                     onItemSelect={item => setYear(item.name)}
@@ -137,9 +159,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -164,17 +186,17 @@ function ProfileScreen ({ route }) {
                     //To remove the underline from the android input
                   />
                   </View>
-        
-                    
 
 
-   
+
+
+
                   <View style = {styles.major_text}>
-                <Text style={styles.profileSectionHeader}>Major</Text> 
-                
+                <Text style={styles.profileSectionHeader}>Major</Text>
+
                 </View>
 
-                    
+
                     <View style={styles.SearchableDroppie_major}>
                     <SearchableDropdown
                     onTextChange={text => console.log(text)}
@@ -197,9 +219,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -223,11 +245,11 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
-                
+
                 <View style={styles.courses_text}>
-                <Text style={styles.profileSectionHeader}>Courses</Text> 
+                <Text style={styles.profileSectionHeader}>Courses</Text>
                 <TouchableOpacity>
                   <Text style={styles.addacourse_text}>+ Add a course</Text>
                 </TouchableOpacity>
@@ -256,9 +278,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -282,7 +304,7 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
 
@@ -308,9 +330,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -334,7 +356,7 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
                     <View style={styles.SearchableDroppie_course3}>
@@ -359,9 +381,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -385,7 +407,7 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
                     <View style={styles.SearchableDroppie_course4}>
@@ -410,9 +432,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -436,13 +458,13 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
                 <View style={styles.learnstyle_text}>
-                <Text style={styles.profileSectionHeader}>Learning style</Text> 
+                <Text style={styles.profileSectionHeader}>Learning style</Text>
                 <Text style={styles.profileSectionText}>Rank in order of preference</Text>
-               
+
                 </View>
                 <View style={styles.SearchableDroppie_learn1}>
                     <SearchableDropdown
@@ -466,9 +488,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -492,7 +514,7 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
                     <View style={styles.SearchableDroppie_learn2}>
@@ -517,9 +539,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -543,7 +565,7 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
                     <View style={styles.SearchableDroppie_learn3}>
@@ -568,9 +590,9 @@ function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
+
+
+
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -594,7 +616,7 @@ function ProfileScreen ({ route }) {
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
                   />
-        
+
                     </View>
 
 
@@ -606,18 +628,18 @@ function ProfileScreen ({ route }) {
 
 
                 <View style ={styles.comm_text}>
-                <Text style={styles.profileSectionHeader}>Communication Style</Text> 
-                <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
+                <Text style={styles.profileSectionHeader}>Communication Style</Text>
+                <Text style={styles.profileSectionText}>Rank in order of preference</Text>
                 </View>
-                    
-                
-                <Text style={styles.profileSectionHeader}>Availability</Text> 
+
+
+                <Text style={styles.profileSectionHeader}>Availability</Text>
                     {/* TODO: checkboxes */
                     <Checkbox
                     checked={true}
                     style={{backgroundColor: '#FFF', color:'#6C63FF', borderColor: '#707070', borderWidth: 1, margin: 10, borderRadius: 5}}
                     />
-                    
+
                     }
 
                 <Text style={styles.profileSectionHeader}>Interests</Text>
@@ -633,8 +655,8 @@ function ProfileScreen ({ route }) {
                   <Text style={styles.buttonTitle}>SAVE CHANGES</Text>
                 </TouchableOpacity>
 
-            
-                
+
+
             </KeyboardAwareScrollView>
       </View>
     );
