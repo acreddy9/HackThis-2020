@@ -11,7 +11,7 @@ const Header = ({ title }) => {
           borderBottomWidth: 1,
           left: 0,
           width: 400,
-          padding: 10
+          marginTop: 20,
       }}/>
     </View>
   );
