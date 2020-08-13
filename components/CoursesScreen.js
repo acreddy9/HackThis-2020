@@ -5,7 +5,7 @@ import  Header  from './Header.js';
 import CoursesIllustration from "../assets/courses-illustration.svg";
 
 const matchFeatureOn = true; // set to true to test course tile display
-const courses = [
+var courses = [
     { courseName: "CS 200", professor: "Mark Renault" },
     { courseName: "PSYCH 225", professor: "Allyson Bennett" },
     { courseName: "MATH 233", professor: "Diane Tucker" },
@@ -31,7 +31,7 @@ export default function CoursesScreen({ navigation }) {
 
     const onCourseSelection = (courseName) => {
         setSelectedCourse(courseName);
-        navigation.navigate('MatchScreen', {selectedCourse: courseName})
+        navigation.navigate('MatchScreen', { selectedCourse: courseName })
     }
 
     const onPreferencesHyperlink = () => {
