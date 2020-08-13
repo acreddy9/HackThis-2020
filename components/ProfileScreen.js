@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Text, TextInput, View, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -6,7 +6,9 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import GreyHorizontalLine from './GreyHorizontalLine.js';
 import Checkbox from 'react-native-custom-checkbox';
 import SearchableDropdown from 'react-native-searchable-dropdown';
-import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
+import {setUserProperties, setUserCourses} from '../server/userPrefs'
+import { firebase } from '../server/config';
+
 
 var Years = [
     //name key is must.It is to show the text in front
@@ -39,8 +41,23 @@ function ProfileScreen ({ route }) {
     const [bio, setBio] = useState('');
     const [major, setMajor] = useState('');
     const [year, setYear] = useState('');
+    
+    useEffect(() => {
+      const usersRef = firebase.firestore().collection('users');
+      usersRef.doc(userID).get().then((document) => {
+        const userData = document.data()
+        if(userData.name){
+          setName(userData.name)
+        }
+        if(userData.bio) {
+          setBio(userData.bio)
+        }
+        if(userData.pronouns){
+          setPronouns(userData.pronouns)
+        }
+      })
+    });
 
-   
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -58,11 +75,17 @@ function ProfileScreen ({ route }) {
         setSelectedImage({ localUri: pickerResult.uri });
     };
 
+    
+
     const saveChanges = () => {
-        setUserName(name)
-        setUserBio(bio)
-        setUserMajor(major)
-        setUserYear(year)
+        const user = {
+          name,
+          pronouns,
+          major,
+          bio,
+          year
+        }
+        setUserProperties(userID, user)
     }
 
     const imageSelected = selectedImage !== null;
