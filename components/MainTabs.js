@@ -42,9 +42,13 @@ function MainTabs(props) {
                 activeTintColor: "#ffffff",
                 inactiveTintColor: "#ffffff",
                 activeBackgroundColor: "#AFABF2",
+                
                 adaptive: true,
                 tabStyle: {
                     padding: 0, margin: 10,
+                    borderRadius: 20,
+                    width: 84,
+                    height: 50
                 },
                 style: {
                     backgroundColor: "#6c63ff",
