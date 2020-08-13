@@ -24,7 +24,7 @@ function MainTabs(props) {
                         iconName = focused ? "md-person" : "md-person";
                     } else if (route.name === "Preferences") {
                         iconName = focused ? "md-settings" : "md-settings";
-                    } else if (route.name === "Courses") {
+                    } else if (route.name === "Match") {
                         iconName = focused ? "md-heart" : "md-heart";
                     } else if (route.name === "Chat") {
                         iconName = focused ? "ios-chatbubbles" : "ios-chatbubbles";

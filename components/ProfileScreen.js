@@ -606,7 +606,7 @@ function ProfileScreen ({ route }) {
 
 
                 <View style ={styles.comm_text}>
-                <Text style={styles.profileSectionHeader}>Mode of Communication</Text> 
+                <Text style={styles.profileSectionHeader}>Communication Style</Text> 
                 <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
                 </View>
                     
@@ -620,10 +620,6 @@ function ProfileScreen ({ route }) {
                     
                     }
 
-                <Text style={styles.profileSectionHeader}>Learning Styles</Text> 
-                <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
-                    {/* TODO: dropdowns */}
-
                 <Text style={styles.profileSectionHeader}>Interests</Text>
 
                 <Checkbox
@@ -634,7 +630,7 @@ function ProfileScreen ({ route }) {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => saveChanges()}>
-                  <Text style={styles.buttonTitle}>Save Changes</Text>
+                  <Text style={styles.buttonTitle}>SAVE CHANGES</Text>
                 </TouchableOpacity>
 
             

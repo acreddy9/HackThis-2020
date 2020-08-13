@@ -77,7 +77,7 @@ export default StyleSheet.create({
         backgroundColor: '#6c63ff',
         marginLeft: 100,
         marginRight: 100,
-        marginTop: 20,
+        margin: 5,
         height: 48,
         width: 250,
         paddingHorizontal: 20,
@@ -126,13 +126,12 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
         borderRadius: 10,
         alignSelf: "center",
-        textAlign: "left",
+        alignItems: "center",
         justifyContent: "center",
         shadowColor: "#000", // IOS
         shadowOffset: { height: 3, width: 3 }, // IOS
         shadowOpacity: 0.1, // IOS
         shadowRadius: 1, //IOS
-        //backgroundColor: '#fff',
         elevation: 2, // Android
     },
     courseName: {
@@ -200,54 +199,45 @@ export default StyleSheet.create({
     SearchableDroppie_year: {
         width: 271,
         height: 50,
-        position: "relative",
         left: 110,
         bottom: 30
     },
     year_text: {
-        position: "relative",
         top: 10  
     },
     major_text: {
-        position: "relative",
         bottom: 20  
     },
     SearchableDroppie_major: {
         width: 271,
         height: 50,
-        position: "relative",
         left: 110,
         bottom: 60
     },
     courses_text: {
-        position: "relative",
         bottom: 45  
     },
     SearchableDroppie_course1: {
         width: 175,
         height: 50,
-        position: "relative",
         marginLeft: 25,
         bottom: 30
     },
     SearchableDroppie_course2: {
         width: 175,
         height: 50,
-        position: "relative",
         marginLeft: 205,
         bottom: 80
     },
     SearchableDroppie_course3: {
         width: 175,
         height: 50,
-        position: "relative",
         marginLeft: 25,
         bottom: 80,
     },
     SearchableDroppie_course4: {
         width: 175,
         height: 50,
-        position: "relative",
         marginLeft: 205,
         bottom: 130,
     },
@@ -255,88 +245,118 @@ export default StyleSheet.create({
         fontFamily:"Ubuntu-Medium",
         color:'#6C63FF',
         marginLeft: 288,
-        position:'relative',
         bottom: 20,
         marginBottom: -30
     },
     learnstyle_text: {
-        position: "relative",
         bottom: 110,
     },
     SearchableDroppie_learn1: {
         width: 160,
         height: 50,
-        position: "relative",
         marginLeft: 220,
         bottom: 160,
     },
     SearchableDroppie_learn2: {
         width: 160,
         height: 50,
-        position: "relative",
         marginLeft: 220,
         bottom: 160,
     },
     SearchableDroppie_learn3: {
         width: 160,
         height: 50,
-        position: "relative",
         marginLeft: 220,
         bottom: 160,
     },
     comm_text: {
-        position: "relative",
         bottom: 110,
     },
 
     // Preferences -------------------------------------------------------------------------
-    matchSwitchContainer: {
+    matchFeatureSwitchContainer: {
         backgroundColor: "#E6E6E6",
         marginLeft: 100,
         marginRight: 100,
-        marginTop: 20,
+        marginTop: 5,
         height: 48,
-        width: 250,
+        width: 300,
         paddingHorizontal: 20,
         borderRadius: 20,
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "center"
     },
+    matchFeatureText: {
+        position: "absolute",
+        left: 0,
+        color: "#505050"
+    },
     prefSectionHeader: {
         alignSelf: "center",
-        marginLeft: 30,
-        marginTop: 10,
-        marginBottom: 10,
+        margin: 20,
         color: "#3d3d3d",
+        fontSize: 16,
         fontFamily: "Ubuntu-Medium"
     },
+    prefDropdown: {
+        width: 300,
+        height: 50,
+        marginBottom: 5,
+        alignSelf: "center"
+    },
     prefSwitchText: {
-        marginBottom: 10,
-        marginLeft: 20,
-        marginRight: 20,
-        textAlign: "center",
+        marginTop: 15,
+        marginBottom: 15,
+        marginLeft: 55,
+        //width: 170,
+        alignSelf: "flex-start",
         fontSize: 16,
-        color: "#aaa",
+        color: "#505050",
         fontFamily: "Ubuntu-Light"
     },
     prefButtonContainer: {
         backgroundColor: "#E6E6E6",
-        width: 500,
-        height: 500,
-        borderRadius: 30
+        alignSelf: "stretch",
+        height: 255,
+        marginTop: 30,
+        padding: 10,
+        borderTopLeftRadius: 50,
+        borderTopRightRadius: 50,
     },
-    deleteAccountButton: {
-        backgroundColor: "#E36674",
-        marginLeft: 100,
-        marginRight: 100,
-        marginTop: 20,
-        height: 48,
-        width: 250,
-        paddingHorizontal: 20,
-        borderRadius: 20,
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center"
+    prefButton: {
+        margin: 20,
+    },
+
+    // Matches -------------------------------------------------------------------------
+    matchTile: { // use style={styles.courseTile, styles.matchTile}
+        height: 95,
+        width: 350,
+        alignItems: "flex-start"
+    },
+    matchTileBio: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        maxWidth: 300,
+        maxHeight: 1,
+        fontFamily: "Ubuntu-Light"
+    },
+    percentGreen: {
+        color: '#8DD8AA',
+        fontSize: 25,
+        fontFamily: "Ubuntu-Medium"
+    },
+    percentYellow: {
+        color: '#F2CB60',
+        fontSize: 25,
+        fontFamily: "Ubuntu-Medium"
+    },
+    percentRed: {
+        color: '#E36674',
+        fontSize: 25,
+        fontFamily: "Ubuntu-Medium"
+    },
+    whiteSpace: {
+        paddingTop: 0
     },
 })
