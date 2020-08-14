@@ -19,14 +19,23 @@ const Item = ({ item, onPress, style }) => (
     </TouchableOpacity>
 );
 
-export default function CoursesScreen({ navigation }) {
+export default function CoursesScreen({ route, navigation }) {
 
     const [selectedCourse, setSelectedCourse] = useState('');
 
-    const renderItem = ({item}) => {
-        return (
-            <Item item={item} onPress={() => onCourseSelection(item.courseName)} />
-        );
+    const renderItem = ({item, index}) => {
+        if (index==0) {
+            return (
+                <>
+                <Text style={{padding:0}}></Text>
+                <Item item={item} onPress={() => onCourseSelection(item.courseName)} />
+                </>
+            );
+        } else{ 
+            return (
+                <Item item={item} onPress={() => onCourseSelection(item.courseName)} />
+            );
+        }
     }
 
     const onCourseSelection = (courseName) => {
@@ -42,7 +51,7 @@ export default function CoursesScreen({ navigation }) {
         return (
             <View style={styles.container}>
                 <Header title={"My Courses"}/>
-                <View style={{paddingTop: 18}}>
+                <View>
                     <FlatList
                         data={courses}
                         renderItem={renderItem}
