@@ -27,34 +27,41 @@ const setMatchEnable = (uid, val) => {
   }, {merge: true})
 }
 
-// const setUserName = (name) => {
-//   db.collection('users').doc(user.uid).set({
-//     name
-//   }, {merge: true})
-// }
-
-// const setUserBio = (bio) => {
-//   db.collection('users').doc(user.uid).set({
-//     bio
-//   }, {merge: true})
-// }
-
-// const setUserMajor = (major) => {
-//   db.collection('users').doc(user.uid).set({
-//     major
-//   }, {merge: true})
-// }
-
-// const setUserYear = (year) => {
-//   db.collection('users').doc(user.uid).set({
-//     year
-//   }, {merge: true})
-// }
 
 const setUserCourses = (course) => {
   db.collection('users').doc(user.uid).set({
     courses: arrayUnion(course)
   }, {merge: true})
+}
+
+
+//Getters for courses
+const getUniversityCourses = (school) => {
+  const courses = []
+  if(school === 'University of Illinois Urbana-Champaign') {
+    alert('Hello from uiuc')
+    db.collection('universities').doc("uiuc").collection("courses").get().then(documentSnapshot => {
+      let i = 1;
+      documentSnapshot.forEach(child => {
+        const courseData = child.data();
+        courses.push({id:i, name:courseData.name, professors: courseData.professors, code: courseData.code})
+        i++
+      })
+    })
+  }
+  else if(school === 'Purdue University') {
+    alert('Hello from Purdue')
+    db.collection('universities').doc("purdue").collection("courses").get().then(documentSnapshot => {
+      let i = 1;
+      documentSnapshot.forEach(child => {
+        const courseData = child.data();
+        courses.push({id:i, name:courseData.name, professors: courseData.professors, code: courseData.code})
+        i++
+      })
+    })
+  }
+  return courses
+
 }
 
 // const setLearningStyle = (learningStyle) => {
@@ -112,11 +119,8 @@ export {
   setUserProperties,
   setUserCourses,
   setProfilePicture,
-  setMatchEnable
-  // setUserName,
-  // setUserBio,
-  // setUserMajor,
-  // setUserYear,
+  setMatchEnable,
+  getUniversityCourses
   // setPreferredCommunication,
   // setLearningStyle,
   // setAvailableTimes,
