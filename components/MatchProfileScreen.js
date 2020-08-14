@@ -15,7 +15,7 @@ export default function MatchProfile({ route, navigation }) {
             <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
                 <Ionicons name="ios-arrow-back" size={25}/>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.chatButton}>
+            <TouchableOpacity style={styles.chatButton} onPress={()=> navigation.navigate('ChatRoom')}>
                 <MaterialCommunityIcons name="chat" size={40} color={"#6c63ff"} iconStyle={styles.chatButton}/>
                 <Text style={styles.buttonTitle}>CHAT</Text>
             </TouchableOpacity>

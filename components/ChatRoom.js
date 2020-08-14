@@ -53,7 +53,7 @@ export default function ChatRoom({ navigation }) {
                     width: 400,
                     paddingBottom: 15
                 }}>
-                    <TouchableOpacity style={[styles.chatSend, { marginLeft: '10%', paddingTop: 10 }]} onPress={() => navigation.replace('ChatScreen')}>
+                    <TouchableOpacity style={[styles.chatSend, { marginLeft: '10%', paddingTop: 10 }]} onPress={() => navigation.goBack()}>
                         <AntDesign name="left" size={24} color="black" />
                     </TouchableOpacity>
                     <Text style={{

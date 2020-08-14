@@ -4,7 +4,7 @@ import { createStackNavigator } from '../node_modules/@react-navigation/stack';
 import CoursesScreen from "./CoursesScreen.js";
 import MatchScreen from "./MatchScreen.js";
 import MatchProfileScreen from "./MatchProfileScreen.js";
-
+import ChatRoom from "./ChatRoom.js"
 const MatchStack = createStackNavigator();
 
 export default function Match() {
@@ -13,6 +13,7 @@ export default function Match() {
             <MatchStack.Screen name="CoursesScreen" component={CoursesScreen} />
             <MatchStack.Screen name="MatchScreen" component={MatchScreen} />
             <MatchStack.Screen name="MatchProfileScreen" component={MatchProfileScreen} />
+            <MatchStack.Screen name="ChatRoom" component={ChatRoom} />
         </MatchStack.Navigator>
     )
 }
