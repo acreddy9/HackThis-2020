@@ -26,7 +26,7 @@ export default function LoginScreen({navigation}) {
           <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always" >
-            <Text style={styles.appName}>Lorem</Text>
+            <Text style={styles.appName}>Virmote</Text>
             <Text style={styles.subtitle}>welcome back :)</Text>
 
             <LoginIllustration width={350} height={270} marginTop={20} alignSelf={"center"}/> 

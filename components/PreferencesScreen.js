@@ -7,6 +7,7 @@ import SearchableDropdown from 'react-native-searchable-dropdown';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { setMatchEnable } from '../server/userPrefs';
 import { FontAwesome } from '../node_modules/@expo/vector-icons';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 const relationships = [
@@ -79,7 +80,7 @@ export default function PreferencesScreen ({route, navigation}) {
                     <SearchableDropdown
                         //onItemSelect={(item) => setRelationPref(item.name)}
                         onItemSelect={(item) => {}}
-                        containerStyle={{ padding: 5 }}
+                        containerStyle={{ padding: 5, marginBottom: 20 }}
                         textInputStyle={ isEnabled
                             ? {
                                 padding: 7,
@@ -123,9 +124,11 @@ export default function PreferencesScreen ({route, navigation}) {
                     />
                 </View>
 
+       
                 <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same year</Text>
                 <Switch
-                    style={{position: "absolute", top: 188, left: 275}}
+                    //style={{position: "absolute", top: 188, left: 275}}
+                    style={styles.prefSwitch}
                     onValueChange={() => setYearSwitch(previousState => !previousState)}
                     value={yearSwitch}
                     disabled={!isEnabled}
@@ -133,9 +136,10 @@ export default function PreferencesScreen ({route, navigation}) {
                     ios_backgroundColor={"#aaa"}
                 />
 
+
                 <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same major</Text>
                 <Switch
-                    style={{position: "absolute", top: 237, left: 275}}
+                    style={styles.prefSwitch}
                     onValueChange={() => setMajorSwitch(previousState => !previousState)}
                     value={majorSwitch}
                     disabled={!isEnabled}
@@ -145,7 +149,7 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same learning style</Text>
                 <Switch
-                    style={{position: "absolute", top: 286, left: 275}}
+                    style={styles.prefSwitch}
                     onValueChange={() => setLearnSwitch(previousState => !previousState)}
                     value={learnSwitch}
                     disabled={!isEnabled}
@@ -155,7 +159,7 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same communication style</Text>
                 <Switch
-                    style={{position: "absolute", top: 335, left: 275}}
+                    style={styles.prefSwitch}
                     onValueChange={() => setCommSwitch(previousState => !previousState)}
                     value={commSwitch}
                     disabled={!isEnabled}
@@ -165,7 +169,7 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Similar availability</Text>
                 <Switch
-                    style={{position: "absolute", top: 384, left: 275}}
+                    style={styles.prefSwitch}
                     onValueChange={() => setAvailabilitySwitch(previousState => !previousState)}
                     value={availabilitySwitch}
                     disabled={!isEnabled}
@@ -175,7 +179,7 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Similar interests</Text>
                 <Switch
-                    style={{position: "absolute", top: 433, left: 275}}
+                    style={styles.prefSwitch}
                     onValueChange={() => setInterestSwitch(previousState => !previousState)}
                     value={interestSwitch}
                     disabled={!isEnabled}

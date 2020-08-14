@@ -37,7 +37,7 @@ export default function RegistrationScreen({navigation}, props) {
                 keyboardShouldPersistTaps="always" nestedScrollEnabled={true} 
                 /* this messes things up idk why: contentContainerStyle={styles.container} */ >
         
-                <Text style={styles.appName}>Lorem</Text>
+                <Text style={styles.appName}>Virmote</Text>
                 <Text style={styles.subtitle}>Connect with classmates</Text>
                 
                 <RegistrationIllustration width={325} height={230} margin={20} alignSelf={"center"}/>                 

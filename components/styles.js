@@ -160,7 +160,6 @@ export default StyleSheet.create({
         bottom: 5
     },
     dropdownYearItemContainer: {
-        
         backgroundColor: '#FFF',
         borderColor: '#626262',
     },
@@ -227,8 +226,8 @@ export default StyleSheet.create({
         alignSelf: "center"
     },
     prefSwitchText: {
-        marginTop: 15,
-        marginBottom: 15,
+        //marginTop: 10,
+        //marginBottom: 15,
         marginLeft: 55,
         //width: 170,
         alignSelf: "flex-start",
@@ -240,7 +239,7 @@ export default StyleSheet.create({
         backgroundColor: "#E6E6E6",
         alignSelf: "stretch",
         height: 255,
-        marginTop: 30,
+        marginTop: 20,
         padding: 10,
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
@@ -248,7 +247,10 @@ export default StyleSheet.create({
     prefButton: {
         margin: 20,
     },
-
+    prefSwitch: {
+        left: 275,
+        top: -24
+    },
     // Courses -------------------------------------------------------------------------
     courseTile: {
         backgroundColor: '#f2f2ff',

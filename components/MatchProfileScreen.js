@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity, Text, Image } from "react-native";
+import { View, TouchableOpacity, Text, Image, KeyboardAwareScrollView } from "react-native";
 import styles from "./styles";
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
 import Checkbox from 'react-native-custom-checkbox';
@@ -13,11 +13,16 @@ export default function MatchProfile({ route, navigation }) {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-                <Ionicons name="ios-arrow-back" size={25}/>
-            </TouchableOpacity>
+            <KeyboardAwareScrollView
+                style={{ flex: 1, width: '100%' }}
+                keyboardShouldPersistTaps="always">
 
-                
+            
+                <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
+                    <Ionicons name="ios-arrow-back" size={25}/>
+                </TouchableOpacity>
+
+                {/*
                 <TouchableOpacity style={styles.chatButton} onPress={()=> navigation.navigate('ChatRoom')}>     
                 <View style={{height:45, width:45, backgroundColor:"#6C63FF", borderRadius:100, position:"relative", top:117, left: 123}}    />
                 <View style={styles.wholeChatButton}>
@@ -221,43 +226,8 @@ export default function MatchProfile({ route, navigation }) {
                     </View>
                     </View>
                     </View>
-
-                
-                
-
-                
-
-                
-                
-            
-
-
-            
-
-
-            
-
-                    
-
-            
-
-            
-
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-
-
-
-
+            */}
+                </KeyboardAwareScrollView>
             </View>
     );
 }

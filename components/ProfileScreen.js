@@ -342,7 +342,7 @@ export default function ProfileScreen ({ route }) {
         year
       }
       setUserProperties(userID, user)
-      setChangesSaved(true);
+      //setChangesSaved(true); makes everything disappear
     }
 
     const imageSelected = selectedImage !== null;
@@ -512,130 +512,7 @@ export default function ProfileScreen ({ route }) {
                         numColumns={4}
                     />
                 </View>
-
-                <View style= {styles.interests1} >
-                 <Text style={styles.intText}>Art</Text> 
-                 <Text style={styles.intText}>Astrology</Text> 
-                 <Text style={styles.intText}>Baking/Cooking</Text> 
-                 <Text style={styles.intText}>Dance</Text> 
-                 <Text style={styles.intText}>Fitness</Text> 
-                 <Text style={styles.intText}>Movies/TV</Text> 
-                 </View>
-                  
-                  <View style={styles.intCheckboxGrid1}>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    
-
-                    </View>
-
-
-
-
-
-                    <View style= {styles.interests2} >
-                 <Text style={styles.intText}>Music</Text> 
-                 <Text style={styles.intText}>Outdoors</Text> 
-                 <Text style={styles.intText}>Politics</Text> 
-                 <Text style={styles.intText}>Reading</Text> 
-                 <Text style={styles.intText}>Sports</Text> 
-                 <Text style={styles.intText}>Video Games</Text> 
-                 </View>
-                  
-                  <View style={styles.intCheckboxGrid2}>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginBottom:20}}>
-                    <Checkbox
-                    checked={false}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    
-
-                    </View>
-
-
-
-
                 
-                <View style={styles.scButton}>
                 <TouchableOpacity
                   style={[styles.button, {marginTop: 25}]}
                   onPress={() => saveChanges()}>
@@ -646,7 +523,6 @@ export default function ProfileScreen ({ route }) {
                 </Text>
                 
                 <Text style={{padding:10}}></Text>
-                </View>
                       
             </KeyboardAwareScrollView>
       </View>
