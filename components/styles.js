@@ -348,9 +348,7 @@ export default StyleSheet.create({
         bottom: 400,
         left: 90, 
     },
-    days2: {
-        top: 150,
-    },
+    
 
     
 
