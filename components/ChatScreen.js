@@ -21,15 +21,15 @@ export default function ChatScreen() {
     var convos = [
         //name key is must.It is to show the text in front
         { key: 1, pic: require('../assets/charlie-logan.png'), name: "Charlie Logan", lastMessage: {text: "How is your work going?", timestamp: new Date(Date.now() - 600000)}, read: false},
-        { key: 2, pic: require('../assets/callum-cervantes.png'), name: "Callum Cervantes", lastMessage: {text: "I like icecream.", timestamp: new Date(Date.now() - 6000000)}, read: false},
-        { key: 3, pic: require('../assets/aminah-ratcliffe.png'), name: "Aminah Ratcliffe", lastMessage: {text: "I fdaafdsafas", timestamp: new Date(Date.now() - 60000000)}, read: false},
-        { key: 4, pic: require('../assets/huey-kent.png'), name: "Huey Kent", lastMessage: {text: "Woah.", timestamp: new Date(Date.now() - 6000000000)}, read: true}
+        { key: 2, pic: require('../assets/callum-cervantes.png'), name: "Callum Cervantes", lastMessage: {text: "OMG I think I just figured it out!", timestamp: new Date(Date.now() - 6000000)}, read: false},
+        { key: 3, pic: require('../assets/aminah-ratcliffe.png'), name: "Aminah Ratcliffe", lastMessage: {text: "Lecture was so entertaining today", timestamp: new Date(Date.now() - 60000000)}, read: false},
+        { key: 4, pic: require('../assets/huey-kent.png'), name: "Huey Kent", lastMessage: {text: "Wow great job!", timestamp: new Date(Date.now() - 6000000000)}, read: true}
       ];
 
     let Data=convos;
     let User=Data.map((u_data)=>{
         return(
-          <View style={chatStyles.panel}>  
+          <View style={chatStyles.panel} key={u_data.key}>  
               <TouchableOpacity /* onPress={()=> this.props.navigation.navigate('ChatRoom',{
                     uemail:this.state.uemail,
                     uid:this.state.uid,
@@ -57,9 +57,9 @@ export default function ChatScreen() {
                                 <Text style={ chatStyles.smallGreyText}> {u_data.lastMessage.text}</Text> 
                             </View>
                             <View style={{width: 90}}>
-                              <Text style={ [chatStyles.smallGreyText, {textAlign: 'right'}]}> {timeSince(u_data.lastMessage.timestamp)}</Text>
-                              <View style={{width: 100, paddingLeft: 80, paddingTop: 10}}>
-                                <View style={ [chatStyles.readDot, !u_data.read ? ({backgroundColor: '#0b85bd'}) : ({backgroundColor: '#aaa', })] } />
+                              <Text style={ [chatStyles.smallGreyText, {textAlign: 'right', marginRight: -5}]}> {timeSince(u_data.lastMessage.timestamp)}</Text>
+                              <View style={{width: 100, paddingLeft: 85, paddingTop: 10}}>
+                                <View style={ [chatStyles.readDot, !u_data.read ? ({backgroundColor: '#6c63ff'}) : ({backgroundColor: '#fff', })] } />
                               </View>
                             </View>
                         </View>
@@ -118,17 +118,19 @@ const chatStyles = StyleSheet.create({
   },
 
 home_padding: {
-    padding:10,
+    paddingLeft: 15,
     backgroundColor: "#ffffff",	
     flex: 1
 },
 readDot:{borderRadius: 20, width: 10, height: 10},
 name:{
   color: '#000000',
+  fontFamily: "Ubuntu-Light",
   fontSize: 17}, 
 smallGreyText:{
   color: '#aaa',
   fontSize: 12,
+  fontFamily: "Ubuntu-Light",
   paddingLeft: 2}, 
      
     list:{
