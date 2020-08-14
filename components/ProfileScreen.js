@@ -38,6 +38,7 @@ const CourseProfItem = ({ item }) => (
   <View style = {{width: 168, marginRight: 2, marginBottom: 10}}>
       <SearchableDropdown 
           //onItemSelect={item => setYear(item.name)}
+          onItemSelect={item => {alert("huh")}} 
           itemsContainerStyle={styles.dropdownYearItemContainer}
           itemStyle={styles.dropdownYearItem}
           itemTextStyle={styles.dropdownItemText}
@@ -70,6 +71,7 @@ const AddedCourse = ({ item, onPress, style }) => (
       data={[{id: 1}, {id: 2}]}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
+      keyboardShouldPersistTaps="handled"
   />
   </>
 );
@@ -98,11 +100,12 @@ const RankItem = ({ item }) => (
   <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
       <SearchableDropdown // RANK 1
           //onItemSelect={item => setYear(item.name)}
-          onItemSelect={(item) => {}}
+          //onItemSelect={(item) => {}}
           itemsContainerStyle={styles.dropdownYearItemContainer}
           itemStyle={styles.dropdownYearItem}
           itemTextStyle={styles.dropdownItemText}
           textInputStyle={styles.dropdownYearTextInput}
+          nestedScrollEnabled={true}
           items={item.id==1 ? LearningStyles : ModesOfCommunication}
           resetValue={false}
           placeholder={item.id==1 ? "Select a style" : "Select a mode"}
@@ -453,22 +456,29 @@ export default function ProfileScreen ({ route }) {
                 
 
                 {/* Add courses and professors */}
+               
+                
                 <Text style={[styles.profileSectionHeader, {bottom: 10}]}>Courses</Text> 
-                <TouchableOpacity onPress={onAddCourse}>
-                  <Text style={styles.addACourse}>+ Add a course</Text>
+                <TouchableOpacity style={styles.addACourse} onPress={onAddCourse}>
+                  <Text style={{
+                     color: "#6c63ff",
+                    fontFamily: "Ubuntu-Medium",
+                    }}>+ Add a course</Text>
                 </TouchableOpacity>
                 <View style={{paddingLeft: 18}}>
-                    <FlatList
+                    <FlatList 
                         //contentContainerStyle={{alignItems: "center"}} // this hides added courses
                         data={coursesAdded}
                         renderItem={renderAddedCourse}
                         keyExtractor={(item) => item.id}
                     />
                 </View>
-
+                
+                
                 {/* Rank learning style and mode of communication */}
                 <View>
                     <FlatList
+                        onPress={null}
                         horizontal={true}
                         data={[{id: 1}, {id: 2}, {id: 3}]}
                         renderItem={renderRank}

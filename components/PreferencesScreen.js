@@ -97,7 +97,7 @@ export default function PreferencesScreen ({route, navigation}) {
                         itemStyle={{
                             padding: 7,
                             marginTop: 0,
-                            backgroundColor: '#FFF',
+                            backgroundColor: '#eee',
                             borderColor: '#626262',
                         }}
                         itemTextStyle={ isEnabled 

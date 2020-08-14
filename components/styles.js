@@ -39,9 +39,11 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Light",
     },
     dropdownItemText: {
+        padding: 10,
+        backgroundColor: '#eee',
+        borderColor: '#eee',
+        borderWidth: 1,
         color: "#222",
-        marginLeft: 10,
-        margin: 5,
         fontFamily: "Ubuntu-Light"
     },
     dropdownItemContainer: {
@@ -153,16 +155,16 @@ export default StyleSheet.create({
     },
     dropdownYear: {
         width: 275,
+        zIndex: 1,
         left: 80,
         bottom: 5
     },
     dropdownYearItemContainer: {
-        padding: 7,
+        
         backgroundColor: '#FFF',
         borderColor: '#626262',
     },
     dropdownYearItem: {
-        padding: 7,
         backgroundColor: '#FFF',
         borderColor: '#626262',
     },
@@ -179,17 +181,18 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Medium",
         left: 260,
         bottom: 36,
-        marginBottom: -20
+        marginBottom: -20,
+        
     },
     learningTitle: { marginTop: 20, marginBottom: 10 },
     learningSubtitle: { marginLeft: 20, marginBottom: 10 },
     learningDropdown: {
-        width: 150, margin: 6, marginLeft: 2, marginRight: 0, left: 15, marginBottom: 0
+        width: 150, margin: 6, marginLeft: 2, marginRight: 0, left: 15, marginBottom: 0, zIndex: 1
     },
     commTitle: { marginTop: 20, marginBottom: 10, marginLeft: 23 },
     commSubtitle: { marginLeft: 20, marginBottom: 10, marginLeft: 57 },
     commDropdown: {
-        width: 150, margin: 6, marginRight: 0, left: 16, marginBottom: 0
+        width: 150, margin: 6, marginRight: 0, left: 16, marginBottom: 0, zIndex:1
     },
 
     // Preferences -------------------------------------------------------------------------

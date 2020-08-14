@@ -47,7 +47,6 @@ export default function RegistrationScreen({navigation}, props) {
                     containerStyle={styles.dropdownContainer}
                     itemStyles={styles.dropdownItem}
                     itemTextStyle={styles.dropdownItemText}
-                    itemsContainerStyle={styles.dropdownItemContainer}
                     items={schools}
                     resetValue={false}
                     nestedScrollEnabled={true}
