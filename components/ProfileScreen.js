@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import GreyHorizontalLine from './GreyHorizontalLine.js';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import Checkbox from 'react-native-custom-checkbox';
-import {setUserProperties, setUserCourses, setProfilePicture} from '../server/userPrefs'
+import {setUserProperties, setUserCourses, setProfilePicture, getUniversityCourses} from '../server/userPrefs'
 import { firebase } from '../server/config';
 import { FontAwesome, MaterialCommunityIcons } from '../node_modules/@expo/vector-icons';
 
@@ -28,12 +28,15 @@ var Majors = [
 ];
 
 // Vars and methods for adding courses
-var coursesOffered = [
-  { id: 1, name: 'CS 200' },
-  { id: 2, name: 'MATH 233' },
-  { id: 3, name: 'PSYCH 225' },
-  { id: 4, name: 'STAT 515' },
-]
+// var coursesOffered = [
+//   { id: 1, name: 'CS 200' },
+//   { id: 2, name: 'MATH 233' },
+//   { id: 3, name: 'PSYCH 225' },
+//   { id: 4, name: 'STAT 515' },
+// ]
+
+var coursesOffered = []
+
 const CourseProfItem = ({ item }) => (
   <View style = {{width: 168, marginRight: 2, marginBottom: 10}}>
       <SearchableDropdown 
@@ -69,7 +72,7 @@ const AddedCourse = ({ item, onPress, style }) => (
       horizontal={true}
       data={[{id: 1}, {id: 2}]}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
   />
   </>
 );
@@ -281,6 +284,7 @@ const renderInterest = ({ item, index }) => {
 export default function ProfileScreen ({ route }) {
 
     const userID = route.params.data.id;
+    const userSchool = route.params.data.school;
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [name, setName] = useState('');
@@ -295,6 +299,7 @@ export default function ProfileScreen ({ route }) {
     const [changesSaved, setChangesSaved] = useState(false);
 
     useEffect(() => {
+      coursesOffered = getUniversityCourses(userSchool);
       const usersRef = firebase.firestore().collection('users');
       usersRef.doc(userID).get().then((document) => {
         const userData = document.data()
@@ -462,7 +467,7 @@ export default function ProfileScreen ({ route }) {
                         //contentContainerStyle={{alignItems: "center"}} // this hides added courses
                         data={coursesAdded}
                         renderItem={renderAddedCourse}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
 
@@ -472,7 +477,7 @@ export default function ProfileScreen ({ route }) {
                         horizontal={true}
                         data={[{id: 1}, {id: 2}, {id: 3}]}
                         renderItem={renderRank}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
                 
@@ -483,7 +488,7 @@ export default function ProfileScreen ({ route }) {
                     <FlatList
                         data={calendar}
                         renderItem={renderCal}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                         numColumns={8}
                     />
                 </View>
@@ -494,7 +499,7 @@ export default function ProfileScreen ({ route }) {
                     <FlatList
                         data={interests}
                         renderItem={renderInterest}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                         numColumns={4}
                     />
                 </View>
