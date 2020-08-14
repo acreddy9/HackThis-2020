@@ -6,7 +6,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import GreyHorizontalLine from './GreyHorizontalLine.js';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import Checkbox from 'react-native-custom-checkbox';
-import { State } from 'react-native-gesture-handler';
 import {setUserProperties, setUserCourses, setProfilePicture} from '../server/userPrefs'
 import { firebase } from '../server/config';
 import { FontAwesome } from '../node_modules/@expo/vector-icons';
@@ -28,14 +27,15 @@ var Majors = [
   { id: 7, name: 'Computer Engineering' },
 ];
 
+// Vars and methods for adding courses
 var coursesOffered = [
   { id: 1, name: 'CS 200' },
   { id: 2, name: 'MATH 233' },
   { id: 3, name: 'PSYCH 225' },
   { id: 4, name: 'STAT 515' },
 ]
-const Item = ({ item, onPress, style }) => (
-  <View style = {[styles.dropdownYear, {width: 168, margin: 6, marginLeft: 2, marginRight: 0, left: 15}]}>
+const Item = ({ item }) => (
+  <View style = {{width: 166, marginRight: 2, marginBottom: 10}}>
       <SearchableDropdown 
           //onItemSelect={item => setYear(item.name)}
           itemsContainerStyle={styles.dropdownYearItemContainer}
@@ -58,13 +58,11 @@ const Item = ({ item, onPress, style }) => (
       />
   </View>
 );
-
 const renderItem = ({item}) => {
   return (
     <Item item={item}/>
   )
 }
-
 const AddedCourse = ({ item, onPress, style }) => (
   <>
   <FlatList
@@ -75,6 +73,102 @@ const AddedCourse = ({ item, onPress, style }) => (
   />
   </>
 );
+
+// Vars and methods for learning style and mode of communication
+const LearningStyles = [
+  { id: 1, name: 'One-on-one' },
+  { id: 2, name: 'Small group (3-5)' },
+  { id: 3, name: 'Large group (6+)' }
+]
+const ModesOfCommunication = [
+  { id: 1, name: 'Message' },
+  { id: 2, name: 'Call' },
+  { id: 3, name: 'Videochat' }
+]
+const RankItem = ({ item }) => (
+  <View horizontal={false}>
+  <Text style={item.id==1 ? [styles.profileSectionHeader, styles.learningTitle] : [styles.profileSectionHeader, styles.commTitle]}>
+      {item.id==1 ? "Learning style" : "Mode of communication"}
+  </Text> 
+  <Text style={item.id==1 ? [styles.profileSectionText, styles.learningSubtitle] : [styles.profileSectionText, styles.commSubtitle]}>
+      Preference ranking
+  </Text>
+  <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
+      <SearchableDropdown // RANK 1
+          //onItemSelect={item => setYear(item.name)}
+          onItemSelect={(item) => {}}
+          itemsContainerStyle={styles.dropdownYearItemContainer}
+          itemStyle={styles.dropdownYearItem}
+          itemTextStyle={styles.dropdownItemText}
+          textInputStyle={styles.dropdownYearTextInput}
+          items={item.id==1 ? LearningStyles : ModesOfCommunication}
+          resetValue={false}
+          placeholder={item.id==1 ? "Select a style" : "Select a mode"}
+          textInputProps={{
+              placeholderTextColor: "#aaa",
+              underlineColorAndroid: "transparent",
+          }}
+      />
+      <FontAwesome 
+          name="caret-down"
+          size={24}
+          color="#6c63ff"
+          style={{position: "absolute", top: 5, left: 130}}
+      />
+  </View>
+  <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
+      <SearchableDropdown // RANK 2
+          //onItemSelect={item => setYear(item.name)}
+          onItemSelect={(item) => {}}
+          itemsContainerStyle={styles.dropdownYearItemContainer}
+          itemStyle={styles.dropdownYearItem}
+          itemTextStyle={styles.dropdownItemText}
+          textInputStyle={styles.dropdownYearTextInput}
+          items={item.id==1 ? LearningStyles : ModesOfCommunication}
+          resetValue={false}
+          placeholder={item.id==1 ? "Select a style" : "Select a mode"}
+          textInputProps={{
+              placeholderTextColor: "#aaa",
+              underlineColorAndroid: "transparent",
+          }}
+      />
+      <FontAwesome 
+          name="caret-down"
+          size={24}
+          color="#6c63ff"
+          style={{position: "absolute", top: 5, left: 130}}
+      />
+  </View>
+  <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
+      <SearchableDropdown // RANK 3
+          //onItemSelect={item => setYear(item.name)}
+          onItemSelect={(item) => {}}
+          itemsContainerStyle={styles.dropdownYearItemContainer}
+          itemStyle={styles.dropdownYearItem}
+          itemTextStyle={styles.dropdownItemText}
+          textInputStyle={styles.dropdownYearTextInput}
+          items={item.id==1 ? LearningStyles : ModesOfCommunication}
+          resetValue={false}
+          placeholder={item.id==1 ? "Select a style" : "Select a mode"}
+          textInputProps={{
+              placeholderTextColor: "#aaa",
+              underlineColorAndroid: "transparent",
+          }}
+      />
+      <FontAwesome 
+          name="caret-down"
+          size={24}
+          color="#6c63ff"
+          style={{position: "absolute", top: 5, left: 130}}
+      />
+  </View>
+  </View>
+);
+const renderRank = ({item}) => {
+  return (
+    <RankItem item={item}/>
+  )
+}
 
 export default function ProfileScreen ({ route }) {
 
@@ -140,12 +234,11 @@ export default function ProfileScreen ({ route }) {
         <AddedCourse item={item} />
       )
     }
-
     const onAddCourse = () => {
       const idx = coursesAdded.length + 1;
-      var newCoursesAdded = [...coursesAdded, {id : idx, courseName: '', prof: ''}];
+      var newCoursesAdded = [...coursesAdded, {id: idx, courseName: '', prof: ''}];
       setCoursesAdded(newCoursesAdded);
-  }
+    }
 
     return (
         <View style={[styles.container, {marginBottom: -950}]}>
@@ -248,184 +341,33 @@ export default function ProfileScreen ({ route }) {
                 </View>
                 
 
-                {/* Add courses and prfoessors */}
+                {/* Add courses and professors */}
                 <Text style={[styles.profileSectionHeader, {bottom: 10}]}>Courses</Text> 
                 <TouchableOpacity onPress={onAddCourse}>
-                  <Text style={styles.addacourse_text}>+ Add a course</Text>
+                  <Text style={styles.addACourse}>+ Add a course</Text>
                 </TouchableOpacity>
-
-                <View>
+                <View style={{paddingLeft: 20}}>
                     <FlatList
+                        //contentContainerStyle={{alignItems: "center"}} // this hides added courses
                         data={coursesAdded}
                         renderItem={renderAddedCourse}
                         keyExtractor={(item) => item.id}
                     />
                 </View>
 
-                {/* Rank learning style */}
-                <Text style={[styles.profileSectionHeader, {marginBottom: -3}]}>Learning style</Text> 
-                <Text style={[styles.profileSectionText, {marginLeft: 20}]}>Rank in order of preference</Text>
-               
-                <View style={styles.SearchableDroppie_learn1}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-
-                    <View style={styles.SearchableDroppie_learn2}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-
-                    <View style={styles.SearchableDroppie_learn3}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
+                {/* Rank learning style and mode of communication*/}
+                <View>
+                    <FlatList
+                        horizontal={true}
+                        data={[{id: 1}, {id: 2}]}
+                        renderItem={renderRank}
+                        keyExtractor={(item) => item.id}
+                    />
+                </View>
 
 
-
-
-
-
-                {/* Rank mode of communication */}
-                <Text style={{padding:30}}></Text>
+                <Text style={{padding:100}}></Text>
+                
 
 
                  <View style= {styles.days} >
@@ -437,9 +379,6 @@ export default function ProfileScreen ({ route }) {
                  <Text style={styles.dayText}>F</Text> 
                  <Text style={styles.dayText}>S</Text> 
                  </View>
-
-
-                 
 
                     
                 <View style={styles.av_text}>

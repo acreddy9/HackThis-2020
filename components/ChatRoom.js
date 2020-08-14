@@ -55,7 +55,7 @@ export default function ChatRoom({ navigation }) {
                     width: 400,
                     paddingBottom: 15,
                 }}>
-                    <TouchableOpacity style={[styles.chatSend, { marginLeft: '5%', paddingTop: 10 }]} onPress={() => navigation.replace('ChatScreen')}>
+                    <TouchableOpacity style={[styles.chatSend, { marginLeft: '5%', paddingTop: 10 }]} onPress={() => navigation.navigate('ChatScreen')}>
                         <Ionicons name="ios-arrow-back" size={25} color="#3d3d3d" />
                     </TouchableOpacity>
                     <Text style={{

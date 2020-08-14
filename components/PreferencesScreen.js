@@ -5,11 +5,15 @@ import styles from './styles';
 import {firebase} from '../server/config';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import {setMatchEnable} from '../server/userPrefs';
+import { setMatchEnable } from '../server/userPrefs';
 import { FontAwesome } from '../node_modules/@expo/vector-icons';
 
 
-const relationship = ["Friend", "Study buddy", "Both"];
+const relationships = [
+    {id: 1, name: "Friend"},
+    {id: 2, name: "Study buddy"},
+    {id: 3, name: "Both"}
+];
 
 const onDeleteAccount = () => {
     alert("Are you sure you want to delete your account?")
@@ -73,7 +77,8 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <View style={styles.prefDropdown}>
                     <SearchableDropdown
-                        onItemSelect={item => alert(JSON.stringify(item))}
+                        //onItemSelect={(item) => setRelationPref(item.name)}
+                        onItemSelect={(item) => {}}
                         containerStyle={{ padding: 5 }}
                         textInputStyle={{
                             padding: 7,
@@ -96,7 +101,7 @@ export default function PreferencesScreen ({route, navigation}) {
                             borderWidth: 0.2,
                             borderRadius: 7
                         }}
-                        items={relationship}
+                        items={relationships}
                         defaultIndex={2}
                         placeholder="Friend / Study buddy / Both"
                         resetValue={false}

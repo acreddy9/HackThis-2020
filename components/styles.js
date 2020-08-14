@@ -40,8 +40,8 @@ export default StyleSheet.create({
     },
     dropdownItemText: {
         color: "#222",
-        marginLeft: 10,
-        margin: 10
+        //marginLeft: 10,
+        //margin: 10
     },
     dropdownItemContainer: {
         //maxHeight: 140,
@@ -207,76 +207,22 @@ export default StyleSheet.create({
         backgroundColor: '#FFF',
         borderColor: '#626262',
     },
-    SearchableDroppie_course1: {
-        width: 175,
-        //height: 50,
-        marginLeft: 25,
-        bottom: 30
+    addACourse: {
+        color: "#6c63ff",
+        fontFamily: "Ubuntu-Medium",
+        left: 260,
+        bottom: 36,
+        marginBottom: -20
     },
-    SearchableDroppie_course2: {
-        width: 175,
-        //height: 50,
-        marginLeft: 205,
-        bottom: 80
+    learningTitle: { marginTop: 20, marginBottom: -3 },
+    learningSubtitle: { marginLeft: 20, marginBottom: 10 },
+    learningDropdown: {
+        width: 160, margin: 6, marginLeft: 2, marginRight: 0, left: 15, marginBottom: 0
     },
-    SearchableDroppie_course3: {
-        width: 175,
-        //height: 50,
-        marginLeft: 25,
-        bottom: 80,
-    },
-    SearchableDroppie_course4: {
-        width: 175,
-        //height: 50,
-        marginLeft: 205,
-        bottom: 130,
-    },
-    addacourse_text: {
-        fontFamily:"Ubuntu-Medium",
-        color:'#6C63FF',
-        marginLeft: 260,
-        bottom: 37,
-        marginBottom: -30
-    },
-    SearchableDroppie_learn1: {
-        width: 160,
-        //height: 50,
-        marginLeft: 220,
-        bottom: 160,
-    },
-    SearchableDroppie_learn2: {
-        width: 160,
-        //height: 50,
-        marginLeft: 220,
-        bottom: 160,
-    },
-    SearchableDroppie_learn3: {
-        width: 160,
-        //height: 50,
-        marginLeft: 220,
-        bottom: 160,
-    },
-    comm_text: {
-        position: 'relative',
-        bottom: 140,
-    },
-    SearchableDroppie_comm1: {
-        width: 112,
-        //height: 50,
-        marginLeft: 270,
-        bottom: 190,
-    },
-    SearchableDroppie_comm2: {
-        width: 112,
-        //height: 50,
-        marginLeft: 270,
-        bottom: 190,
-    },
-    SearchableDroppie_comm3: {
-        width: 112,
-        //height: 50,
-        marginLeft: 270,
-        bottom: 190,
+    commTitle: { marginTop: 20, marginBottom: -3, paddingLeft: 15 },
+    commSubtitle: { marginLeft: 20, marginBottom: 10, paddingLeft: 15 },
+    commDropdown: {
+        width: 160, margin: 6, marginLeft: 18, marginRight: 0, left: 15, marginBottom: 0
     },
     av_text: {
         position: 'relative',
