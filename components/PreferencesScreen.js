@@ -5,7 +5,9 @@ import styles from './styles';
 import {firebase} from '../server/config';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import {setMatchEnable} from '../server/userPrefs'
+import {setMatchEnable} from '../server/userPrefs';
+import { FontAwesome } from '../node_modules/@expo/vector-icons';
+
 
 const relationship = ["Friend", "Study buddy", "Both"];
 
@@ -17,7 +19,7 @@ export default function PreferencesScreen ({route, navigation}) {
 
     const userID = route.params.data.id;
 
-    const [isEnabled, setIsEnabled] = useState(false);
+    const [isEnabled, setIsEnabled] = useState(true);
     const [yearSwitch, setYearSwitch] = useState(false);
     const [majorSwitch, setMajorSwitch] = useState(false);
     const [learnSwitch, setLearnSwitch] = useState(false);
@@ -36,8 +38,6 @@ export default function PreferencesScreen ({route, navigation}) {
     // })
 
     const toggleSwitch = () => {
-        setIsEnabled(previousState => !previousState);
-        alert('Clicked '+ isEnabled.toString())
         if (isEnabled) {
             setYearSwitch(false);
             setMajorSwitch(false);
@@ -45,13 +45,12 @@ export default function PreferencesScreen ({route, navigation}) {
             setCommSwitch(false);
             setAvailabilitySwitch(false);
             setInterestSwitch(false);
-            
-            setMatchEnable(userID, true) //in database
+            setMatchEnable(userID, false) //in database
         }
         else{
-            setMatchEnable(userID, false) //in database
+            setMatchEnable(userID, true) //in database
         } 
-        
+        setIsEnabled(!isEnabled);
     }
 
     return (
@@ -106,6 +105,12 @@ export default function PreferencesScreen ({route, navigation}) {
                         placeholder="Friend / Study buddy / Both"
                         resetValue={false}
                         underlineColorAndroid="transparent"
+                    />
+                    <FontAwesome 
+                        name="caret-down"
+                        size={24}
+                        color={isEnabled ? "#6c63ff": "#3d3d3d"}
+                        style={{position: "absolute", top: 10, left: 270}}
                     />
                 </View>
 
