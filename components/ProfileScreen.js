@@ -123,7 +123,7 @@ export default function ProfileScreen ({ route }) {
                 <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Pronouns</Text>
                 <TextInput
-                    style={styles.profilePronounsInput}
+                    style={[styles.profileNameInput, {left: 103, top: 177}]}
                     onChangeText={(text) => setPronouns(text)}
                     value={pronouns}
                     autoCapitalize="none"
@@ -131,7 +131,7 @@ export default function ProfileScreen ({ route }) {
                 <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Bio</Text>
                 <TextInput
-                    style={styles.profileBioInput}
+                    style={[styles.profileNameInput, {left: 60, top: 214}]}
                     onChangeText={(text) => setBio(text)}
                     value={bio}
                     autoCapitalize="none"
@@ -143,36 +143,13 @@ export default function ProfileScreen ({ route }) {
                 <Text style={[styles.profileSectionHeader, {top: 30}]}>Year</Text> 
                 <View style = {styles.SearchableDroppie_year}>
                     <SearchableDropdown 
-                        /*
-                        onItemSelect={(item) => setSchool(item)}
-                        containerStyle={{maxHeight: "70%"}}
-                        itemStyles={[styles.dropdownItem, {
-                          padding: 7,
-                          marginTop: 0,
-                          backgroundColor: '#FFF',
-                          borderColor: '#626262',}]}
-                        itemTextStyle={styles.dropdownItemText}
-                        itemsContainerStyle={[styles.dropdownItemContainer, {borderRadius: 7}]}
-                        items={Years}
-                        resetValue={false}
-                        nestedScrollEnabled={true}
-                        setSort={(item, searchedText)=> item.name.toLowerCase().startsWith(searchedText.toLowerCase())}
-                        textInputProps={{
-                            placeholder: "Select your academic year",
-                            placeholderTextColor: "#aaaaaa",
-                            underlineColorAndroid: "transparent",
-                            style: styles.dropdownInputProps,
-                        }}
-                        */
-                        
-                        onTextChange={text => console.log(text)}
                         onItemSelect={item => setYear(item.name)}
-                        containerStyle={[styles.dropdownContainer, {width: 200, maxHeight: 20}]}
+                        containerStyle={[styles.dropdownContainer, {width: 200}]}
                         textInputStyle={{ //inserted text style
                           padding: 7,
-                          borderColor: '#626262',
                           backgroundColor: '#FFF',
                           borderWidth: 1,
+                          borderColor: '#626262',
                           borderRadius: 7
                         }}
                         itemStyle={{ // single dropdown item style
@@ -191,6 +168,7 @@ export default function ProfileScreen ({ route }) {
                           borderRadius: 7
                         }}
                         items={Years}
+                        resetValue={false}
                         textInputProps={{
                           placeholder: "Select your academic year",
                           placeholderTextColor: "#aaaaaa",
@@ -229,9 +207,6 @@ export default function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -254,6 +229,7 @@ export default function ProfileScreen ({ route }) {
                     //reset textInput Value with true and false state
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
+                    nestedScrollEnabled={true}
                   />
         
                     </View>

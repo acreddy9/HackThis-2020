@@ -64,12 +64,12 @@ export default function MatchScreen({ route, navigation }) {
         <View style={styles.container}>
             <Header title={selectedCourse}/>
              
-            <TouchableOpacity style={[styles.button, {marginTop: 20}]} onPress={() => onMatchMe()}>
+            <TouchableOpacity style={[styles.button, {marginTop: 30}]} onPress={() => onMatchMe()}>
                 <Text style={styles.buttonTitle}>MATCH ME</Text>
             </TouchableOpacity>
             <Text style={styles.whiteSpace}>{"     "}</Text>
             <FlatList
-                scrollEnabled="false"
+                scrollEnabled={false}
                 data={matches}
                 renderItem={renderItem}
                 //keyExtractor={(course) => course.id}

@@ -44,7 +44,7 @@ export default StyleSheet.create({
         margin: 10
     },
     dropdownItemContainer: {
-        maxHeight: 140,
+        //maxHeight: 140,
         color: "#aaa",
     },
     dropdownInputProps: {
@@ -55,7 +55,7 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Light"
     },
     input: {
-        height: 40,
+        //height: 40,
         borderRadius: 5,
         overflow: 'hidden',
         marginTop: 10,
@@ -171,26 +171,8 @@ export default StyleSheet.create({
     },
     profileNameInput: {
         position: "absolute",
-        left: 100,
-        top: 140,
-        width: 400,
-        height: 40,
-        overflow: 'hidden',
-        fontFamily: "Ubuntu-Light"
-    },
-    profilePronounsInput: {
-        position: "absolute",
-        left: 123,
-        top: 176.5,
-        width: 400,
-        height: 40,
-        overflow: 'hidden',
-        fontFamily: "Ubuntu-Light"
-    },
-    profileBioInput: {
-        position: "absolute",
         left: 80,
-        top: 214.5,
+        top: 140,
         width: 400,
         height: 40,
         overflow: 'hidden',
@@ -198,31 +180,31 @@ export default StyleSheet.create({
     },
     SearchableDroppie_year: {
         width: 262,
-        height: 50,
+        //height: 50,
         left: 90,
         bottom: 5
     },
     SearchableDroppie_course1: {
         width: 175,
-        height: 50,
+        //height: 50,
         marginLeft: 25,
         bottom: 30
     },
     SearchableDroppie_course2: {
         width: 175,
-        height: 50,
+        //height: 50,
         marginLeft: 205,
         bottom: 80
     },
     SearchableDroppie_course3: {
         width: 175,
-        height: 50,
+        //height: 50,
         marginLeft: 25,
         bottom: 80,
     },
     SearchableDroppie_course4: {
         width: 175,
-        height: 50,
+        //height: 50,
         marginLeft: 205,
         bottom: 130,
     },
@@ -391,7 +373,7 @@ export default StyleSheet.create({
         backgroundColor: "#E6E6E6",
         marginLeft: 100,
         marginRight: 100,
-        marginTop: 20,
+        marginTop: 30,
         height: 48,
         width: 300,
         paddingHorizontal: 20,
