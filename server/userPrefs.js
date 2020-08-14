@@ -39,7 +39,6 @@ const setUserCourses = (course) => {
 const getUniversityCourses = (school) => {
   const courses = []
   if(school === 'University of Illinois Urbana-Champaign') {
-    alert('Hello from uiuc')
     db.collection('universities').doc("uiuc").collection("courses").get().then(documentSnapshot => {
       let i = 1;
       documentSnapshot.forEach(child => {
@@ -50,7 +49,6 @@ const getUniversityCourses = (school) => {
     })
   }
   else if(school === 'Purdue University') {
-    alert('Hello from Purdue')
     db.collection('universities').doc("purdue").collection("courses").get().then(documentSnapshot => {
       let i = 1;
       documentSnapshot.forEach(child => {
