@@ -43,7 +43,8 @@ function createNewUser({school}, email, password) {
       const data = {
         id: uid,
         email: response.user.email,
-        school: school.name
+        school: school.name,
+        matchEnable: false
         //additional user info (userInfo can be passed in as an object)
         // major
         // First and Last name

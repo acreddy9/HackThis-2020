@@ -15,6 +15,18 @@ const setUserProperties = (uid, user) => {
   }, {merge: true})
 }
 
+const setProfilePicture = (uid, uri) => {
+  db.collection('users').doc(uid).set({
+    profile_pic: uri
+  }, {merge: true})
+}
+
+const setMatchEnable = (uid, val) => {
+  db.collection('users').doc(uid).set({
+    matchEnable: val
+  }, {merge: true})
+}
+
 // const setUserName = (name) => {
 //   db.collection('users').doc(user.uid).set({
 //     name
@@ -99,6 +111,8 @@ const setUserCourses = (course) => {
 export {
   setUserProperties,
   setUserCourses,
+  setProfilePicture,
+  setMatchEnable
   // setUserName,
   // setUserBio,
   // setUserMajor,

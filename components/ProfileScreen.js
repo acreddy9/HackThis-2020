@@ -7,7 +7,7 @@ import GreyHorizontalLine from './GreyHorizontalLine.js';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import Checkbox from 'react-native-custom-checkbox';
 import { State } from 'react-native-gesture-handler';
-import {setUserProperties, setUserCourses} from '../server/userPrefs'
+import {setUserProperties, setUserCourses, setProfilePicture} from '../server/userPrefs'
 import { firebase } from '../server/config';
 
 const Years = [
@@ -57,6 +57,9 @@ export default function ProfileScreen ({ route }) {
         if(userData.pronouns){
           setPronouns(userData.pronouns)
         }
+        // if(userData.profile_pic){
+        //   setSelectedImage(userData.profile_pic)
+        // }
       })
     });
 
@@ -75,6 +78,7 @@ export default function ProfileScreen ({ route }) {
         }
 
         setSelectedImage({ localUri: pickerResult.uri });
+        //setProfilePicture(userID, pickerResult.uri)
     };
 
     const saveChanges = () => {

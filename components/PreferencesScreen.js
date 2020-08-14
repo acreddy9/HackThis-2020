@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, Switch, TouchableOpacity } from 'react-native';
 import  Header  from './Header.js';
 import styles from './styles';
 import {firebase} from '../server/config';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {setMatchEnable} from '../server/userPrefs'
 
 const relationship = ["Friend", "Study buddy", "Both"];
 
@@ -13,6 +14,9 @@ const onDeleteAccount = () => {
 }
 
 export default function PreferencesScreen ({route, navigation}) {
+
+    const userID = route.params.data.id;
+
     const [isEnabled, setIsEnabled] = useState(false);
     const [yearSwitch, setYearSwitch] = useState(false);
     const [majorSwitch, setMajorSwitch] = useState(false);
@@ -20,8 +24,20 @@ export default function PreferencesScreen ({route, navigation}) {
     const [commSwitch, setCommSwitch] = useState(false);
     const [availabilitySwitch, setAvailabilitySwitch] = useState(false);
     const [interestSwitch, setInterestSwitch] = useState(false);
+    
+    // useEffect(() => {
+    //     const usersRef = firebase.firestore().collection('users');
+    //     usersRef.doc(userID).get().then((document) => {
+    //       const userData = document.data()
+    //       if(userData.matchEnabled === true) {
+    //         setIsEnabled(true)
+    //       }
+    //   })
+    // })
+
     const toggleSwitch = () => {
         setIsEnabled(previousState => !previousState);
+        alert('Clicked '+ isEnabled.toString())
         if (isEnabled) {
             setYearSwitch(false);
             setMajorSwitch(false);
@@ -29,7 +45,13 @@ export default function PreferencesScreen ({route, navigation}) {
             setCommSwitch(false);
             setAvailabilitySwitch(false);
             setInterestSwitch(false);
+            
+            setMatchEnable(userID, true) //in database
+        }
+        else{
+            setMatchEnable(userID, false) //in database
         } 
+        
     }
 
     return (
