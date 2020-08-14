@@ -8,7 +8,7 @@ import SearchableDropdown from 'react-native-searchable-dropdown';
 import Checkbox from 'react-native-custom-checkbox';
 import {setUserProperties, setUserCourses, setProfilePicture} from '../server/userPrefs'
 import { firebase } from '../server/config';
-import { FontAwesome } from '../node_modules/@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons } from '../node_modules/@expo/vector-icons';
 
 const Years = [
     { id: 1, name: 'Freshman' },
@@ -34,8 +34,8 @@ var coursesOffered = [
   { id: 3, name: 'PSYCH 225' },
   { id: 4, name: 'STAT 515' },
 ]
-const Item = ({ item }) => (
-  <View style = {{width: 166, marginRight: 2, marginBottom: 10}}>
+const CourseProfItem = ({ item }) => (
+  <View style = {{width: 168, marginRight: 2, marginBottom: 10}}>
       <SearchableDropdown 
           //onItemSelect={item => setYear(item.name)}
           itemsContainerStyle={styles.dropdownYearItemContainer}
@@ -54,13 +54,13 @@ const Item = ({ item }) => (
           name="caret-down"
           size={24}
           color="#6c63ff"
-          style={{position: "absolute", top: 5, left: 140}}
+          style={{position: "absolute", top: 5, right: 10}}
       />
   </View>
 );
 const renderItem = ({item}) => {
   return (
-    <Item item={item}/>
+    <CourseProfItem item={item}/>
   )
 }
 const AddedCourse = ({ item, onPress, style }) => (
@@ -88,11 +88,13 @@ const ModesOfCommunication = [
 const RankItem = ({ item }) => (
   <View horizontal={false}>
   <Text style={item.id==1 ? [styles.profileSectionHeader, styles.learningTitle] : [styles.profileSectionHeader, styles.commTitle]}>
-      {item.id==1 ? "Learning style" : "Mode of communication"}
+      {item.id==1 ? "Learning style" : "Communication style"}
   </Text> 
+  {/*
   <Text style={item.id==1 ? [styles.profileSectionText, styles.learningSubtitle] : [styles.profileSectionText, styles.commSubtitle]}>
       Preference ranking
   </Text>
+  */}
   <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
       <SearchableDropdown // RANK 1
           //onItemSelect={item => setYear(item.name)}
@@ -113,7 +115,7 @@ const RankItem = ({ item }) => (
           name="caret-down"
           size={24}
           color="#6c63ff"
-          style={{position: "absolute", top: 5, left: 130}}
+          style={{position: "absolute", top: 5, right: 10}}
       />
   </View>
   <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
@@ -136,7 +138,7 @@ const RankItem = ({ item }) => (
           name="caret-down"
           size={24}
           color="#6c63ff"
-          style={{position: "absolute", top: 5, left: 130}}
+          style={{position: "absolute", top: 5, right: 10}}
       />
   </View>
   <View style = {item.id==1 ? [styles.dropdownYear, styles.learningDropdown] : [styles.dropdownYear, styles.commDropdown]}>
@@ -159,16 +161,122 @@ const RankItem = ({ item }) => (
           name="caret-down"
           size={24}
           color="#6c63ff"
-          style={{position: "absolute", top: 5, left: 130}}
+          style={{position: "absolute", top: 5, left: 125}}
       />
   </View>
   </View>
 );
 const renderRank = ({item}) => {
-  return (
-    <RankItem item={item}/>
-  )
+  if (item.id == 2) {
+    return (
+      <View horizontal={false} style={{padding: 5, left: 18, top: 48}}>
+      <MaterialCommunityIcons name="numeric-1-circle-outline" size={24} color={"#6c63ff"} style={{marginBottom: 15}}/>
+      <MaterialCommunityIcons name="numeric-2-circle-outline" size={24} color={"#6c63ff"} style={{marginBottom: 15}}/>
+      <MaterialCommunityIcons name="numeric-3-circle-outline" size={24} color={"#6c63ff"} style={{marginBottom: 10}}/>
+      </View>
+    );
+  } else {
+    return (
+      <RankItem item={item}/>
+    );
+  }
 }
+
+// Vars and methods for availability
+const calendar = [
+  {id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8},
+  {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}, {id: 14}, {id: 15}, {id: 16},
+  {id: 17}, {id: 18}, {id: 19}, {id: 20}, {id: 21}, {id: 22}, {id: 23}, {id: 24}, 
+  {id: 25}, {id: 26}, {id: 27}, {id: 28}, {id: 29}, {id: 30}, {id: 31}, {id: 32} 
+]
+var day;
+var timeOfDay;
+const renderCal = ({ item, index }) => {
+  switch (index) {
+    case 0: return;
+    case 1: day = "S"; break;
+    case 2: day = "M"; break;
+    case 3: day = "T"; break;
+    case 4: day = "W"; break;
+    case 5: day = "R"; break;
+    case 6: day = "F"; break;
+    case 7: day = "S"; break;
+    case 8: timeOfDay = "Morning"; break;
+    case 16: timeOfDay = "After -noon"; break;
+    case 24: timeOfDay = "Evening"; break;
+  }
+
+  if (index == 1) {
+    return (
+      <Text style={[styles.profileSectionText, {paddingLeft: 68, marginRight: 3}]}>{day}</Text>
+    );
+  } else if (index <= 7) {
+    return (
+      <Text style={[styles.profileSectionText, {marginRight: 3}]}>{day}</Text>
+    );
+  } else if (index == 8 || index == 24) {
+    return (
+      <Text style={[styles.profileSectionText, {width: 55, marginTop: 8}]}>{timeOfDay}</Text>
+    );
+  } else if (index == 16) {
+    return (
+      <Text style={[styles.profileSectionText, {width: 55, marginTop: 5}]}>{timeOfDay}</Text>
+    );
+  } else {
+    return (
+      <View style={{ marginRight:13, margin:5 }}>
+        <Checkbox
+        checked={false}
+        style={{backgroundColor: '#FFF', color:'#6C63FF', 
+        borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
+      </View>
+    );
+  }
+}
+
+// Vars and methods for interests
+const interests = [
+  {id: 1}, {id: 2}, {id: 3}, {id: 4},
+  {id: 5}, {id: 6}, {id: 7}, {id: 8},
+  {id: 9}, {id: 10}, {id: 11}, {id: 12},
+  {id: 13}, {id: 14}, {id: 15}, {id: 16},
+  {id: 17}, {id: 18}, {id: 19}, {id: 20},
+  {id: 21}, {id: 22}, {id: 23}, {id: 24}
+]
+var interest;
+const renderInterest = ({ item, index }) => {
+  switch (index) {
+    case 1: interest = "Art"; break;
+    case 3: interest = "Music"; break;
+    case 5: interest = "Astrology"; break;
+    case 7: interest = "Outdoors"; break;
+    case 9: interest = "Baking/Cooking"; break;
+    case 11: interest = "Politics"; break;
+    case 13: interest = "Dance"; break;
+    case 15: interest = "Reading"; break;
+    case 17: interest = "Fitness"; break;
+    case 19: interest = "Sports"; break;
+    case 21: interest = "Movies/TV"; break;
+    case 23: interest = "Video Games"; break;
+  }
+
+  if (index % 2 == 0) {
+    return (
+      <View style={{ marginRight: 13, margin: 5 }}>
+        <Checkbox
+        checked={false}
+        style={{backgroundColor: '#FFF', color:'#6C63FF', 
+        borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
+      </View>
+    );
+  } else {
+    return (
+      <Text style={[styles.profileSectionText, {marginLeft: 0, marginTop: 8, width: 150}]}>{interest}</Text>
+    )
+  }
+}
+
+
 
 export default function ProfileScreen ({ route }) {
 
@@ -183,6 +291,8 @@ export default function ProfileScreen ({ route }) {
     const [coursesAdded, setCoursesAdded] = useState([
         { id: 1, courseName: '', prof: ''},
     ])
+    
+    const [changesSaved, setChangesSaved] = useState(false);
 
     useEffect(() => {
       const usersRef = firebase.firestore().collection('users');
@@ -225,6 +335,7 @@ export default function ProfileScreen ({ route }) {
         year
       }
       setUserProperties(userID, user)
+      setChangesSaved(true);
     }
 
     const imageSelected = selectedImage !== null;
@@ -240,8 +351,8 @@ export default function ProfileScreen ({ route }) {
       setCoursesAdded(newCoursesAdded);
     }
 
-    return (
-        <View style={[styles.container, {marginBottom: -950}]}>
+    return ( // {marginBottom: -950}
+        <View style={[styles.container, ]}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
@@ -259,7 +370,7 @@ export default function ProfileScreen ({ route }) {
                     }
                 </TouchableOpacity>
 
-                {/* Tap to enter name, pronouns, bio next to their section headers  */}
+                {/* Tap to enter name, pronouns, and bio  */}
                 <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Name</Text>
                 <TextInput
@@ -346,7 +457,7 @@ export default function ProfileScreen ({ route }) {
                 <TouchableOpacity onPress={onAddCourse}>
                   <Text style={styles.addACourse}>+ Add a course</Text>
                 </TouchableOpacity>
-                <View style={{paddingLeft: 20}}>
+                <View style={{paddingLeft: 18}}>
                     <FlatList
                         //contentContainerStyle={{alignItems: "center"}} // this hides added courses
                         data={coursesAdded}
@@ -355,219 +466,40 @@ export default function ProfileScreen ({ route }) {
                     />
                 </View>
 
-                {/* Rank learning style and mode of communication*/}
+                {/* Rank learning style and mode of communication */}
                 <View>
                     <FlatList
                         horizontal={true}
-                        data={[{id: 1}, {id: 2}]}
+                        data={[{id: 1}, {id: 2}, {id: 3}]}
                         renderItem={renderRank}
                         keyExtractor={(item) => item.id}
                     />
                 </View>
-
-
-                <Text style={{padding:100}}></Text>
                 
 
-
-                 <View style= {styles.days} >
-                 <Text style={styles.dayText}>S</Text> 
-                 <Text style={styles.dayText}>M</Text> 
-                 <Text style={styles.dayText}>T</Text> 
-                 <Text style={styles.dayText}>W</Text> 
-                 <Text style={styles.dayText}>Th</Text> 
-                 <Text style={styles.dayText}>F</Text> 
-                 <Text style={styles.dayText}>S</Text> 
-                 </View>
-
-                    
-                <View style={styles.av_text}>
-                <Text style={styles.profileSectionHeader}>Availability</Text> 
-                </View>
-                
-                <View style= {styles.avBottomText1}>
-                <Text style={styles.profileSectionText}>Morning</Text>
+                {/* Mark weekly availability */}
+                <Text style={[styles.profileSectionHeader, {marginTop: 25}]}>Availability</Text> 
+                <View style={{left: -10}}>
+                    <FlatList
+                        data={calendar}
+                        renderItem={renderCal}
+                        keyExtractor={(item) => item.id}
+                        numColumns={8}
+                    />
                 </View>
 
-                <View style ={styles.avBottomText2}>
-                <Text style={styles.profileSectionText}>After{"\n"}-noon</Text>
+                {/* Mark interests */}
+                <Text style={[styles.profileSectionHeader, {marginTop: 25}]}>Interests</Text>
+                <View style={{left:30}}>
+                    <FlatList
+                        data={interests}
+                        renderItem={renderInterest}
+                        keyExtractor={(item) => item.id}
+                        numColumns={4}
+                    />
                 </View>
 
-                <View style ={styles.avBottomText3}>
-                <Text style={styles.profileSectionText}>Evening</Text>
-                </View>
-
-                    <View style={styles.checkboxGrid1}>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    </View>
-
-                    <View style={styles.checkboxGrid2}>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-
-
-
-                    </View>
-
-                    <View style={styles.checkboxGrid3}>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    </View>
-
-                    
-
-                    
-                    
-                    
-                <View style={{position:"relative", bottom:230}}>
-                <Text style={styles.profileSectionHeader}>Interests</Text>
-                </View>
-
+<<<<<<< HEAD
                 <View style= {styles.interests1} >
                  <Text style={styles.intText}>Art</Text> 
                  <Text style={styles.intText}>Astrology</Text> 
@@ -691,16 +623,20 @@ export default function ProfileScreen ({ route }) {
 
                 
                 <View style={styles.scButton}>
+=======
+                {/* Save edits to profile */} 
+>>>>>>> 40a6b37143eea01e35678e0910e80dec5bc6c558
                 <TouchableOpacity
-                  
-                  style={styles.button}
+                  style={[styles.button, {marginTop: 25}]}
                   onPress={() => saveChanges()}>
                   <Text style={styles.buttonTitle}>SAVE CHANGES</Text>
                 </TouchableOpacity>
-                </View>
-
-            
+                <Text style={changesSaved ? [styles.profileSectionText, {marginLeft: 0, textAlign: "center"}] : {color: "#fff"}}>
+                  Changes have been saved.
+                </Text>
                 
+                <Text style={{padding:10}}></Text>
+                      
             </KeyboardAwareScrollView>
       </View>
       

@@ -40,8 +40,9 @@ export default StyleSheet.create({
     },
     dropdownItemText: {
         color: "#222",
-        //marginLeft: 10,
-        //margin: 10
+        marginLeft: 10,
+        margin: 5,
+        fontFamily: "Ubuntu-Light"
     },
     dropdownItemContainer: {
         //maxHeight: 140,
@@ -92,41 +93,6 @@ export default StyleSheet.create({
         fontWeight: "bold",
         fontFamily: "Ubuntu-Medium"
     },
-    chatFooter: {
-        flexDirection: 'row',
-        height:60,
-        backgroundColor: '#eeeeee',
-        paddingHorizontal:10,
-        padding:5,
-    },
-    chatSend:{
-        width:40,
-        height:40,
-        borderRadius:10,
-        alignItems:'center',
-        justifyContent:'center',
-      },
-      chatInputContainer: {
-        backgroundColor:"#dedede",
-        width:300,
-        borderRadius:30,
-        flexDirection: 'row',
-        alignItems:'center',
-        flex:1,
-      },
-      chatInputs:{
-        backgroundColor: "#dedede",
-        width: Math.round(Dimensions.get('window').width) - 50,
-        maxHeight: 40,
-        borderRadius:30,
-        flexDirection: 'row',
-        alignItems:'center',
-        alignContent:'center',
-        paddingLeft: 15,
-        marginBottom: 10,
-        marginTop: 10,
-        flex:1,
-      },
     footerView: {
         flex: 1,
         alignItems: "center",
@@ -190,22 +156,23 @@ export default StyleSheet.create({
         left: 80,
         bottom: 5
     },
-    dropdownYearTextInput: {
+    dropdownYearItemContainer: {
         padding: 7,
         backgroundColor: '#FFF',
-        borderWidth: 1,
         borderColor: '#626262',
-        borderRadius: 7
     },
     dropdownYearItem: {
         padding: 7,
         backgroundColor: '#FFF',
         borderColor: '#626262',
     },
-    dropdownYearItemContainer: {
+    dropdownYearTextInput: {
         padding: 7,
         backgroundColor: '#FFF',
+        borderWidth: 1,
         borderColor: '#626262',
+        borderRadius: 7,
+        fontFamily: "Ubuntu-Light"
     },
     addACourse: {
         color: "#6c63ff",
@@ -214,124 +181,15 @@ export default StyleSheet.create({
         bottom: 36,
         marginBottom: -20
     },
-    learningTitle: { marginTop: 20, marginBottom: -3 },
+    learningTitle: { marginTop: 20, marginBottom: 10 },
     learningSubtitle: { marginLeft: 20, marginBottom: 10 },
     learningDropdown: {
-        width: 160, margin: 6, marginLeft: 2, marginRight: 0, left: 15, marginBottom: 0
+        width: 150, margin: 6, marginLeft: 2, marginRight: 0, left: 15, marginBottom: 0
     },
-    commTitle: { marginTop: 20, marginBottom: -3, paddingLeft: 15 },
-    commSubtitle: { marginLeft: 20, marginBottom: 10, paddingLeft: 15 },
+    commTitle: { marginTop: 20, marginBottom: 10, marginLeft: 23 },
+    commSubtitle: { marginLeft: 20, marginBottom: 10, marginLeft: 57 },
     commDropdown: {
-        width: 160, margin: 6, marginLeft: 18, marginRight: 0, left: 15, marginBottom: 0
-    },
-    av_text: {
-        position: 'relative',
-        bottom: 210,
-
-
-    },
-    avBottomText1: {
-        position: 'relative',
-        bottom: 170,
-        marginBottom: 30,
-
-
-    },
-    avBottomText2: {
-        position: 'relative',
-        bottom: 170,
-        marginBottom: 30,
-
-
-    },
-    avBottomText3: {
-        position: 'relative',
-        bottom: 170,
-        marginBottom: 30,
-
-
-    },
-    dayText: {
-        color: '#3d3d3d',
-        fontSize: 13,
-        fontFamily: "Ubuntu-Light",
-        marginRight: 30,
-        
-        
-
-        
-    },
-    days: {
-        bottom: 150,
-        marginLeft: 130,
-        flex:1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-
-    checkboxGrid1: {
-        flex:1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        bottom: 330,
-        marginLeft: 120,
-        
-        
-
-    },
-    checkboxGrid2: {
-        flex:1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        bottom: 300,
-        marginLeft: 120,
-    
-        
-        
-    },
-    checkboxGrid3: {
-        flex:1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        bottom: 270,
-        marginLeft: 120,
-    
-        
-        
-    },
-
-    interests1: {
-        position: "relative",
-        bottom: 210,
-        marginLeft: 70,
-
-    },
-    intText: {
-        fontFamily: "Ubuntu-Light",
-        marginBottom: 30,
-    },
-    intCheckboxGrid1:{
-        marginLeft: 30,
-        bottom: 483
-
-    },
-
-    interests2: {
-        position: "relative",
-        bottom: 743,
-        marginLeft: 290,
-
-    },
-
-    intCheckboxGrid2:{
-        marginLeft: 250,
-        bottom: 1015
-
-    },
-    scButton: {
-        position: "relative",
-        bottom: 990,
-
+        width: 150, margin: 6, marginRight: 0, left: 16, marginBottom: 0
     },
 
     // Preferences -------------------------------------------------------------------------
@@ -361,7 +219,7 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Medium"
     },
     prefDropdown: {
-        width: 300,
+        width: 280,
         marginBottom: 5,
         alignSelf: "center"
     },
@@ -372,7 +230,7 @@ export default StyleSheet.create({
         //width: 170,
         alignSelf: "flex-start",
         fontSize: 16,
-        color: "#505050",
+        color: "#3d3d3d",
         fontFamily: "Ubuntu-Light"
     },
     prefButtonContainer: {
@@ -440,6 +298,7 @@ export default StyleSheet.create({
         paddingTop: 0
     },
 
+<<<<<<< HEAD
     // MatchScreen -------------------------------------------------------------------------
 
     match_img : {
@@ -499,4 +358,42 @@ export default StyleSheet.create({
     },
 
     
+=======
+    // Chat -------------------------------------------------------------------------
+    chatFooter: {
+        flexDirection: 'row',
+        height:60,
+        backgroundColor: '#eeeeee',
+        paddingHorizontal:10,
+        padding:5,
+    },
+    chatSend:{
+        width:40,
+        height:40,
+        borderRadius:10,
+        alignItems:'center',
+        justifyContent:'center',
+      },
+      chatInputContainer: {
+        backgroundColor:"#dedede",
+        width:300,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        flex:1,
+      },
+      chatInputs:{
+        backgroundColor: "#dedede",
+        width: Math.round(Dimensions.get('window').width) - 50,
+        maxHeight: 40,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        alignContent:'center',
+        paddingLeft: 15,
+        marginBottom: 10,
+        marginTop: 10,
+        flex:1,
+      },
+>>>>>>> 40a6b37143eea01e35678e0910e80dec5bc6c558
 })
