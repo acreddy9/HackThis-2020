@@ -17,7 +17,7 @@ import styles from './styles.js'
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 
-export default function ChatScreen() {
+export default function ChatScreen( {navigation} ) {
     var convos = [
         //name key is must.It is to show the text in front
         { key: 1, pic: require('../assets/charlie-logan.png'), name: "Charlie Logan", lastMessage: {text: "How is your work going?", timestamp: new Date(Date.now() - 600000)}, read: false},
@@ -30,7 +30,7 @@ export default function ChatScreen() {
     let User=Data.map((u_data)=>{
         return(
           <View style={chatStyles.panel} key={u_data.key}>  
-              <TouchableOpacity /* onPress={()=> this.props.navigation.navigate('ChatRoom',{
+              <TouchableOpacity  onPress={()=> navigation.navigate('ChatRoom')}/*,{
                     uemail:this.state.uemail,
                     uid:this.state.uid,
                     uname:this.state.uname,
