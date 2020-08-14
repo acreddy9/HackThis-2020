@@ -20,7 +20,7 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 export default function ChatScreen( {navigation} ) {
     var convos = [
         //name key is must.It is to show the text in front
-        { key: 1, pic: require('../assets/charlie-logan.png'), name: "Charlie Logan", lastMessage: {text: "How is your work going?", timestamp: new Date(Date.now() - 600000)}, read: false},
+        { key: 1, pic: require('../assets/charlie-logan.png'), name: "Charlie Logan", lastMessage: {text: "Sounds like a plan!", timestamp: new Date(Date.now() - 600000)}, read: false},
         { key: 2, pic: require('../assets/callum-cervantes.png'), name: "Callum Cervantes", lastMessage: {text: "OMG I think I just figured it out!", timestamp: new Date(Date.now() - 6000000)}, read: false},
         { key: 3, pic: require('../assets/aminah-ratcliffe.png'), name: "Aminah Ratcliffe", lastMessage: {text: "Lecture was so entertaining today", timestamp: new Date(Date.now() - 60000000)}, read: false},
         { key: 4, pic: require('../assets/huey-kent.png'), name: "Huey Kent", lastMessage: {text: "Wow great job!", timestamp: new Date(Date.now() - 6000000000)}, read: true}

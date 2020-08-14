@@ -23,7 +23,7 @@ export default function ForgotPasswordScreen({navigation}) {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-                <Ionicons name="ios-arrow-back" size={25}/>
+                <Ionicons name="ios-arrow-back" size={25} color="#3d3d3d"/>
             </TouchableOpacity>
             <Text style={styles.appName}>Lorem</Text>
             <Text style={styles.appName}>{"     "}</Text>
