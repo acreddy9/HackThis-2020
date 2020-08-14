@@ -68,7 +68,7 @@ export default function PreferencesScreen ({route, navigation}) {
                         style={{position: "absolute", left: 240}}
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        trackColor={{ false: "#979797", true: "#6c63ff" }}
+                        trackColor={{ false: "#aaa", true: "#6c63ff" }}
                         ios_backgroundColor="#aaa"
                     />
                 </View>
@@ -80,12 +80,19 @@ export default function PreferencesScreen ({route, navigation}) {
                         //onItemSelect={(item) => setRelationPref(item.name)}
                         onItemSelect={(item) => {}}
                         containerStyle={{ padding: 5 }}
-                        textInputStyle={{
-                            padding: 7,
-                            borderWidth: 1,
-                            borderColor: '#626262',
-                            backgroundColor: '#FFF',
-                            borderRadius: 7
+                        textInputStyle={ isEnabled
+                            ? {
+                                padding: 7,
+                                borderWidth: 1,
+                                borderColor: '#626262',
+                                backgroundColor: '#FFF',
+                                borderRadius: 7,
+                            } : {
+                                padding: 7,
+                                borderWidth: 1,
+                                borderColor: '#aaa',
+                                backgroundColor: '#FFF',
+                                borderRadius: 7
                         }}
                         itemStyle={{
                             padding: 7,
@@ -93,16 +100,16 @@ export default function PreferencesScreen ({route, navigation}) {
                             backgroundColor: '#FFF',
                             borderColor: '#626262',
                         }}
-                        itemTextStyle={{
-                            color: '#222',
-                        }}
+                        itemTextStyle={ isEnabled 
+                            ? {fontFamily: "Ubuntu-Light", color: "#222"}
+                            : {fontFamily: "Ubuntu-Light", color: "#aaa"}
+                        }
                         itemsContainerStyle={{
                             maxHeight: '80%',
                             borderWidth: 0.2,
                             borderRadius: 7
                         }}
                         items={relationships}
-                        defaultIndex={2}
                         placeholder="Friend / Study buddy / Both"
                         resetValue={false}
                         underlineColorAndroid="transparent"
@@ -111,12 +118,12 @@ export default function PreferencesScreen ({route, navigation}) {
                     <FontAwesome 
                         name="caret-down"
                         size={24}
-                        color={isEnabled ? "#6c63ff": "#3d3d3d"}
-                        style={{position: "absolute", top: 10, left: 270}}
+                        color={isEnabled ? "#6c63ff": "#aaa"}
+                        style={{position: "absolute", top: 10, right: 17}}
                     />
                 </View>
 
-                <Text style={[styles.footerText, styles.prefSwitchText]}>Same year</Text>
+                <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same year</Text>
                 <Switch
                     style={{position: "absolute", top: 188, left: 275}}
                     onValueChange={() => setYearSwitch(previousState => !previousState)}
@@ -126,7 +133,7 @@ export default function PreferencesScreen ({route, navigation}) {
                     ios_backgroundColor={"#aaa"}
                 />
 
-                <Text style={styles.prefSwitchText}>Same major</Text>
+                <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same major</Text>
                 <Switch
                     style={{position: "absolute", top: 237, left: 275}}
                     onValueChange={() => setMajorSwitch(previousState => !previousState)}
@@ -136,7 +143,7 @@ export default function PreferencesScreen ({route, navigation}) {
                     ios_backgroundColor={"#aaa"}
                 />
 
-                <Text style={styles.prefSwitchText}>Same learning style</Text>
+                <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same learning style</Text>
                 <Switch
                     style={{position: "absolute", top: 286, left: 275}}
                     onValueChange={() => setLearnSwitch(previousState => !previousState)}
@@ -146,7 +153,7 @@ export default function PreferencesScreen ({route, navigation}) {
                     ios_backgroundColor={"#aaa"}
                 />
 
-                <Text style={styles.prefSwitchText}>Same communication style</Text>
+                <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Same communication style</Text>
                 <Switch
                     style={{position: "absolute", top: 335, left: 275}}
                     onValueChange={() => setCommSwitch(previousState => !previousState)}
@@ -156,7 +163,7 @@ export default function PreferencesScreen ({route, navigation}) {
                     ios_backgroundColor={"#aaa"}
                 />
 
-    <           Text style={styles.prefSwitchText}>Similar availability</Text>
+                <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Similar availability</Text>
                 <Switch
                     style={{position: "absolute", top: 384, left: 275}}
                     onValueChange={() => setAvailabilitySwitch(previousState => !previousState)}
@@ -166,7 +173,7 @@ export default function PreferencesScreen ({route, navigation}) {
                     ios_backgroundColor={"#aaa"}
                 />
 
-                <Text style={styles.prefSwitchText}>Similar interests</Text>
+                <Text style={isEnabled ? styles.prefSwitchText : [styles.prefSwitchText, {color: "#aaa"}]}>Similar interests</Text>
                 <Switch
                     style={{position: "absolute", top: 433, left: 275}}
                     onValueChange={() => setInterestSwitch(previousState => !previousState)}
