@@ -91,7 +91,7 @@ export default function MatchProfile({ route, navigation }) {
             </View>
             
             
-            <View style={{top: 70}}>
+            <View style={{}}>
             <Text style={ {color: "#6c63ff", fontSize: 20, fontFamily:"Ubuntu-Medium", 
             position:"relative", right: -35, bottom: 225}}>Shared availability</Text>
 
@@ -222,15 +222,7 @@ export default function MatchProfile({ route, navigation }) {
                     </View>
                     </View>
 
-                <View style= {styles.days} >
-                 <Text style={styles.dayText}>S</Text> 
-                 <Text style={styles.dayText}>M</Text> 
-                 <Text style={styles.dayText}>T</Text> 
-                 <Text style={styles.dayText}>W</Text> 
-                 <Text style={styles.dayText}>Th</Text> 
-                 <Text style={styles.dayText}>F</Text> 
-                 <Text style={styles.dayText}>S</Text> 
-                 </View>
+                
                 
 
                 

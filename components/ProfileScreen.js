@@ -499,7 +499,6 @@ export default function ProfileScreen ({ route }) {
                     />
                 </View>
 
-<<<<<<< HEAD
                 <View style= {styles.interests1} >
                  <Text style={styles.intText}>Art</Text> 
                  <Text style={styles.intText}>Astrology</Text> 
@@ -623,9 +622,6 @@ export default function ProfileScreen ({ route }) {
 
                 
                 <View style={styles.scButton}>
-=======
-                {/* Save edits to profile */} 
->>>>>>> 40a6b37143eea01e35678e0910e80dec5bc6c558
                 <TouchableOpacity
                   style={[styles.button, {marginTop: 25}]}
                   onPress={() => saveChanges()}>
@@ -636,6 +632,7 @@ export default function ProfileScreen ({ route }) {
                 </Text>
                 
                 <Text style={{padding:10}}></Text>
+                </View>
                       
             </KeyboardAwareScrollView>
       </View>

@@ -298,7 +298,7 @@ export default StyleSheet.create({
         paddingTop: 0
     },
 
-<<<<<<< HEAD
+ 
     // MatchScreen -------------------------------------------------------------------------
 
     match_img : {
@@ -358,7 +358,7 @@ export default StyleSheet.create({
     },
 
     
-=======
+
     // Chat -------------------------------------------------------------------------
     chatFooter: {
         flexDirection: 'row',
@@ -395,5 +395,5 @@ export default StyleSheet.create({
         marginTop: 10,
         flex:1,
       },
->>>>>>> 40a6b37143eea01e35678e0910e80dec5bc6c558
+
 })
