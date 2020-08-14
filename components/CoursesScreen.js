@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, TouchableOpacity, View, FlatList } from 'react-native';
 import styles from './styles';
 import  Header  from './Header.js';
 import CoursesIllustration from "../assets/courses-illustration.svg";
+import {firebase} from '../server/config';
 
-const matchFeatureOn = true; // set to true to test course tile display
+//var matchFeatureOn = false; // set to true to test course tile display
 var courses = [
     { courseName: "CS 200", professor: "Mark Renault" },
     { courseName: "PSYCH 225", professor: "Allyson Bennett" },
@@ -20,8 +21,18 @@ const Item = ({ item, onPress, style }) => (
 );
 
 export default function CoursesScreen({ route, navigation }) {
+    const userID = route.params.data.id
 
     const [selectedCourse, setSelectedCourse] = useState('');
+    const [matchFeatureOn, setMatchFeatureOn] = useState(false);
+
+    // this is not working
+    useEffect(() => {
+        const unsubscribe = firebase.firestore().collection('users')
+        .doc(userID)
+        .onSnapshot((snap) =>setMatchFeatureOn(snap.data().matchEnable))
+        return () => {unsubscribe()}
+    }, [firebase])
 
     const renderItem = ({item, index}) => {
         if (index==0) {

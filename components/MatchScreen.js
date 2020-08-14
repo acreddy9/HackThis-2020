@@ -62,17 +62,16 @@ export default function MatchScreen({ route, navigation }) {
     }
 
     const onBackPress = () => {
-        alert("hehe")
         navigation.navigate('CoursesScreen')
     }
 
     return (
         <View style={styles.container}>
+            
+            <Header title={selectedCourse}/>
             <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
                 <Ionicons name="ios-arrow-back" size={25}/>
             </TouchableOpacity>
-            <Header title={selectedCourse}/>
-             
             <TouchableOpacity style={[styles.button, {marginTop: 20}]} onPress={() => onMatchMe()}>
                 <Text style={styles.buttonTitle}>MATCH ME</Text>
             </TouchableOpacity>
