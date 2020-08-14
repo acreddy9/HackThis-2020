@@ -84,7 +84,7 @@ export default function LoginScreen({navigation}) {
               .catch((e) => console.log(e))
           })
           .catch((e) => {
-            console.log(e.message)
+            alert(e.message)
           })
       }
 }

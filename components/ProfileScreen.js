@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, TouchableOpacity, Image, FlatList, } from 'react-native';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -7,7 +7,8 @@ import GreyHorizontalLine from './GreyHorizontalLine.js';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import Checkbox from 'react-native-custom-checkbox';
 import { State } from 'react-native-gesture-handler';
-//import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
+import {setUserProperties, setUserCourses} from '../server/userPrefs'
+import { firebase } from '../server/config';
 
 const Years = [
     //name key is must.It is to show the text in front
@@ -43,7 +44,22 @@ export default function ProfileScreen ({ route }) {
     const [major, setMajor] = useState('');
     const [year, setYear] = useState('');
 
-   
+    useEffect(() => {
+      const usersRef = firebase.firestore().collection('users');
+      usersRef.doc(userID).get().then((document) => {
+        const userData = document.data()
+        if(userData.name){
+          setName(userData.name)
+        }
+        if(userData.bio) {
+          setBio(userData.bio)
+        }
+        if(userData.pronouns){
+          setPronouns(userData.pronouns)
+        }
+      })
+    });
+
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -62,10 +78,14 @@ export default function ProfileScreen ({ route }) {
     };
 
     const saveChanges = () => {
-        setUserName(name)
-        setUserBio(bio)
-        setUserMajor(major)
-        setUserYear(year)
+      const user = {
+        name,
+        pronouns,
+        major,
+        bio,
+        year
+      }
+      setUserProperties(userID, user)
     }
 
     const imageSelected = selectedImage !== null;
