@@ -27,15 +27,18 @@ export default function PreferencesScreen ({route, navigation}) {
     const [availabilitySwitch, setAvailabilitySwitch] = useState(false);
     const [interestSwitch, setInterestSwitch] = useState(false);
     
-    // useEffect(() => {
-    //     const usersRef = firebase.firestore().collection('users');
-    //     usersRef.doc(userID).get().then((document) => {
-    //       const userData = document.data()
-    //       if(userData.matchEnabled === true) {
-    //         setIsEnabled(true)
-    //       }
-    //   })
-    // })
+    useEffect(() => {
+        const usersRef = firebase.firestore().collection('users');
+        usersRef.doc(userID).get().then((document) => {
+          const userData = document.data()
+          if(userData.matchEnable === true) {
+            setIsEnabled(true)
+          }
+          else{
+              setIsEnabled(false)
+          }
+      }).catch((error)=> alert(error.message))
+    })
 
     const toggleSwitch = () => {
         if (isEnabled) {

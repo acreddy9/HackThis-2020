@@ -152,34 +152,6 @@ export default StyleSheet.create({
         left: 30
     },
 
-    // Courses -------------------------------------------------------------------------
-    courseTile: {
-        backgroundColor: '#f2f2ff',
-        height: 80,
-        width: 350,
-        margin: 5,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        shadowColor: "#000", // IOS
-        shadowOffset: { height: 3, width: 3 }, // IOS
-        shadowOpacity: 0.1, // IOS
-        shadowRadius: 1, //IOS
-        elevation: 2, // Android
-    },
-    courseName: {
-        color: '#3d3d3d',
-        fontSize: 16,
-        fontFamily: "Ubuntu-Medium"
-    },
-    professor: {
-        color: '#3d3d3d',
-        fontSize: 16,
-        fontFamily: "Ubuntu-Light"
-    },
-
     // Profile -------------------------------------------------------------------------
     profilePic: {
         alignSelf: "center",
@@ -214,8 +186,8 @@ export default StyleSheet.create({
         fontFamily: "Ubuntu-Light"
     },
     dropdownYear: {
-        width: 262,
-        left: 90,
+        width: 275,
+        left: 80,
         bottom: 5
     },
     dropdownYearTextInput: {
@@ -265,9 +237,6 @@ export default StyleSheet.create({
         marginLeft: 260,
         bottom: 37,
         marginBottom: -30
-    },
-    learnstyle_text: {
-        bottom: 110,
     },
     SearchableDroppie_learn1: {
         width: 160,
@@ -447,7 +416,6 @@ export default StyleSheet.create({
     },
     prefDropdown: {
         width: 300,
-        //height: 50,
         marginBottom: 5,
         alignSelf: "center"
     },
@@ -474,8 +442,36 @@ export default StyleSheet.create({
         margin: 20,
     },
 
+    // Courses -------------------------------------------------------------------------
+    courseTile: {
+        backgroundColor: '#f2f2ff',
+        height: 80,
+        width: 350,
+        margin: 5,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        shadowColor: "#000", // IOS
+        shadowOffset: { height: 3, width: 3 }, // IOS
+        shadowOpacity: 0.1, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 2, // Android
+    },
+    courseName: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Medium"
+    },
+    professor: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Light"
+    },
+
     // Matches -------------------------------------------------------------------------
-    matchTile: { // use style={styles.courseTile, styles.matchTile}
+    matchTile: { 
         height: 95,
         width: 350,
         alignItems: "flex-start"

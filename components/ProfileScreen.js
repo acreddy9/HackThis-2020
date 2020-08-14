@@ -34,43 +34,47 @@ var coursesOffered = [
   { id: 3, name: 'PSYCH 225' },
   { id: 4, name: 'STAT 515' },
 ]
-
-var userCourses = [
-  { id: 1, name: '', prof: ''},
-]
-
 const Item = ({ item, onPress, style }) => (
-  <FlatList>
-    <View style={[styles.dropdownYear, {bottom: 30}]}>
-        <SearchableDropdown 
-            onItemSelect={item => setMajor(item.name)}
-            containerStyle={[styles.dropdownContainer, {width: 200}]}
-            textInputStyle={styles.dropdownYearTextInput}
-            itemStyle={styles.dropdownYearItem}
-            itemTextStyle={styles.dropdownItemText}
-            itemsContainerStyle={styles.dropdownYearItemContainer}
-            items={Majors}
-            resetValue={false}
-            textInputProps={{
-                placeholder: "Select a course",
-                placeholderTextColor: "#aaa",
-                underlineColorAndroid: "transparent",
-            }}
-            nestedScrollEnabled={true}
-        />
-        <FontAwesome 
-            name="caret-down"
-            size={24}
-            color="#6c63ff"
-            style={{position: "absolute", top: 5, left: 235}}
-        />
-    </View>
-  </FlatList>
+  <View style = {[styles.dropdownYear, {width: 168, margin: 6, marginLeft: 2, marginRight: 0, left: 15}]}>
+      <SearchableDropdown 
+          //onItemSelect={item => setYear(item.name)}
+          itemsContainerStyle={styles.dropdownYearItemContainer}
+          itemStyle={styles.dropdownYearItem}
+          itemTextStyle={styles.dropdownItemText}
+          textInputStyle={styles.dropdownYearTextInput}
+          items={coursesOffered}
+          resetValue={false}
+          placeholder={item.id==1 ? "Select a course" : "Select a professor"}
+          textInputProps={{
+              placeholderTextColor: "#aaa",
+              underlineColorAndroid: "transparent",
+          }}
+      />
+      <FontAwesome 
+          name="caret-down"
+          size={24}
+          color="#6c63ff"
+          style={{position: "absolute", top: 5, left: 140}}
+      />
+  </View>
 );
 
-const onAddCourse = () => {
-  // TODO
+const renderItem = ({item}) => {
+  return (
+    <Item item={item}/>
+  )
 }
+
+const AddedCourse = ({ item, onPress, style }) => (
+  <>
+  <FlatList
+      horizontal={true}
+      data={[{id: 1}, {id: 2}]}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+  />
+  </>
+);
 
 export default function ProfileScreen ({ route }) {
 
@@ -80,8 +84,11 @@ export default function ProfileScreen ({ route }) {
     const [name, setName] = useState('');
     const [pronouns, setPronouns] = useState('');
     const [bio, setBio] = useState('');
-    const [major, setMajor] = useState('');
     const [year, setYear] = useState('');
+    const [major, setMajor] = useState('');
+    const [coursesAdded, setCoursesAdded] = useState([
+        { id: 1, courseName: '', prof: ''},
+    ])
 
     useEffect(() => {
       const usersRef = firebase.firestore().collection('users');
@@ -128,20 +135,17 @@ export default function ProfileScreen ({ route }) {
 
     const imageSelected = selectedImage !== null;
 
-    const renderItem = ({item, index}) => {
-      if (index==0) {
-          return (
-              <>
-              <Text style={{padding:0}}></Text>
-              <Item item={item}/>
-              </>
-          );
-      } else{ 
-          return (
-              <Item item={item} onPress={() => onCourseSelection(item.courseName)} />
-          );
-      }
+    const renderAddedCourse = ({item}) => {
+      return (
+        <AddedCourse item={item} />
+      )
     }
+
+    const onAddCourse = () => {
+      const idx = coursesAdded.length + 1;
+      var newCoursesAdded = [...coursesAdded, {id : idx, courseName: '', prof: ''}];
+      setCoursesAdded(newCoursesAdded);
+  }
 
     return (
         <View style={[styles.container, {marginBottom: -950}]}>
@@ -195,11 +199,11 @@ export default function ProfileScreen ({ route }) {
                 <View style = {styles.dropdownYear}>
                     <SearchableDropdown 
                         onItemSelect={item => setYear(item.name)}
-                        containerStyle={[styles.dropdownContainer, {width: 200}]}
-                        textInputStyle={styles.dropdownYearTextInput}
+                        //containerStyle={styles.dropdownContainer}
+                        itemsContainerStyle={styles.dropdownYearItemContainer}
                         itemStyle={styles.dropdownYearItem}
                         itemTextStyle={styles.dropdownItemText}
-                        itemsContainerStyle={styles.dropdownYearItemContainer}
+                        textInputStyle={styles.dropdownYearTextInput}
                         items={Years}
                         resetValue={false}
                         textInputProps={{
@@ -213,7 +217,7 @@ export default function ProfileScreen ({ route }) {
                         name="caret-down"
                         size={24}
                         color="#6c63ff"
-                        style={{position: "absolute", top: 5, left: 235}}
+                        style={{position: "absolute", top: 5, left: 250}}
                     />
                 </View>
         
@@ -222,11 +226,10 @@ export default function ProfileScreen ({ route }) {
                 <View style={[styles.dropdownYear, {bottom: 30}]}>
                     <SearchableDropdown 
                         onItemSelect={item => setMajor(item.name)}
-                        containerStyle={[styles.dropdownContainer, {width: 200}]}
-                        textInputStyle={styles.dropdownYearTextInput}
+                        itemsContainerStyle={styles.dropdownYearItemContainer}
                         itemStyle={styles.dropdownYearItem}
                         itemTextStyle={styles.dropdownItemText}
-                        itemsContainerStyle={styles.dropdownYearItemContainer}
+                        textInputStyle={styles.dropdownYearTextInput}
                         items={Majors}
                         resetValue={false}
                         textInputProps={{
@@ -240,7 +243,7 @@ export default function ProfileScreen ({ route }) {
                         name="caret-down"
                         size={24}
                         color="#6c63ff"
-                        style={{position: "absolute", top: 5, left: 235}}
+                        style={{position: "absolute", top: 5, left: 250}}
                     />
                 </View>
                 
@@ -251,229 +254,18 @@ export default function ProfileScreen ({ route }) {
                   <Text style={styles.addacourse_text}>+ Add a course</Text>
                 </TouchableOpacity>
 
-                <Text style={{padding: 10}}></Text>
-
                 <View>
                     <FlatList
-                        data={userCourses}
-                        renderItem={renderItem}
+                        data={coursesAdded}
+                        renderItem={renderAddedCourse}
                         keyExtractor={(item) => item.id}
-                        //extraData={selectedCourse}
-                        //ListEmptyComponent=
                     />
                 </View>
 
-
-                <View style={styles.SearchableDroppie_course1}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-
-
-                    <View style={styles.SearchableDroppie_course2}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-
-                    <View style={styles.SearchableDroppie_course3}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-
-                    <View style={styles.SearchableDroppie_course4}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-
-                <View style={styles.learnstyle_text}>
-                <Text style={styles.profileSectionHeader}>Learning style</Text> 
-                <Text style={styles.profileSectionText}>Rank in order of preference</Text>
+                {/* Rank learning style */}
+                <Text style={[styles.profileSectionHeader, {marginBottom: -3}]}>Learning style</Text> 
+                <Text style={[styles.profileSectionText, {marginLeft: 20}]}>Rank in order of preference</Text>
                
-                </View>
                 <View style={styles.SearchableDroppie_learn1}>
                     <SearchableDropdown
                     onTextChange={text => console.log(text)}
@@ -632,168 +424,8 @@ export default function ProfileScreen ({ route }) {
 
 
 
-
-
-
-                <View style ={styles.comm_text}>
-                <Text style={styles.profileSectionHeader}>Mode of Communication</Text> 
-                <Text style={styles.profileSectionText}>Rank in order of preference</Text> 
-                </View>
-
-                <View style={styles.SearchableDroppie_comm1}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-                    <View style={styles.SearchableDroppie_comm2}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-                    <View style={styles.SearchableDroppie_comm3}>
-                    <SearchableDropdown
-                    onTextChange={text => console.log(text)}
-                    //On text change listner on the searchable input
-                    onItemSelect={item => alert(JSON.stringify(item))}
-                    //onItemSelect called after the selection from the dropdown
-                    containerStyle={{ padding: 5 }}
-                    //suggestion container style
-                    textInputStyle={{
-                      //inserted text style
-                      padding: 7,
-                      borderWidth: 1,
-                      borderColor: '#626262',
-                      backgroundColor: '#FFF',
-                      borderRadius: 7
-                    }}
-                    itemStyle={{
-                      //single dropdown item style
-                      padding: 7,
-                      marginTop: 0,
-                      backgroundColor: '#FFF',
-                      borderColor: '#626262',
-                      
-                      
-                      
-                    }}
-                    itemTextStyle={{
-                      //single dropdown item's text style
-                      color: '#222',
-                    }}
-                    itemsContainerStyle={{
-                      //items container style you can pass maxHeight
-                      //to restrict the items dropdown hieght
-                      maxHeight: '80%',
-                      borderWidth: 0.2,
-                      borderRadius: 7
-                    }}
-                    items={Majors}
-                    //mapping of item array
-                    defaultIndex={2}
-                    //default selected item index
-                    placeholder="Your major"
-                    //place holder for the search input
-                    resetValue={false}
-                    //reset textInput Value with true and false state
-                    underlineColorAndroid="transparent"
-                    //To remove the underline from the android input
-                  />
-        
-                    </View>
-                    
-                    
-
-
+                {/* Rank mode of communication */}
+                <Text style={{padding:30}}></Text>
 
 
                  <View style= {styles.days} >
