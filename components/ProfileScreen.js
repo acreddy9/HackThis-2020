@@ -677,7 +677,7 @@ export default function ProfileScreen ({ route }) {
 
                     <View style={{marginBottom:20}}>
                     <Checkbox
-                    checked={true}
+                    checked={false}
                     style={{backgroundColor: '#FFF', color:'#6C63FF', 
                     borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
                     </View>

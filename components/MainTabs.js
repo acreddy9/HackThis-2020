@@ -47,7 +47,7 @@ function MainTabs(props) {
                     margin: 10,
                     borderRadius: 20,
                     width: 84,
-                    height: 30,
+                    height: 50,
                 },
                 style: {
                     backgroundColor: "#6c63ff",
