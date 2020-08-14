@@ -91,136 +91,20 @@ export default function MatchProfile({ route, navigation }) {
             </View>
             
             
-            <View style={{}}>
+            
             <Text style={ {color: "#6c63ff", fontSize: 20, fontFamily:"Ubuntu-Medium", 
-            position:"relative", right: -35, bottom: 225}}>Shared availability</Text>
+            position:"relative", right: 95, bottom: 160, marginBottom: 70}}>Shared availability</Text>
+            
+            <Text style={ {color: "#626262", fontSize: 16, fontFamily:"Ubuntu-Light", 
+            position:"relative", right: 145, bottom: 190, marginBottom:20}}>Morning</Text>
+            <Text style={ {color: "#626262", fontSize: 16, fontFamily:"Ubuntu-Light", 
+            position:"relative", right: 140, bottom: 190, marginBottom:20}}>Afternoon</Text>
+            <Text style={ {color: "#626262", fontSize: 16, fontFamily:"Ubuntu-Light", 
+            position:"relative", right: 145, bottom: 190, marginBottom:20}}>Evening</Text>
 
-                <View style= {styles.avBottomText1}>
-                <Text style={styles.profileSectionText}>Morning</Text>
-                </View>
+           
+            
 
-                <View style ={styles.avBottomText2}>
-                <Text style={styles.profileSectionText}>After{"\n"}-noon</Text>
-                </View>
-
-                <View style ={styles.avBottomText3}>
-                <Text style={styles.profileSectionText}>Evening</Text>
-                </View>
-                
-
-                
-                <View style={styles.checkboxGrid1}>
-
-                    <View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-
-                    <View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View><View style={{marginRight:15, marginBottom: 30}}>
-                    <Checkbox
-                    checked={true}
-                    style={{backgroundColor: '#FFF', color:'#6C63FF', 
-                    borderRadius: 5, borderColor:'#707070', borderWidth: 1, }} />
-                    </View>
-                    </View>
-                    </View>
 
                 
                 
