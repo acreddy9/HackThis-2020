@@ -72,7 +72,7 @@ const AddedCourse = ({ item, onPress, style }) => (
       horizontal={true}
       data={[{id: 1}, {id: 2}]}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
   />
   </>
 );
@@ -467,7 +467,7 @@ export default function ProfileScreen ({ route }) {
                         //contentContainerStyle={{alignItems: "center"}} // this hides added courses
                         data={coursesAdded}
                         renderItem={renderAddedCourse}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
 
@@ -477,7 +477,7 @@ export default function ProfileScreen ({ route }) {
                         horizontal={true}
                         data={[{id: 1}, {id: 2}, {id: 3}]}
                         renderItem={renderRank}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
                 
@@ -488,7 +488,7 @@ export default function ProfileScreen ({ route }) {
                     <FlatList
                         data={calendar}
                         renderItem={renderCal}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                         numColumns={8}
                     />
                 </View>
@@ -499,7 +499,7 @@ export default function ProfileScreen ({ route }) {
                     <FlatList
                         data={interests}
                         renderItem={renderInterest}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                         numColumns={4}
                     />
                 </View>
