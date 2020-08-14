@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, TouchableOpacity, Image, FlatList, } from 'react-native';
 import styles from './styles';
 import * as ImagePicker from 'expo-image-picker';
@@ -7,7 +7,8 @@ import GreyHorizontalLine from './GreyHorizontalLine.js';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import Checkbox from 'react-native-custom-checkbox';
 import { State } from 'react-native-gesture-handler';
-//import {setUserName, setUserBio, setUserMajor, setUserYear} from '../server/userPrefs'
+import {setUserProperties, setUserCourses, setProfilePicture} from '../server/userPrefs'
+import { firebase } from '../server/config';
 
 const Years = [
     //name key is must.It is to show the text in front
@@ -43,7 +44,25 @@ export default function ProfileScreen ({ route }) {
     const [major, setMajor] = useState('');
     const [year, setYear] = useState('');
 
-   
+    useEffect(() => {
+      const usersRef = firebase.firestore().collection('users');
+      usersRef.doc(userID).get().then((document) => {
+        const userData = document.data()
+        if(userData.name){
+          setName(userData.name)
+        }
+        if(userData.bio) {
+          setBio(userData.bio)
+        }
+        if(userData.pronouns){
+          setPronouns(userData.pronouns)
+        }
+        // if(userData.profile_pic){
+        //   setSelectedImage(userData.profile_pic)
+        // }
+      })
+    });
+
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -59,13 +78,18 @@ export default function ProfileScreen ({ route }) {
         }
 
         setSelectedImage({ localUri: pickerResult.uri });
+        //setProfilePicture(userID, pickerResult.uri)
     };
 
     const saveChanges = () => {
-        setUserName(name)
-        setUserBio(bio)
-        setUserMajor(major)
-        setUserYear(year)
+      const user = {
+        name,
+        pronouns,
+        major,
+        bio,
+        year
+      }
+      setUserProperties(userID, user)
     }
 
     const imageSelected = selectedImage !== null;
@@ -103,7 +127,7 @@ export default function ProfileScreen ({ route }) {
                 <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Pronouns</Text>
                 <TextInput
-                    style={styles.profilePronounsInput}
+                    style={[styles.profileNameInput, {left: 103, top: 177}]}
                     onChangeText={(text) => setPronouns(text)}
                     value={pronouns}
                     autoCapitalize="none"
@@ -111,7 +135,7 @@ export default function ProfileScreen ({ route }) {
                 <GreyHorizontalLine />
                 <Text style={styles.profileSectionHeader}>Bio</Text>
                 <TextInput
-                    style={styles.profileBioInput}
+                    style={[styles.profileNameInput, {left: 60, top: 214}]}
                     onChangeText={(text) => setBio(text)}
                     value={bio}
                     autoCapitalize="none"
@@ -123,37 +147,13 @@ export default function ProfileScreen ({ route }) {
                 <Text style={[styles.profileSectionHeader, {top: 30}]}>Year</Text> 
                 <View style = {styles.SearchableDroppie_year}>
                     <SearchableDropdown 
-                        /*
-                        onItemSelect={(item) => setSchool(item)}
-                        containerStyle={{maxHeight: "70%"}}
-                        itemStyles={[styles.dropdownItem, {
-                          padding: 7,
-                          marginTop: 0,
-                          backgroundColor: '#FFF',
-                          borderColor: '#626262',}]}
-                        itemTextStyle={styles.dropdownItemText}
-                        itemsContainerStyle={[styles.dropdownItemContainer, {borderRadius: 7}]}
-                        items={Years}
-                        resetValue={false}
-                        nestedScrollEnabled={true}
-                        setSort={(item, searchedText)=> item.name.toLowerCase().startsWith(searchedText.toLowerCase())}
-                        textInputProps={{
-                            placeholder: "Select your academic year",
-                            placeholderTextColor: "#aaaaaa",
-                            underlineColorAndroid: "transparent",
-                            style: styles.dropdownInputProps,
-                        }}
-                        */
-                        
-                        onTextChange={text => console.log(text)}
                         onItemSelect={item => setYear(item.name)}
-                        containerStyle={[styles.dropdownContainer, {width: 200, maxHeight: 20}]}
-                        
+                        containerStyle={[styles.dropdownContainer, {width: 200}]}
                         textInputStyle={{ //inserted text style
                           padding: 7,
-                          borderColor: '#626262',
                           backgroundColor: '#FFF',
                           borderWidth: 1,
+                          borderColor: '#626262',
                           borderRadius: 7
                         }}
                         itemStyle={{ // single dropdown item style
@@ -173,7 +173,6 @@ export default function ProfileScreen ({ route }) {
                         }}
                         items={Years}
                         resetValue={false}
-                        nestedScrollEnabled={true}
                         textInputProps={{
                           placeholder: "Select your academic year",
                           placeholderTextColor: "#aaaaaa",
@@ -212,9 +211,6 @@ export default function ProfileScreen ({ route }) {
                       marginTop: 0,
                       backgroundColor: '#FFF',
                       borderColor: '#626262',
-                      
-                      
-                      
                     }}
                     itemTextStyle={{
                       //single dropdown item's text style
@@ -237,6 +233,7 @@ export default function ProfileScreen ({ route }) {
                     //reset textInput Value with true and false state
                     underlineColorAndroid="transparent"
                     //To remove the underline from the android input
+                    nestedScrollEnabled={true}
                   />
         
                     </View>

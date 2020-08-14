@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const Header = ({ title }) => {
   return (
-    <View style={styles.header}>
+    <View>
       <Text style={styles.text}>{title}</Text>
       <View style={{ 
           borderBottomColor: '#6c63ff',
@@ -22,14 +22,12 @@ Header.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 5,
-  },
   text: {
     color: '#6c63ff',
     fontSize: 20,
     textAlign: 'center',
-    fontFamily: "Ubuntu-Medium"
+    fontFamily: "Ubuntu-Medium",
+    marginTop: 10
   },
 });
 

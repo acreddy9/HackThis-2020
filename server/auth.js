@@ -21,10 +21,10 @@ function loginExistingUser(email, password) {
             navigation.navigate('MainTabs');
           }
         }, () => { alert('Some other error occurred')})
-        .catch((e) => console.log(e))
+        .catch((e) => alert(e))
     })
     .catch((e) => {
-      console.log(e.message)
+      alert(e.message)
     })
     
 }
@@ -43,7 +43,8 @@ function createNewUser({school}, email, password) {
       const data = {
         id: uid,
         email: response.user.email,
-        school: school.name
+        school: school.name,
+        matchEnable: false
         //additional user info (userInfo can be passed in as an object)
         // major
         // First and Last name
@@ -58,7 +59,7 @@ function createNewUser({school}, email, password) {
         return true;
     })
     .catch((error) => {
-      console.log(error)
+      alert(error.message)
     })
     return false;
 }
