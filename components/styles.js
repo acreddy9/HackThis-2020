@@ -298,10 +298,7 @@ export default StyleSheet.create({
         paddingTop: 0
     },
 
-<<<<<<< HEAD
  
-=======
->>>>>>> 3bb89719274d0111080fd3b67c1b5640c436d0a8
     // MatchScreen -------------------------------------------------------------------------
     match_img : {
         width: 126,
@@ -350,11 +347,8 @@ export default StyleSheet.create({
         top: 150,
     },
 
-<<<<<<< HEAD
     
 
-=======
->>>>>>> 3bb89719274d0111080fd3b67c1b5640c436d0a8
     // Chat -------------------------------------------------------------------------
     chatFooter: {
         flexDirection: 'row',
@@ -391,8 +385,4 @@ export default StyleSheet.create({
         marginTop: 10,
         flex:1,
       },
-<<<<<<< HEAD
-
-=======
->>>>>>> 3bb89719274d0111080fd3b67c1b5640c436d0a8
 })
