@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import SearchableDropDown from 'react-native-searchable-dropdown';
 
 export default StyleSheet.create({
@@ -92,6 +92,41 @@ export default StyleSheet.create({
         fontWeight: "bold",
         fontFamily: "Ubuntu-Medium"
     },
+    chatFooter: {
+        flexDirection: 'row',
+        height:60,
+        backgroundColor: '#eeeeee',
+        paddingHorizontal:10,
+        padding:5,
+    },
+    chatSend:{
+        width:40,
+        height:40,
+        borderRadius:10,
+        alignItems:'center',
+        justifyContent:'center',
+      },
+      chatInputContainer: {
+        backgroundColor:"#dedede",
+        width:300,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        flex:1,
+      },
+      chatInputs:{
+        backgroundColor: "#dedede",
+        width: Math.round(Dimensions.get('window').width) - 50,
+        maxHeight: 40,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        alignContent:'center',
+        paddingLeft: 15,
+        marginBottom: 10,
+        marginTop: -10,
+        flex:1,
+      },
     footerView: {
         flex: 1,
         alignItems: "center",
@@ -236,19 +271,19 @@ export default StyleSheet.create({
     },
     SearchableDroppie_learn1: {
         width: 160,
-        height: 50,
+        //height: 50,
         marginLeft: 220,
         bottom: 160,
     },
     SearchableDroppie_learn2: {
         width: 160,
-        height: 50,
+        //height: 50,
         marginLeft: 220,
         bottom: 160,
     },
     SearchableDroppie_learn3: {
         width: 160,
-        height: 50,
+        //height: 50,
         marginLeft: 220,
         bottom: 160,
     },
@@ -258,19 +293,19 @@ export default StyleSheet.create({
     },
     SearchableDroppie_comm1: {
         width: 112,
-        height: 50,
+        //height: 50,
         marginLeft: 270,
         bottom: 190,
     },
     SearchableDroppie_comm2: {
         width: 112,
-        height: 50,
+        //height: 50,
         marginLeft: 270,
         bottom: 190,
     },
     SearchableDroppie_comm3: {
         width: 112,
-        height: 50,
+        //height: 50,
         marginLeft: 270,
         bottom: 190,
     },
@@ -412,7 +447,7 @@ export default StyleSheet.create({
     },
     prefDropdown: {
         width: 300,
-        height: 50,
+        //height: 50,
         marginBottom: 5,
         alignSelf: "center"
     },
