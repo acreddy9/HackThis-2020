@@ -124,7 +124,7 @@ export default StyleSheet.create({
         alignContent:'center',
         paddingLeft: 15,
         marginBottom: 10,
-        marginTop: -10,
+        marginTop: 10,
         flex:1,
       },
     footerView: {
