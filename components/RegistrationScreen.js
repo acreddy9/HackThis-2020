@@ -23,6 +23,10 @@ export default function RegistrationScreen({navigation}, props) {
     }
 
     const onRegisterPress = () => {
+        if(school == ''){
+            alert('Please select a school')
+            return
+        }
         auth.createNewUser({school}, email, password);
     }
 
@@ -75,7 +79,7 @@ export default function RegistrationScreen({navigation}, props) {
                 />
                 <TouchableOpacity
                     style={[styles.button, {marginTop: 20}]}
-                    onPress={() => onRegisterPress()}>
+                    onPress={onRegisterPress}>
                     <Text style={styles.buttonTitle}>SIGN UP</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>

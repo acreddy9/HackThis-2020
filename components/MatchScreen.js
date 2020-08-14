@@ -69,7 +69,7 @@ export default function MatchScreen({ route, navigation }) {
             </TouchableOpacity>
             <Text style={styles.whiteSpace}>{"     "}</Text>
             <FlatList
-                scrollEnabled="false"
+                scrollEnabled={false}
                 data={matches}
                 renderItem={renderItem}
                 //keyExtractor={(course) => course.id}
