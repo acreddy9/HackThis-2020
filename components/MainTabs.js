@@ -35,7 +35,9 @@ function MainTabs(props) {
                     
                     tabBarLabel: () => {return null}
                     
+                    
             })}
+            
 
             // Icon change when clicking the tab
             tabBarOptions={{
