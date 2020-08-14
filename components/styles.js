@@ -298,15 +298,15 @@ export default StyleSheet.create({
         paddingTop: 0
     },
 
+<<<<<<< HEAD
  
+=======
+>>>>>>> 3bb89719274d0111080fd3b67c1b5640c436d0a8
     // MatchScreen -------------------------------------------------------------------------
-
     match_img : {
         width: 126,
         height: 128,
         borderRadius: 100,
-        
-
     },
     img_container: {
         position: "relative",
@@ -317,8 +317,6 @@ export default StyleSheet.create({
         position: "relative",
         left: 2,
         top: 5
-        
-
     },
     user_stuff: {     
         flexDirection: 'column',
@@ -330,8 +328,6 @@ export default StyleSheet.create({
         position: "relative",
         top: 80,
         left: 130
-
-        
     },
     user_bio: {
         position: "relative",
@@ -339,10 +335,8 @@ export default StyleSheet.create({
     },
 
     sharedCourses_text: {
-    
-    bottom: 120,
-    marginLeft: -150, 
-        
+        bottom: 120,
+        marginLeft: -150, 
     },
     LStyle_text: {
         bottom: 330,
@@ -353,12 +347,14 @@ export default StyleSheet.create({
         left: 90, 
     },
     days2: {
-        
         top: 150,
     },
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 3bb89719274d0111080fd3b67c1b5640c436d0a8
     // Chat -------------------------------------------------------------------------
     chatFooter: {
         flexDirection: 'row',
@@ -395,5 +391,8 @@ export default StyleSheet.create({
         marginTop: 10,
         flex:1,
       },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3bb89719274d0111080fd3b67c1b5640c436d0a8
 })
