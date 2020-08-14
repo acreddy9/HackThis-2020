@@ -13,6 +13,7 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
 const Stack = createStackNavigator();
+console.disableYellowBox = true;
 
 async function fetchFonts() { 
   await Font.loadAsync({

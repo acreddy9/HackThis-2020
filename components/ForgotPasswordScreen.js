@@ -26,8 +26,8 @@ export default function ForgotPasswordScreen({navigation}) {
                 <Ionicons name="ios-arrow-back" size={25} color="#3d3d3d"/>
             </TouchableOpacity>
             <Text style={styles.appName}>Virmote</Text>
-            <Text style={styles.appName}>{"     "}</Text>
-            <Text style={styles.subtitle}>Please enter account email to receive password reset link.</Text>
+            <Text style={[styles.appName, {padding: 10}]}>{"     "}</Text>
+            <Text style={[styles.subtitle, {width:300}]}>Please enter account email to receive password reset link.</Text>
             <Text style={styles.appName}>{"     "}</Text>
             <TextInput
                 style={styles.input}

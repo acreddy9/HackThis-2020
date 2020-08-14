@@ -12,7 +12,7 @@ var firstMatches = [
 ]
 
 var secondMatches = [
-    { key: 1, pic: require('../assets/huey-kent.png'), matchName: "Huey Kent", bio: "Code. Sleep. Eat. Repeat.", percentage: 77 },
+    { key: 1, pic: require('../assets/huey-kent.png'), matchName: "Huey Kent", bio: "Code. Eat. Sleep. Repeat.", percentage: 77 },
     { key: 2, pic: require('../assets/callum-cervantes.png'), matchName: "Callum Cervantes", bio: "I'm a transfer student looking to make some friends!", percentage: 64 },
     { key: 3, pic: require('../assets/aminah-ratcliffe.png'), matchName: "Aminah Ratcliffe", bio: "Marvel enthusiast :-)", percentage: 49 },
     { key: 4, pic: require('../assets/charlie-logan.png'), matchName: "Charlie Logan", bio: "Gamma theta pi. Fav artist: Kanye", percentage: 28 }

@@ -35,49 +35,6 @@ var Majors = [
 //   { id: 4, name: 'STAT 515' },
 // ]
 
-var coursesOffered = []
-
-const CourseProfItem = ({ item }) => (
-  <View style = {{width: 168, marginRight: 2, marginBottom: 10}}>
-      <SearchableDropdown 
-          //onItemSelect={item => setYear(item.name)}
-          onItemSelect={item => {alert("huh")}} 
-          itemsContainerStyle={styles.dropdownYearItemContainer}
-          itemStyle={styles.dropdownYearItem}
-          itemTextStyle={styles.dropdownItemText}
-          textInputStyle={styles.dropdownYearTextInput}
-          items={coursesOffered}
-          resetValue={false}
-          placeholder={item.id==1 ? "Select a course" : "Select a professor"}
-          textInputProps={{
-              placeholderTextColor: "#aaa",
-              underlineColorAndroid: "transparent",
-          }}
-      />
-      <FontAwesome 
-          name="caret-down"
-          size={24}
-          color="#6c63ff"
-          style={{position: "absolute", top: 5, right: 10}}
-      />
-  </View>
-);
-const renderItem = ({item}) => {
-  return (
-    <CourseProfItem item={item}/>
-  )
-}
-const AddedCourse = ({ item, onPress, style }) => (
-  <>
-  <FlatList
-      horizontal={true}
-      data={[{id: 1}, {id: 2}]}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id.toString()}
-  />
-  </>
-);
-
 // Vars and methods for learning style and mode of communication
 const LearningStyles = [
   { id: 1, name: 'One-on-one' },
@@ -297,6 +254,7 @@ export default function ProfileScreen ({ route }) {
     const [coursesAdded, setCoursesAdded] = useState([
         { id: 1, courseName: '', prof: ''},
     ])
+    const [courseSelected, setCourseSelected] = useState('')
     
     const [changesSaved, setChangesSaved] = useState(false);
 
@@ -320,6 +278,7 @@ export default function ProfileScreen ({ route }) {
       })
     });
 
+    // Profile pic
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
         if (permissionResult.granted === false) {
@@ -332,21 +291,10 @@ export default function ProfileScreen ({ route }) {
         }
         setSelectedImage({ localUri: pickerResult.uri });
     };
-
-    const saveChanges = () => {
-      const user = {
-        name,
-        pronouns,
-        major,
-        bio,
-        year
-      }
-      setUserProperties(userID, user)
-      //setChangesSaved(true); makes everything disappear
-    }
-
     const imageSelected = selectedImage !== null;
 
+    // Adding a course
+    var coursesOffered = []
     const renderAddedCourse = ({item}) => {
       return (
         <AddedCourse item={item} />
@@ -357,8 +305,62 @@ export default function ProfileScreen ({ route }) {
       var newCoursesAdded = [...coursesAdded, {id: idx, courseName: '', prof: ''}];
       setCoursesAdded(newCoursesAdded);
     }
+    const CourseProfItem = ({ item }) => (
+      <View style = {{width: 168, marginRight: 2, marginBottom: 10}}>
+          <SearchableDropdown 
+              onItemSelect={item.id==1 ? item => setCoursesAdded(item.name) : item => {}}
+              itemsContainerStyle={styles.dropdownYearItemContainer}
+              itemStyle={styles.dropdownYearItem}
+              itemTextStyle={styles.dropdownItemText}
+              textInputStyle={styles.dropdownYearTextInput}
+              items={item.id==1 ? coursesOffered : courseSelected.professors}
+              //items={coursesOffered}
+              resetValue={false}
+              placeholder={item.id==1 ? "Select a course" : "Select a professor"}
+              textInputProps={{
+                  placeholderTextColor: "#aaa",
+                  underlineColorAndroid: "transparent",
+              }}
+          />
+          <FontAwesome 
+              name="caret-down"
+              size={24}
+              color="#6c63ff"
+              style={{position: "absolute", top: 5, right: 10}}
+          />
+      </View>
+    );
 
-    return ( // {marginBottom: -950}
+    const renderItem = ({item}) => {
+      return (
+        <CourseProfItem item={item}/>
+      )
+    }
+
+    const AddedCourse = ({ item, onPress, style }) => (
+      <>
+      <FlatList
+          horizontal={true}
+          data={[{id: 1}, {id: 2}]}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+      />
+      </>
+    );
+
+    const saveChanges = () => {
+      const user = {
+        name,
+        pronouns,
+        major,
+        bio,
+        year
+      }
+      setUserProperties(userID, user)
+      setChangesSaved(true);
+    }
+
+    return (
         <View style={[styles.container, ]}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
