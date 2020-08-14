@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import styles from "./styles";
-import { Ionicons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function MatchProfile({ route, navigation }) {
     const { selectedMatch } = route.params;

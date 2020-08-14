@@ -178,11 +178,27 @@ export default StyleSheet.create({
         overflow: 'hidden',
         fontFamily: "Ubuntu-Light"
     },
-    SearchableDroppie_year: {
+    dropdownYear: {
         width: 262,
-        //height: 50,
         left: 90,
         bottom: 5
+    },
+    dropdownYearTextInput: {
+        padding: 7,
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        borderColor: '#626262',
+        borderRadius: 7
+    },
+    dropdownYearItem: {
+        padding: 7,
+        backgroundColor: '#FFF',
+        borderColor: '#626262',
+    },
+    dropdownYearItemContainer: {
+        padding: 7,
+        backgroundColor: '#FFF',
+        borderColor: '#626262',
     },
     SearchableDroppie_course1: {
         width: 175,
@@ -212,7 +228,7 @@ export default StyleSheet.create({
         fontFamily:"Ubuntu-Medium",
         color:'#6C63FF',
         marginLeft: 260,
-        bottom: 65,
+        bottom: 37,
         marginBottom: -30
     },
     learnstyle_text: {
