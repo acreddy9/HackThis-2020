@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import SearchableDropDown from 'react-native-searchable-dropdown';
 
 export default StyleSheet.create({
@@ -92,6 +92,41 @@ export default StyleSheet.create({
         fontWeight: "bold",
         fontFamily: "Ubuntu-Medium"
     },
+    chatFooter: {
+        flexDirection: 'row',
+        height:60,
+        backgroundColor: '#eeeeee',
+        paddingHorizontal:10,
+        padding:5,
+    },
+    chatSend:{
+        width:40,
+        height:40,
+        borderRadius:10,
+        alignItems:'center',
+        justifyContent:'center',
+      },
+      chatInputContainer: {
+        backgroundColor:"#dedede",
+        width:300,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        flex:1,
+      },
+      chatInputs:{
+        backgroundColor: "#dedede",
+        width: Math.round(Dimensions.get('window').width) - 50,
+        maxHeight: 40,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        alignContent:'center',
+        paddingLeft: 15,
+        marginBottom: 10,
+        marginTop: 10,
+        flex:1,
+      },
     footerView: {
         flex: 1,
         alignItems: "center",
@@ -115,34 +150,6 @@ export default StyleSheet.create({
         position: "absolute",
         top: 35,
         left: 30
-    },
-
-    // Courses -------------------------------------------------------------------------
-    courseTile: {
-        backgroundColor: '#f2f2ff',
-        height: 80,
-        width: 350,
-        margin: 5,
-        paddingHorizontal: 20,
-        borderRadius: 10,
-        alignSelf: "center",
-        alignItems: "center",
-        justifyContent: "center",
-        shadowColor: "#000", // IOS
-        shadowOffset: { height: 3, width: 3 }, // IOS
-        shadowOpacity: 0.1, // IOS
-        shadowRadius: 1, //IOS
-        elevation: 2, // Android
-    },
-    courseName: {
-        color: '#3d3d3d',
-        fontSize: 16,
-        fontFamily: "Ubuntu-Medium"
-    },
-    professor: {
-        color: '#3d3d3d',
-        fontSize: 16,
-        fontFamily: "Ubuntu-Light"
     },
 
     // Profile -------------------------------------------------------------------------
@@ -178,11 +185,27 @@ export default StyleSheet.create({
         overflow: 'hidden',
         fontFamily: "Ubuntu-Light"
     },
-    SearchableDroppie_year: {
-        width: 262,
-        //height: 50,
-        left: 90,
+    dropdownYear: {
+        width: 275,
+        left: 80,
         bottom: 5
+    },
+    dropdownYearTextInput: {
+        padding: 7,
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        borderColor: '#626262',
+        borderRadius: 7
+    },
+    dropdownYearItem: {
+        padding: 7,
+        backgroundColor: '#FFF',
+        borderColor: '#626262',
+    },
+    dropdownYearItemContainer: {
+        padding: 7,
+        backgroundColor: '#FFF',
+        borderColor: '#626262',
     },
     SearchableDroppie_course1: {
         width: 175,
@@ -212,27 +235,24 @@ export default StyleSheet.create({
         fontFamily:"Ubuntu-Medium",
         color:'#6C63FF',
         marginLeft: 260,
-        bottom: 65,
+        bottom: 37,
         marginBottom: -30
-    },
-    learnstyle_text: {
-        bottom: 110,
     },
     SearchableDroppie_learn1: {
         width: 160,
-        height: 50,
+        //height: 50,
         marginLeft: 220,
         bottom: 160,
     },
     SearchableDroppie_learn2: {
         width: 160,
-        height: 50,
+        //height: 50,
         marginLeft: 220,
         bottom: 160,
     },
     SearchableDroppie_learn3: {
         width: 160,
-        height: 50,
+        //height: 50,
         marginLeft: 220,
         bottom: 160,
     },
@@ -242,19 +262,19 @@ export default StyleSheet.create({
     },
     SearchableDroppie_comm1: {
         width: 112,
-        height: 50,
+        //height: 50,
         marginLeft: 270,
         bottom: 190,
     },
     SearchableDroppie_comm2: {
         width: 112,
-        height: 50,
+        //height: 50,
         marginLeft: 270,
         bottom: 190,
     },
     SearchableDroppie_comm3: {
         width: 112,
-        height: 50,
+        //height: 50,
         marginLeft: 270,
         bottom: 190,
     },
@@ -396,7 +416,6 @@ export default StyleSheet.create({
     },
     prefDropdown: {
         width: 300,
-        height: 50,
         marginBottom: 5,
         alignSelf: "center"
     },
@@ -423,8 +442,36 @@ export default StyleSheet.create({
         margin: 20,
     },
 
+    // Courses -------------------------------------------------------------------------
+    courseTile: {
+        backgroundColor: '#f2f2ff',
+        height: 80,
+        width: 350,
+        margin: 5,
+        paddingHorizontal: 20,
+        borderRadius: 10,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        shadowColor: "#000", // IOS
+        shadowOffset: { height: 3, width: 3 }, // IOS
+        shadowOpacity: 0.1, // IOS
+        shadowRadius: 1, //IOS
+        elevation: 2, // Android
+    },
+    courseName: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Medium"
+    },
+    professor: {
+        color: '#3d3d3d',
+        fontSize: 16,
+        fontFamily: "Ubuntu-Light"
+    },
+
     // Matches -------------------------------------------------------------------------
-    matchTile: { // use style={styles.courseTile, styles.matchTile}
+    matchTile: { 
         height: 95,
         width: 350,
         alignItems: "flex-start"

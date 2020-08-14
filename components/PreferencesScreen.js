@@ -42,12 +42,6 @@ export default function PreferencesScreen ({route, navigation}) {
 
     const toggleSwitch = () => {
         if (isEnabled) {
-            setYearSwitch(false);
-            setMajorSwitch(false);
-            setLearnSwitch(false);
-            setCommSwitch(false);
-            setAvailabilitySwitch(false);
-            setInterestSwitch(false);
             setMatchEnable(userID, false) //in database
         }
         else{
@@ -79,7 +73,6 @@ export default function PreferencesScreen ({route, navigation}) {
 
                 <View style={styles.prefDropdown}>
                     <SearchableDropdown
-                        onTextChange={text => console.log(text)}
                         onItemSelect={item => alert(JSON.stringify(item))}
                         containerStyle={{ padding: 5 }}
                         textInputStyle={{
@@ -108,6 +101,7 @@ export default function PreferencesScreen ({route, navigation}) {
                         placeholder="Friend / Study buddy / Both"
                         resetValue={false}
                         underlineColorAndroid="transparent"
+                        disabled={!isEnabled}
                     />
                     <FontAwesome 
                         name="caret-down"
