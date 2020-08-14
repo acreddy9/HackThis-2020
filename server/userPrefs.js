@@ -51,7 +51,7 @@ const getUniversityCourses = (school) => {
       let i = 1;
       documentSnapshot.forEach(child => {
         const courseData = child.data();
-        courses.push({id:i, name:courseData.name, professors: courseData.professors})
+        courses.push({id:i, name:courseData.name, professors: courseData.professors, code: courseData.code})
         i++
       })
     })
