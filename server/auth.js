@@ -21,10 +21,10 @@ function loginExistingUser(email, password) {
             navigation.navigate('MainTabs');
           }
         }, () => { alert('Some other error occurred')})
-        .catch((e) => console.log(e))
+        .catch((e) => alert(e))
     })
     .catch((e) => {
-      console.log(e.message)
+      alert(e.message)
     })
     
 }
@@ -58,7 +58,7 @@ function createNewUser({school}, email, password) {
         return true;
     })
     .catch((error) => {
-      console.log(error)
+      alert(error.message)
     })
     return false;
 }
