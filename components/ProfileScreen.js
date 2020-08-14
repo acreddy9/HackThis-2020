@@ -148,6 +148,7 @@ export default function ProfileScreen ({ route }) {
                         onTextChange={text => console.log(text)}
                         onItemSelect={item => setYear(item.name)}
                         containerStyle={[styles.dropdownContainer, {width: 200, maxHeight: 20}]}
+                        
                         textInputStyle={{ //inserted text style
                           padding: 7,
                           borderColor: '#626262',
@@ -171,6 +172,8 @@ export default function ProfileScreen ({ route }) {
                           borderRadius: 7
                         }}
                         items={Years}
+                        resetValue={false}
+                        nestedScrollEnabled={true}
                         textInputProps={{
                           placeholder: "Select your academic year",
                           placeholderTextColor: "#aaaaaa",

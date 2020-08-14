@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import SearchableDropDown from 'react-native-searchable-dropdown';
 
 export default StyleSheet.create({
@@ -92,6 +92,41 @@ export default StyleSheet.create({
         fontWeight: "bold",
         fontFamily: "Ubuntu-Medium"
     },
+    chatFooter: {
+        flexDirection: 'row',
+        height:60,
+        backgroundColor: '#eeeeee',
+        paddingHorizontal:10,
+        padding:5,
+    },
+    chatSend:{
+        width:40,
+        height:40,
+        borderRadius:10,
+        alignItems:'center',
+        justifyContent:'center',
+      },
+      chatInputContainer: {
+        backgroundColor:"#dedede",
+        width:300,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        flex:1,
+      },
+      chatInputs:{
+        backgroundColor: "#dedede",
+        width: Math.round(Dimensions.get('window').width) - 50,
+        maxHeight: 40,
+        borderRadius:30,
+        flexDirection: 'row',
+        alignItems:'center',
+        alignContent:'center',
+        paddingLeft: 15,
+        marginBottom: 10,
+        marginTop: -10,
+        flex:1,
+      },
     footerView: {
         flex: 1,
         alignItems: "center",
@@ -198,7 +233,7 @@ export default StyleSheet.create({
     },
     SearchableDroppie_year: {
         width: 262,
-        height: 50,
+        
         left: 90,
         bottom: 5
     },
