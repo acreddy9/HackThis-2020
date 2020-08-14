@@ -298,6 +298,57 @@ export default StyleSheet.create({
         paddingTop: 0
     },
 
+ 
+    // MatchScreen -------------------------------------------------------------------------
+    match_img : {
+        width: 126,
+        height: 128,
+        borderRadius: 100,
+    },
+    img_container: {
+        position: "relative",
+        right: 120,
+        bottom:110
+    },
+    user_name: {
+        position: "relative",
+        left: 2,
+        top: 5
+    },
+    user_stuff: {     
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        marginLeft: 45
+        
+    },
+    wholeChatButton: {     
+        position: "relative",
+        top: 80,
+        left: 130
+    },
+    user_bio: {
+        position: "relative",
+        bottom: 120,
+    },
+
+    sharedCourses_text: {
+        bottom: 120,
+        marginLeft: -150, 
+    },
+    LStyle_text: {
+        bottom: 330,
+        right: 105, 
+    },
+    commModeText: {
+        bottom: 400,
+        left: 90, 
+    },
+    days2: {
+        top: 150,
+    },
+
+    
+
     // Chat -------------------------------------------------------------------------
     chatFooter: {
         flexDirection: 'row',
