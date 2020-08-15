@@ -27,7 +27,7 @@ export default function LoginScreen({navigation}) {
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always" >
             <Text style={styles.appName}>Virmote</Text>
-            <Text style={styles.subtitle}>welcome back :)</Text>
+            <Text style={styles.subtitle}>Welcome back :)</Text>
 
             <LoginIllustration width={350} height={270} marginTop={20} alignSelf={"center"}/> 
 
