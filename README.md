@@ -1,6 +1,5 @@
 # Virmote
-*Staff's Choice Award at University of Illinois at Urbana-Champaign's HackThis 2020 hackathon*
-
+*Staff's Choice Award* at University of Illinois at Urbana-Champaign's HackThis 2020 hackathon
 Created by Aditya Azad, Saiyyam Kochar, Shruthi Kondin, Atulya Reddy, Prithvi Velpuri, and Winston Wang
 
 ## Inspiration
