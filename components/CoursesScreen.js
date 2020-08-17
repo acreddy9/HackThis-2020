@@ -7,10 +7,10 @@ import {firebase} from '../server/config';
 
 //var matchFeatureOn = false; // set to true to test course tile display
 var courses = [
-    { courseName: "CS 200", professor: "Mark Renault" },
-    { courseName: "PSYCH 225", professor: "Allyson Bennett" },
-    { courseName: "MATH 233", professor: "Diane Tucker" },
-    { courseName: "STAT 515", professor: "Sara Dunn" }
+    { key: 1, courseName: "CS 200", professor: "Mark Renault" },
+    { key: 2, courseName: "PSYCH 225", professor: "Allyson Bennett" },
+    { key: 3, courseName: "MATH 233", professor: "Diane Tucker" },
+    { key: 4, courseName: "STAT 515", professor: "Sara Dunn" }
 ]
 
 const Item = ({ item, onPress, style }) => (
@@ -66,7 +66,7 @@ export default function CoursesScreen({ route, navigation }) {
                     <FlatList
                         data={courses}
                         renderItem={renderItem}
-                        //keyExtractor={(course) => course.id}
+                        keyExtractor={(course) => course.key.toString()}
                         extraData={selectedCourse}
                         //ListEmptyComponent=
                     />

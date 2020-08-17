@@ -5,17 +5,17 @@ import { Ionicons } from '@expo/vector-icons';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-export default function ChatRoom({ navigation }) {
+export default function ChatRoom({ navigation: { goBack } }) {
 
     var texts = [
-        { text: "Hi Charlie! Looks like we're in CS 200 together.", timestamp: new Date(Date.now() - 500000), name: "user", pic: require('../assets/charlie-logan.png') },
-        { text: "Hi Lya! How's it going?", timestamp: new Date(Date.now() - 400000), name: "John", pic: require('../assets/charlie-logan.png') },
-        { text: "Good! How about you?", timestamp: new Date(Date.now() - 300000), name: "user", pic: require('../assets/charlie-logan.png') },
-        { text: "I'm good :) Hey would you wanna study together for the exam this week?", timestamp: new Date(Date.now() - 200000), name: "John", pic: require('../assets/charlie-logan.png') },
-        { text: "Yes I'd love to!", timestamp: new Date(Date.now() - 100000), name: "user", pic: require('../assets/charlie-logan.png') },
-        { text: "Awesome! When are you free?", timestamp: new Date(Date.now() - 60000), name: "John", pic: require('../assets/charlie-logan.png') },
-        { text: "Could we FT tomorrow after class?", timestamp: new Date(Date.now() - 100000), name: "user", pic: require('../assets/charlie-logan.png') },
-        { text: "Sounds like a plan!", timestamp: new Date(Date.now() - 100000), name: "John", pic: require('../assets/charlie-logan.png') }
+        { key: 1, text: "Hi Mira! Looks like we're in CS 200 together.", timestamp: new Date(Date.now() - 500000), name: "user", pic: require('../assets/huey-kent.png') },
+        { key: 2, text: "Hi Lya! How's it going?", timestamp: new Date(Date.now() - 400000), name: "John", pic: require('../assets/huey-kent.png') },
+        { key: 3, text: "Good! How about you?", timestamp: new Date(Date.now() - 300000), name: "user", pic: require('../assets/huey-kent.png') },
+        { key: 4, text: "I'm good :) Hey would you wanna study together for the exam this week?", timestamp: new Date(Date.now() - 200000), name: "John", pic: require('../assets/huey-kent.png') },
+        { key: 5, text: "Yes I'd love to!", timestamp: new Date(Date.now() - 100000), name: "user", pic: require('../assets/huey-kent.png') },
+        { key: 6, text: "Awesome! When are you free?", timestamp: new Date(Date.now() - 60000), name: "John", pic: require('../assets/huey-kent.png') },
+        { key: 7, text: "Could we FT tomorrow after class?", timestamp: new Date(Date.now() - 100000), name: "user", pic: require('../assets/huey-kent.png') },
+        { key: 8, text: "Sounds like a plan!", timestamp: new Date(Date.now() - 100000), name: "John", pic: require('../assets/huey-kent.png') }
     ]
 
     let Data = texts
@@ -26,7 +26,9 @@ export default function ChatRoom({ navigation }) {
                     backgroundColor: "#9c9fff", alignSelf: "flex-end", marginRight: 5,
                     borderBottomRightRadius: 0, marginBottom: 20, width: '70%', maxWidth: 500, padding: 10, borderRadius: 20,
                 }}>
-                    <Text style={{ fontFamily: "Ubuntu-Light", fontSize: 16, color: "#fff"}}> {c_data.text}</Text></View>)
+                    <Text style={{ fontFamily: "Ubuntu-Light", fontSize: 16, color: "#fff"}}> {c_data.text}</Text>
+                </View>
+            )
         } else {
             return (
                 <View style={{ width: '70%', maxWidth: 500, justifyContent: "flex-start", flexDirection: "row" }}>
@@ -55,7 +57,7 @@ export default function ChatRoom({ navigation }) {
                     width: 400,
                     paddingBottom: 15,
                 }}>
-                    <TouchableOpacity style={[styles.chatSend, { marginLeft: '5%', paddingTop: 10 }]} onPress={() => navigation.navigate('ChatScreen')}>
+                    <TouchableOpacity style={[styles.chatSend, { marginLeft: '5%', paddingTop: 10 }]} onPress={() => goBack()}>
                         <Ionicons name="ios-arrow-back" size={25} color="#3d3d3d" />
                     </TouchableOpacity>
                     <Text style={{
@@ -66,7 +68,8 @@ export default function ChatRoom({ navigation }) {
                         alignSelf: 'center',
                         textAlign: 'center',
                         fontFamily: "Ubuntu-Medium",
-                    }}>{"Charlie Logan"}</Text></View>
+                    }}>{"Mira Kent"}</Text>
+                </View>
             </View>
             <View style={{
                 height: screenHeight - 150, marginVertical: 0,
@@ -87,7 +90,9 @@ export default function ChatRoom({ navigation }) {
                 <TouchableOpacity >
                     <Ionicons name="ios-send" size={25} color="#3d3d3d"/>
                 </TouchableOpacity>
-            </View></View>)
+            </View>
+        </View>
+    )
 }
 /* export default class Chat extends Component {
 

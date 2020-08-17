@@ -8,14 +8,14 @@ var firstMatches = [
     { key: 1, pic: require('../assets/nick-miller.png'), matchName: "Nick Miller", bio: "A bank is just a paper bag but with fancier walls.", percentage: 95 },
     { key: 2, pic: require('../assets/jessica-day.png'), matchName: "Jessica Day", bio: "I brake for birds, I rock a lot of polka dots, I have touched glitter in the last 24 hours.", percentage:92 },
     { key: 3, pic: require('../assets/schmidt.jpg'), matchName: "Schmidt", bio: "I can do anything I put my mind to. I once figured out Alyssa Milano’s phone number just by randomly choosing numbers.", percentage: 86 },
-    { key: require('../assets/winston-bishop.jpg'), matchName: "Winston Bishop", bio: "If I were off my rocker, would I take a weekly selfie with my cat?", percentage: 82 }
+    { key: 4, pic: require('../assets/winston-bishop.jpg'), matchName: "Winston Bishop", bio: "If I were off my rocker, would I take a weekly selfie with my cat?", percentage: 82 }
 ]
 
 var secondMatches = [
-    { key: 1, pic: require('../assets/huey-kent.png'), matchName: "Huey Kent", bio: "Code. Eat. Sleep. Repeat.", percentage: 77 },
-    { key: 2, pic: require('../assets/callum-cervantes.png'), matchName: "Callum Cervantes", bio: "I'm a transfer student looking to make some friends!", percentage: 64 },
-    { key: 3, pic: require('../assets/aminah-ratcliffe.png'), matchName: "Aminah Ratcliffe", bio: "Marvel enthusiast :-)", percentage: 49 },
-    { key: 4, pic: require('../assets/charlie-logan.png'), matchName: "Charlie Logan", bio: "Gamma theta pi. Fav artist: Kanye", percentage: 28 }
+    { key: 1, pic: require('../assets/huey-kent.png'), matchName: "Mira Kent", bio: "Code. Eat. Sleep. Repeat.", percentage: 77 },
+    { key: 2, pic: require('../assets/callum-cervantes.png'), matchName: "Jaxon Navarro", bio: "I'm a transfer student looking to make some friends!", percentage: 64 },
+    { key: 3, pic: require('../assets/aminah-ratcliffe.png'), matchName: "Aria Ellis", bio: "Marvel enthusiast :-)", percentage: 49 },
+    { key: 4, pic: require('../assets/charlie-logan.png'), matchName: "Will Hendrix", bio: "Gamma theta pi. Fav artist: Kanye", percentage: 28 }
 ]
 
 const Item = ({ item, onPress, style }) => (
@@ -37,7 +37,7 @@ const Item = ({ item, onPress, style }) => (
     </TouchableOpacity>
 );
 
-export default function MatchScreen({ route, navigation }) {
+export default function MatchScreen({ route, navigation: { goBack } }) {
     const { selectedCourse } = route.params;
     const [matches, setMatches] = useState(firstMatches);
     const [selectedMatch, setSelectedMatch] = useState('');
@@ -61,15 +61,11 @@ export default function MatchScreen({ route, navigation }) {
         navigation.navigate('MatchProfileScreen', { selectedMatch: matchName })
     }
 
-    const onBackPress = () => {
-        navigation.navigate('CoursesScreen')
-    }
-
     return (
         <View style={styles.container}>
             
             <Header title={selectedCourse}/>
-            <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
+            <TouchableOpacity style={styles.backButton} onPress={() => goBack()}>
                 <Ionicons name="ios-arrow-back" size={25}/>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.button, {marginTop: 20}]} onPress={() => onMatchMe()}>
@@ -80,7 +76,7 @@ export default function MatchScreen({ route, navigation }) {
                 scrollEnabled={false}
                 data={matches}
                 renderItem={renderItem}
-                //keyExtractor={(course) => course.id}
+                keyExtractor={(match) => match.key.toString()}
                 extraData={selectedMatch}
                 //ListEmptyComponent=
             />

@@ -3,13 +3,42 @@ import { View, TouchableOpacity, Text, Image, KeyboardAwareScrollView } from "re
 import styles from "./styles";
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
 import Checkbox from 'react-native-custom-checkbox';
+import Header from './Header.js';
 
-export default function MatchProfile({ route, navigation }) {
+export default function MatchProfileScreen({ route, navigation: { goBack } }) {
     const { selectedMatch } = route.params;
 
-    const onBackPress = () => {
-        navigation.navigate('MatchScreen')
-    }
+    return (
+        <View style={styles.container}>
+            <Header title={selectedMatch} />
+            <TouchableOpacity style={styles.backButton} onPress={() => goBack()}>
+                <Ionicons name="ios-arrow-back" size={25}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.chatButton} onPress={()=> navigation.navigate('ChatRoom')}>     
+                <View style={{height:40, width:40, backgroundColor:"#6C63FF", borderRadius:100, position: "absolute", top:-53, left:125}} />
+                <View style={{position: "absolute", top: -46, left: 132}}>
+                    <MaterialCommunityIcons name="chat" size={27} color={"#FFF"} iconStyle={styles.chatButton}/>
+                </View>
+            </TouchableOpacity>
+
+            <Image
+                style={styles.match_img}
+                source={require('../assets/nick-miller.png')}
+            />
+
+        </View>
+    )
+}
+    /*
+
+
+    <View style={styles.matchProfileHeader}>
+        <Text style={styles.matchProfileHeaderText}>they/them/theirs</Text>
+        <Text style={styles.matchProfileHeaderText}>Junior</Text>
+        <Text style={styles.matchProfileHeaderText}>Rehabilitation Psychology</Text>
+    </View>
+
 
     return (
         <View style={styles.container}>
@@ -17,20 +46,7 @@ export default function MatchProfile({ route, navigation }) {
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
 
-            
-                <TouchableOpacity style={styles.backButton} onPress={onBackPress}>
-                    <Ionicons name="ios-arrow-back" size={25}/>
-                </TouchableOpacity>
 
-                {/*
-                <TouchableOpacity style={styles.chatButton} onPress={()=> navigation.navigate('ChatRoom')}>     
-                <View style={{height:45, width:45, backgroundColor:"#6C63FF", borderRadius:100, position:"relative", top:117, left: 123}}    />
-                <View style={styles.wholeChatButton}>
-                <MaterialCommunityIcons name="chat" size={30} color={"#FFF"} iconStyle={styles.chatButton}/>
-                </View>
-                </TouchableOpacity>
-                
-                
             
 
             <View style={styles.user_name}>
@@ -44,12 +60,7 @@ export default function MatchProfile({ route, navigation }) {
             </View>
            
 
-            <View style={styles.img_container}>
-            <Image
-            style={styles.match_img}
-            source={require('../assets/nick-miller.png')}
-            />
-            </View>
+            
 
             <View style={styles.user_bio}>
                     <Text style={{fontFamily:"Ubuntu-Light", fontSize: 16, margin: 30}}>Gamma theta pi !!! Fav artist: Kanye. Fav quote: “We think,
@@ -219,8 +230,9 @@ export default function MatchProfile({ route, navigation }) {
                     </View>
                     </View>
                     </View>
-            */}
                 </KeyboardAwareScrollView>
             </View>
     );
-}
+       
+*/
+

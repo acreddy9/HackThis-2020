@@ -306,33 +306,27 @@ export default StyleSheet.create({
  
     // MatchScreen -------------------------------------------------------------------------
     match_img : {
-        width: 126,
-        height: 128,
+        width: 100,
+        height: 100,
         borderRadius: 100,
+        alignSelf: "flex-start",
+        margin: 10
     },
-    img_container: {
-        position: "relative",
-        right: 120,
-        bottom:110
+    matchProfileName: {
+        color: "#6c63ff",
+        fontSize: 20,
+        fontFamily: "Ubuntu-Medium",
+        //bottom: 40
     },
-    user_name: {
-        position: "relative",
-        left: 2,
-        top: 5
-    },
-    user_stuff: {     
+    matchProfileHeader: {     
         flexDirection: 'column',
         flexWrap: 'wrap',
         marginLeft: 45
-        
     },
-    wholeChatButton: {     
-        position: "relative",
-        top: 80,
-        left: 130
+    matchProfileHeaderText: {
+        color: "#626262", fontSize: 17, fontFamily: "Ubuntu-Light",paddingBottom:5
     },
     user_bio: {
-        position: "relative",
         bottom: 120,
     },
 
